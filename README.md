@@ -16,7 +16,8 @@ Option 1:
 
 
 OPTION 2:
-Change App.config to 
+Change App.config to
+"
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
     <configSections>
@@ -30,4 +31,5 @@ Change App.config to
         <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
     </startup>
 </configuration>
+"
 
