@@ -15,7 +15,7 @@ Option 1:
 - Change the connectionString to the one you have copied
 
 
-<u> OPTION 2: </u>
+OPTION 2:
 Change App.config to 
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration>
