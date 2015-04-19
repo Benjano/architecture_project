@@ -15,21 +15,4 @@ Option 1:
 - Change the connectionString to the one you have copied
 
 
-OPTION 2:
-Change App.config to
-"
-<?xml version="1.0" encoding="utf-8" ?>
-<configuration>
-    <configSections>
-    </configSections>
-    <connectionStrings>
-        <add name="Coupons.Properties.Settings.CouponsDBConnectionString"
-            connectionString="Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\CouponsDB.mdf;Integrated Security=True"
-            providerName="System.Data.SqlClient" />
-    </connectionStrings>
-    <startup> 
-        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.5" />
-    </startup>
-</configuration>
-"
 
