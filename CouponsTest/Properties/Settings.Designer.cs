@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Coupons.Properties {
+namespace CouponsTest.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -23,13 +23,16 @@ namespace Coupons.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute(@"Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Rachely\Source\Repos\architecture_project\Coupons\CouponsDB.mdf;Integrated Data Source=(LocalDB)\v11.0;AttachDbFilename=C:\Users\Rachely\Source\Repos\architecture_project\Coupons\CouponsDB.mdf;Integrated Security=True")]
-        public string CouponsDBConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=C:\\Users\\Rachely\\Source\\Repos\\archit" +
+            "ecture_project\\Coupons\\CouponsDB.mdf;Integrated Security=True")]
+        public string Setting {
             get {
-                return ((string)(this["CouponsDBConnectionString"]));
+                return ((string)(this["Setting"]));
+            }
+            set {
+                this["Setting"] = value;
             }
         }
     }
