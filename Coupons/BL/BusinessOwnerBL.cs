@@ -18,9 +18,9 @@ namespace Coupons.BL
     {
         public BusinessOwnerDAL mDal;
 
-        public BusinessOwnerBL(BusinessOwnerDAL dal)
+        public BusinessOwnerBL()
         {
-            mDal = new BusinessOwnerDAL(); ;
+            mDal = new BusinessOwnerDAL(); 
         }
 
         public BusinessOwner logBusinessOwner(String username, String password)

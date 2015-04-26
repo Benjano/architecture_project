@@ -69,6 +69,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="GUI\BusinessOwnerGUI\Class1.cs" />
+    <Compile Include="GUI\BusinessOwnerGUI\MainOwner.xaml.cs">
+      <DependentUpon>MainOwner.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BusinessOwnerGUI\OwnerNewDeal.xaml.cs">
+      <DependentUpon>OwnerNewDeal.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\Client\Client.xaml.cs">
       <DependentUpon>Client.xaml</DependentUpon>
     </Compile>
@@ -82,6 +89,14 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Page Include="GUI\BusinessOwnerGUI\MainOwner.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\BusinessOwnerGUI\OwnerNewDeal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="GUI\Client\Client.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -193,7 +208,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI\Admin\" />
-    <Folder Include="GUI\BusinessOwner\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

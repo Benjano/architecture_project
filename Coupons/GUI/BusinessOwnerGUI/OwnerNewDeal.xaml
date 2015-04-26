@@ -1,0 +1,65 @@
+﻿<Window x:Class="Coupons.GUI.BusinessOwner.OwnerNewDeal"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OwnerNewDeal" Height="300" Width="300">
+    <Grid>
+        <Label Content="Hello!&#xD;&#xA;Let's start to add a new Coupon" HorizontalAlignment="Left" Height="38" Margin="49,10,0,0" VerticalAlignment="Top" Width="212"/>
+        <Label Content="Deal Name:" HorizontalAlignment="Left" Height="25" Margin="17,79,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.714"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox Name="txtUserName"  HorizontalAlignment="Left" Height="20" Margin="104,81,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86" />
+        <Label Content="Details: " HorizontalAlignment="Left" Height="25" Margin="17,105,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.714"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Business:" HorizontalAlignment="Left" Height="25" Margin="17,129,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.714"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox Name ="txtDetails" HorizontalAlignment="Left" Height="20" Margin="104,106,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86" />
+        <ComboBox HorizontalAlignment="Left" Height="22" Margin="104,131,0,0" VerticalAlignment="Top" Width="86"/>
+        <Label Content="Price:" HorizontalAlignment="Left" Height="25" Margin="16,155,0,0" VerticalAlignment="Top" Width="72" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.714"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox Name ="txtPrice" HorizontalAlignment="Left" Height="20" Margin="104,158,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86" />
+        <Label Content="Experation Date:" HorizontalAlignment="Left" Height="25" Margin="15,182,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.5,0.5">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.714"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox Name="txtDate" HorizontalAlignment="Left" Height="20" Margin="116,183,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="86" />
+        <Button Content="Submit" HorizontalAlignment="Left" Height="19" Margin="104,231,0,0" VerticalAlignment="Top" Width="86" Click="Button_Click"/>
+
+    </Grid>
+</Window>
