@@ -40,43 +40,12 @@ namespace Coupons.BL
 
         private void loadDealsToBusiness(Business business)
         {
-            // Select the deals of each business belonging to owner
-            CouponsDataset.DealsDataTable deals = mTableDeals.SelectDealByBusinessId(business.ID);
-            foreach (DataRow row in deals.Rows)
-            {
-                int id = (int)row[DealsColumns.ID];
-                String name = row[DealsColumns.NAME].ToString();
-                String details = row[DealsColumns.DETAILS].ToString(); ;
-                decimal originalPrice = (decimal)row[DealsColumns.ORIGINAL_PRICE];
-                float rate = (float)(double)row[DealsColumns.RATE];
-                DateTime experationDate;
-                DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
-                bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
-                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
-                business.addDeal(deal);
-            }
+            mDal.loadDealsToBusiness(business);
         }
 
         private void loadDealCoupons(Deal deal)
         {
-            CouponsDatasetTableAdapters.CouponsTableAdapter mTableCoupons = new CouponsDatasetTableAdapters.CouponsTableAdapter();
-            CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCouponByDealID(deal.ID);
-            foreach (DataRow row in coupons.Rows)
-            {
-                int id = (int)row[CouponsColumns.ID];
-                decimal originalPrice = (decimal)row[CouponsColumns.ORIGINAL_PRICE];
-                decimal boughtPrice = (decimal)row[CouponsColumns.BOUGHT_PRICE];
-                int rate = (int)row[CouponsColumns.RATE];
-                bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
-                String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
-
-                int clientId = (int)row[CouponsColumns.CLIENT_ID];
-                ClientBL clientBL = new ClientBL();
-                Client client = clientBL.getClientById(clientId);
-
-                Coupon coupon = new Coupon(client, deal, originalPrice, boughtPrice, rate, isUsed, serialKey);
-                deal.addCoupon(coupon);
-            }
+            mDal.loadDealCoupons(deal);
         }
 
         public BusinessOwner getBusinessOwnerById(string userName, string password)
