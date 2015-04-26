@@ -23,10 +23,6 @@ namespace Coupons.DAL
         private CouponsDatasetTableAdapters.CouponsTableAdapter mTableCoupons = new CouponsDatasetTableAdapters.CouponsTableAdapter();
         private CouponsDatasetTableAdapters.GroupsTableAdapter mTableGroups = new CouponsDatasetTableAdapters.GroupsTableAdapter();
 
-
-
-
-
         public bool insertBusinessOwner(String username, String password, String mail, String phone)
         {
             return (mTableUsers.InsertBusinessOwner(username, password, mail, phone) == 1);
