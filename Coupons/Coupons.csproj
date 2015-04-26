@@ -69,14 +69,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GUI\BusinessOwnerGUI\Class1.cs" />
-    <Compile Include="GUI\BusinessOwnerGUI\MainOwner.xaml.cs">
-      <DependentUpon>MainOwner.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\BusinessOwnerGUI\OwnerNewDeal.xaml.cs">
-      <DependentUpon>OwnerNewDeal.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\Client\Client.xaml.cs">
+    <Compile Include="BL\UserBL.cs" />
+    <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="GUI\ClientGUI\Client.xaml.cs">
       <DependentUpon>Client.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants\FriendsColumns.cs" />
@@ -89,15 +84,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Page Include="GUI\BusinessOwnerGUI\MainOwner.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\BusinessOwnerGUI\OwnerNewDeal.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\Client\Client.xaml">
+    <Page Include="GUI\ClientGUI\Client.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -207,7 +194,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GUI\Admin\" />
+    <Folder Include="GUI\AdminGUI\" />
+    <Folder Include="GUI\BusinessOwnerGUI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
