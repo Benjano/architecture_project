@@ -4,30 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E2947420-8A98-47BA-94D3-15079112C1BF}</ProjectGuid>
+    <ProjectGuid>{205F9912-7B21-4C9C-BAFA-AFDD8AD71095}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Coupons</RootNamespace>
-    <AssemblyName>Coupons</AssemblyName>
+    <RootNamespace>CouponsApplication</RootNamespace>
+    <AssemblyName>CouponsApplication</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
-    <PublishUrl>publish\</PublishUrl>
-    <Install>true</Install>
-    <InstallFrom>Disk</InstallFrom>
-    <UpdateEnabled>false</UpdateEnabled>
-    <UpdateMode>Foreground</UpdateMode>
-    <UpdateInterval>7</UpdateInterval>
-    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
-    <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
-    <MapFileExtensions>true</MapFileExtensions>
-    <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
-    <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -49,7 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -69,16 +53,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Constants\FriendsColumns.cs" />
-    <Compile Include="Constants\SociaFriendsColumns.cs" />
-    <Compile Include="Constants\SocialNetworksColumns.cs" />
-    <Compile Include="Constants\ClientColumns.cs" />
-    <Compile Include="Constants\GroupColumns.cs" />
-    <Compile Include="CouponsDataSet.cs">
-      <DependentUpon>CouponsDataSet.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Settings.cs" />
+    <Page Include="Client.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -87,39 +65,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BL\BusinessOwnerBL.cs" />
-    <Compile Include="BL\ClientBL.cs" />
-    <Compile Include="Constants\BusinessesColumns.cs" />
-    <Compile Include="Constants\CouponsColumns.cs" />
-    <Compile Include="Constants\DealsColumns.cs" />
-    <Compile Include="Constants\UserColumns.cs" />
-    <Compile Include="CouponsDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CouponsDataSet.xsd</DependentUpon>
+    <Compile Include="Client.xaml.cs">
+      <DependentUpon>Client.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DAL\AdminDAL.cs" />
-    <Compile Include="DAL\BusinessOwnerDAL.cs" />
-    <Compile Include="DAL\ClientDAL.cs" />
-    <Compile Include="Enums\Gender.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Admin.cs" />
-    <Compile Include="Models\Brand.cs" />
-    <Compile Include="Models\Business.cs" />
-    <Compile Include="Models\BusinessOwner.cs" />
-    <Compile Include="Enums\Category.cs" />
-    <Compile Include="Models\Client.cs" />
-    <Compile Include="Models\ClientNetworks.cs" />
-    <Compile Include="Models\Coupon.cs" />
-    <Compile Include="Models\Deal.cs" />
-    <Compile Include="Models\Group.cs" />
-    <Compile Include="Enums\SocialNetwork.cs" />
-    <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -137,18 +91,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="ClassDiagram.cd" />
-    <None Include="CouponsDataSet.xsc">
-      <DependentUpon>CouponsDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="CouponsDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CouponsDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="CouponsDataSet.xss">
-      <DependentUpon>CouponsDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,33 +100,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="CouponsDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="CouponsDB_log.ldf">
-      <DependentUpon>CouponsDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
-      <Visible>False</Visible>
-      <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>false</Install>
-    </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

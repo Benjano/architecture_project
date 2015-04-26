@@ -5,6 +5,7 @@ This project was written in Visual Studio 2013 and was tested on Visual Studio 2
 
 We use local database (.mdf). In order to use it, you might need to update the connection string to match your computer.
 
+Option 1:
 - Open server explorer
 - Right click on couponsDB
 - Properties
@@ -13,3 +14,13 @@ We use local database (.mdf). In order to use it, you might need to update the c
 - Open Settings file
 - Change the connectionString to the one you have copied
 
+
+Option 2:
+Your project created auto App.config with no connection string attached.
+Add connectionString:
+Name: CouponsDBConnectionString
+Type: ConnectionString
+Scope: Application
+Value: Data Source=(LocalDB)\v11.0;AttachDbFilename=|DataDirectory|\CouponsDB.mdf;Integrated Security=True
+
+Or just open App.config file from Coupons > App.config and copy the file to your project.
