@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Coupons.BL;
 
 namespace CouponsApplication
 {
@@ -27,6 +28,10 @@ namespace CouponsApplication
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+       
+            
+
+
             Client form = new Client();
             form.Show();
             this.Close();
