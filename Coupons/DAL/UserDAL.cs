@@ -39,7 +39,7 @@ namespace Coupons.DAL
                         {
                             DateTime birthDate;
                             DateTime.TryParse(client.Rows[0][ClientColumns.BIRTHDATE].ToString(), out birthDate);
-                            Gender gender = (Gender)client.Rows[0][ClientColumns.GENDER];
+                            Gender gender = (Gender)Enum.Parse(typeof(Gender), client.Rows[0][ClientColumns.GENDER].ToString());
                             String location = client.Rows[0][ClientColumns.LOCATION].ToString();
                             return new Client(id, username, mail, phone,birthDate,gender,location);
                         }

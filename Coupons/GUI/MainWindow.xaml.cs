@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Coupons.BL;
 using Coupons.Models;
+using Coupons;
 
 namespace CouponsApplication
 {
@@ -33,12 +34,12 @@ namespace CouponsApplication
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-            String username = txtUsername.ToString();
-            String password = txtPassword.ToString();
+            String username = txtUsername.Text;
+            String password = txtPassword.Password;
 
             User user = mUserBL.login(username, password);
 
-            if (user == null)
+            if (user != null)
             {
                 if (user.GetType() == typeof(Admin))
                 {
@@ -63,6 +64,13 @@ namespace CouponsApplication
                 }
             }
             
+        }
+
+        private void btnCreateClient_Click(object sender, RoutedEventArgs e)
+        {
+            CreateClientWindow createClientWindow = new CreateClientWindow();
+            createClientWindow.Show();
+            this.Close();
         }
     }
 }
