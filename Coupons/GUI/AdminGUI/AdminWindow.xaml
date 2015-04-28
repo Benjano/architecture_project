@@ -6,28 +6,28 @@
         <DataGrid HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Height="242" Width="255"/>
         <DataGrid HorizontalAlignment="Left" Margin="279,102,0,0" VerticalAlignment="Top" Height="273" Width="272"/>
         <DataGrid HorizontalAlignment="Left" Margin="572,102,0,0" VerticalAlignment="Top" Height="345" Width="269"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="476,78,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="374,78,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="279,78,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.467,0.292"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.605,0.417"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="572,78,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.232,0.417"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="670,78,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="766,78,0,0" VerticalAlignment="Top" Width="75"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="93" RenderTransformOrigin="0.275,0.094"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="93,463,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="374,463,0,0" VerticalAlignment="Top" Width="75"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="67,388,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="198"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="67,424,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="198"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="67,352,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="198" RenderTransformOrigin="0.15,0.87"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="93,18,0,0" VerticalAlignment="Top"/>
+        <Button Name="btnAddClientOrOwner" Content="Add" HorizontalAlignment="Left" Margin="476,78,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnOwner" Content="Business Owner" HorizontalAlignment="Left" Margin="374,78,0,0" VerticalAlignment="Top" Width="90"/>
+        <Button Name="btnClient" Content="Client" HorizontalAlignment="Left" Margin="279,78,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnAddBusiness"  Content="Add" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Name="btnApprove" Content="Approve" HorizontalAlignment="Left" Margin="572,78,0,0" VerticalAlignment="Top" Width="75" />
+        <Button Name="btnAllDeal" Content="All" HorizontalAlignment="Left" Margin="670,78,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnAddDeal" Content="Add" HorizontalAlignment="Left" Margin="766,78,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Welcome" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="93" />
+        <Button Name="btnSearchBusiness" Content="Search" HorizontalAlignment="Left" Margin="93,463,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnSearchClientOrOwner" Content="Search" HorizontalAlignment="Left" Margin="374,463,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox Name="tbOwnerId"  HorizontalAlignment="Left" Height="23" Margin="67,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
+        <TextBox Name="tbBusinessId" HorizontalAlignment="Left" Height="23" Margin="67,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
+        <TextBox Name="tbBusinessName" HorizontalAlignment="Left" Height="23" Margin="67,352,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="198"/>
+        <Label Name="lblUsername" Content="Aviv" HorizontalAlignment="Left" Margin="93,18,0,0" VerticalAlignment="Top"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="10,349,0,0" VerticalAlignment="Top"/>
-        <Label Content="Owner Id" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.443,0.344"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="10,424,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.078,0.344"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="279,387,0,0" VerticalAlignment="Top"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="279,420,0,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="329,391,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="222"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="329,424,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="222"/>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="647,463,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Owner Id" HorizontalAlignment="Left" Margin="10,388,0,0" VerticalAlignment="Top"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="10,424,0,0" VerticalAlignment="Top"/>
+        <Label Content="Name" HorizontalAlignment="Left" Margin="279,387,0,0" VerticalAlignment="Top"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="279,420,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="tbName" HorizontalAlignment="Left" Height="23" Margin="329,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
+        <TextBox Name="tbId"  HorizontalAlignment="Left" Height="23" Margin="329,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" />
+        <Button Name="btnSearchDeal" Content="Search" HorizontalAlignment="Left" Margin="647,463,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>
 </Window>
