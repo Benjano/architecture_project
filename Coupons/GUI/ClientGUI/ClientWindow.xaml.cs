@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Coupons.Enums;
+using Coupons.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +19,18 @@ namespace CouponsApplication
     /// <summary>
     /// Interaction logic for Client.xaml
     /// </summary>
-    public partial class Client : Window
+    public partial class ClientWindow : Window
     {
-        public Client()
+
+        Client mClient;
+        public ClientWindow(Client client)
         {
             InitializeComponent();
+            mClient = client;
+            cbCategory.ItemsSource = Enum.GetValues(typeof(Category));
+
+
+
         }
 
         private void BUT_Click(object sender, RoutedEventArgs e)

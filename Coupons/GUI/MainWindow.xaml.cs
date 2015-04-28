@@ -49,7 +49,7 @@ namespace CouponsApplication
                 {
 
                 }
-                else if (user.GetType() == typeof(Client))
+                else if (user.GetType() == typeof(ClientWindow))
                 {
 
                 }
