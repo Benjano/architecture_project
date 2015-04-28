@@ -1,0 +1,21 @@
+﻿<Window x:Class="CouponsApplication.ClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Client" Height="600" Width="800">
+    <Grid HorizontalAlignment="Left" Height="677" Margin="10,0,0,-1" VerticalAlignment="Top" Width="740">
+        <Label Name="lblDifferentCategories" HorizontalAlignment="Left" Margin="128,119,0,0" VerticalAlignment="Top" Width="122"/>
+        <DataGrid Name="dataGridCategories" HorizontalAlignment="Left" Margin="24,129,0,0" VerticalAlignment="Top" Height="398" Width="334"/>
+        <TextBox Name="txtBoxCity" HorizontalAlignment="Left" Height="23" Margin="77,53,0,0" TextWrapping="Wrap" Text="City" VerticalAlignment="Top" Width="59"/>
+        <ComboBox Name="cbCategory" HorizontalAlignment="Left" Margin="154,53,0,0" VerticalAlignment="Top" Width="120"/>
+        <ComboBox Name="cbBrand" HorizontalAlignment="Left" Margin="291,53,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="528,53,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnFavorits" Content="Button" HorizontalAlignment="Left" Margin="434,53,0,0" VerticalAlignment="Top" Width="75"/>
+        <Menu Name="menuBox" HorizontalAlignment="Left" Height="100" Margin="630,10,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox HorizontalAlignment="Left" Height="398" Margin="363,129,0,0" TextWrapping="Wrap" Text="Map" VerticalAlignment="Top" Width="316"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="398" Margin="363,129,0,0" VerticalAlignment="Top" Width="316"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="398" Margin="24,129,0,0" VerticalAlignment="Top" Width="339"/>
+        <Label Content="Welcome" HorizontalAlignment="Left" Margin="48,22,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblUserName" Content="Label" HorizontalAlignment="Left" Margin="171,24,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
