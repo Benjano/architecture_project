@@ -24,11 +24,11 @@ namespace CouponsApplication
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void BUT_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
-
-      
     }
+
+    //https://msdn.microsoft.com/en-us/library/windows/apps/windows.devices.geolocation.geolocator?cs-save-lang=1&cs-lang=csharp#code-snippet-2
 }

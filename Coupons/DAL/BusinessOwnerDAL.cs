@@ -57,7 +57,7 @@ namespace Coupons.DAL
              }
         }
 
-        private void loadDealsToBusiness(Business business)
+        public void loadDealsToBusiness(Business business)
         {
             // Select the deals of each business belonging to owner
             CouponsDataset.DealsDataTable deals = mTableDeals.SelectDealByBusinessId(business.ID);
@@ -76,7 +76,7 @@ namespace Coupons.DAL
            } 
         }
 
-        private void loadDealCoupons(Deal deal)
+        public void loadDealCoupons(Deal deal)
         {
             CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCouponByDealID(deal.ID);
             foreach (DataRow row in coupons.Rows)
