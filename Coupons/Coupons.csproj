@@ -78,9 +78,6 @@
       <DependentUpon>CreateClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAL\UserDAL.cs" />
-    <Compile Include="GUI\ClientGUI\ClientWindow.xaml.cs">
-      <DependentUpon>ClientWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Constants\FriendsColumns.cs" />
     <Compile Include="Constants\SociaFriendsColumns.cs" />
     <Compile Include="Constants\SocialNetworksColumns.cs" />
@@ -98,10 +95,6 @@
     <Page Include="GUI\CreateClientWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\ClientGUI\ClientWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
     <Page Include="GUI\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -207,6 +200,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="GUI\BusinessOwnerGUI\" />
+    <Folder Include="GUI\ClientGUI\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
