@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Coupons.BL;
+using Coupons.Models;
+using Coupons;
 
 namespace CouponsApplication
 {
@@ -21,19 +23,53 @@ namespace CouponsApplication
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        UserBL mUserBL;
+
         public MainWindow()
         {
             InitializeComponent();
+            mUserBL = new UserBL();
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
-       
+            String username = txtUsername.Text;
+            String password = txtPassword.Password;
+
+            User user = mUserBL.login(username, password);
+
+            if (user != null)
+            {
+                if (user.GetType() == typeof(Admin))
+                {
+
+                }
+                else if (user.GetType() == typeof(BusinessOwner))
+                {
+
+                }
+                else if (user.GetType() == typeof(ClientWindow))
+                {
+
+                }
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please check your username and password",
+                                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+                if (result == MessageBoxResult.OK)
+                {
+
+                }
+            }
             
+        }
 
-
-            Client form = new Client();
-            form.Show();
+        private void btnCreateClient_Click(object sender, RoutedEventArgs e)
+        {
+            CreateClientWindow createClientWindow = new CreateClientWindow();
+            createClientWindow.Show();
             this.Close();
         }
     }

@@ -69,8 +69,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="GUI\Client\Client.xaml.cs">
-      <DependentUpon>Client.xaml</DependentUpon>
+    <Compile Include="BL\UserBL.cs" />
+    <Compile Include="GUI\CreateClientWindow.xaml.cs">
+      <DependentUpon>CreateClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\UserDAL.cs" />
+    <Compile Include="GUI\ClientGUI\ClientWindow.xaml.cs">
+      <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Constants\FriendsColumns.cs" />
     <Compile Include="Constants\SociaFriendsColumns.cs" />
@@ -82,7 +87,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Page Include="GUI\Client\Client.xaml">
+    <Page Include="GUI\CreateClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\ClientGUI\ClientWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -166,12 +175,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CouponsDB.mdf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <Content Include="CouponsDB.mdf" />
     <Content Include="CouponsDB_log.ldf">
       <DependentUpon>CouponsDB.mdf</DependentUpon>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>
@@ -192,8 +198,8 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GUI\Admin\" />
-    <Folder Include="GUI\BusinessOwner\" />
+    <Folder Include="GUI\AdminGUI\" />
+    <Folder Include="GUI\BusinessOwnerGUI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

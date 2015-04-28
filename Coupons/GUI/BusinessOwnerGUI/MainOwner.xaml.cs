@@ -11,24 +11,27 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Coupons.BL;
 
-namespace CouponsApplication
+namespace Coupons.GUI.BusinessOwner
 {
     /// <summary>
-    /// Interaction logic for Client.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Client : Window
+    public partial class MainOwner : Window
     {
-        public Client()
+
+
+        public MainOwner()
         {
             InitializeComponent();
         }
 
-        private void BUT_Click(object sender, RoutedEventArgs e)
+
+        private void Button_InserNewDeal(object sender, RoutedEventArgs e)
         {
-            
+            var form1 = new OwnerNewDeal();
+            form1.Show();   
         }
     }
-
-    //https://msdn.microsoft.com/en-us/library/windows/apps/windows.devices.geolocation.geolocator?cs-save-lang=1&cs-lang=csharp#code-snippet-2
 }

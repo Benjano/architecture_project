@@ -1,0 +1,15 @@
+﻿<Window x:Class="Coupons.GUI.BusinessOwner.MainOwner"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainOwner" Height="350" Width="500">
+    <Grid Margin="0,0,-8,0">
+        <Label Content="&#x9;&#x9;OWNER" HorizontalAlignment="Left" Height="29" Margin="115,22,0,0" VerticalAlignment="Top" Width="273"/>
+        <Button Content="Add New Deal" HorizontalAlignment="Left" Height="31" Margin="168,108,0,0" VerticalAlignment="Top" Width="160" Click="Button_InserNewDeal"/>
+        <Button Content="Load Bussiness" HorizontalAlignment="Left" Height="31" Margin="168,144,0,0" VerticalAlignment="Top" Width="160"/>
+        <Button Content="Load Deals To Business" HorizontalAlignment="Left" Height="31" Margin="168,180,0,0" VerticalAlignment="Top" Width="160"/>
+        <Button Content="load Deal Coupons" HorizontalAlignment="Left" Height="31" Margin="168,216,0,0" VerticalAlignment="Top" Width="160"/>
+        <Button Content="Update Business" HorizontalAlignment="Left" Height="31" Margin="168,252,0,0" VerticalAlignment="Top" Width="160"/>
+        <Label Content="&#x9;Choose one from the following actions: " HorizontalAlignment="Left" Height="37" Margin="106,51,0,0" VerticalAlignment="Top" Width="291"/>
+
+    </Grid>
+</Window>

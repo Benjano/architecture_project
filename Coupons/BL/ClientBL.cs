@@ -15,9 +15,9 @@ namespace Coupons.BL
     {
         public ClientDAL mDal;
 
-        public ClientBL(ClientDAL dal)
+        public ClientBL()
         {
-            mDal = dal;
+            mDal = new ClientDAL();
         }
 
         public bool insertNewClient(String username, String password, String mail, String phone, DateTime birthDate, Gender gender, String location)
