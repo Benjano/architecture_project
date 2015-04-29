@@ -13,6 +13,8 @@ namespace Coupons.Models
         List<Business> mBusinesses;
         List<BusinessOwner> mBusinessOwner;
 
+
+
         public Admin(int id, String username, String mail, String phone) : base(id, username, mail, phone) { }
 
     }

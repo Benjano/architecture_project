@@ -28,10 +28,10 @@ namespace Coupons.Models
             set { mDescription = value; }
         }
 
-        private  User mOwner;
-        public  User Owner
+        private  int mOwnerId;
+        public  int Owner
         {
-            get { return mOwner; }
+            get { return mOwnerId; }
         }
 
         private String mAddress;
@@ -61,12 +61,12 @@ namespace Coupons.Models
         }
 
         
-        public Business(int id, String name, String description, User owner, String address, String city)
+        public Business(int id, String name, String description, int ownerId, String address, String city)
         {
             mId = id;
             mName = name;
             mDescription = description;
-            mOwner = owner;
+            mOwnerId = ownerId;
             mAddress = address;
             mCity = city;
             mDeals = new List<Deal>();

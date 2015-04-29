@@ -41,9 +41,10 @@ namespace Coupons.DAL
             return result == 1;
         }
 
-        public void loadBusinesses(BusinessOwner owner)
+        public List<Business> getBusinessesByOwnerId(int ownerId)
         {
-            CouponsDataset.BusinessesDataTable businesses = mTableBusiness.SelectBusinessByOwner(owner.ID);
+            List<Business> result = new List<Business>();
+            CouponsDataset.BusinessesDataTable businesses = mTableBusiness.SelectBusinessByOwner(ownerId);
             foreach (DataRow row in businesses.Rows)
             {
                 int id = (int)row[BusinessesColumns.ID];
@@ -52,9 +53,10 @@ namespace Coupons.DAL
                 String address = row[BusinessesColumns.ADDRESS].ToString();
                 String city = row[BusinessesColumns.CITY].ToString();
 
-                Business business = new Business(id, name,description,owner,address,city);
-                owner.addBusiness(business);
+                Business business = new Business(id, name, description, ownerId, address, city);
+                result.Add(business);
              }
+            return result;
         }
 
         public void loadDealsToBusiness(Business business)

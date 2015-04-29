@@ -1,21 +1,21 @@
 ﻿<Window x:Class="Coupons.GUI.AdminGUI.AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="AdminWindow" Height="700" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="AdminWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <DataGrid HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Height="242" Width="255"/>
-        <DataGrid HorizontalAlignment="Left" Margin="279,102,0,0" VerticalAlignment="Top" Height="273" Width="272"/>
-        <DataGrid HorizontalAlignment="Left" Margin="572,102,0,0" VerticalAlignment="Top" Height="345" Width="269"/>
-        <Button Name="btnAddClientOrOwner" Content="Add" HorizontalAlignment="Left" Margin="476,78,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Name="btnOwner" Content="Business Owner" HorizontalAlignment="Left" Margin="374,78,0,0" VerticalAlignment="Top" Width="90"/>
-        <Button Name="btnClient" Content="Client" HorizontalAlignment="Left" Margin="279,78,0,0" VerticalAlignment="Top" Width="75"/>
+        <DataGrid Name="dgBusinesses" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Height="242" Width="255"/>
+        <DataGrid Name="dgUsers" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="279,102,0,0" VerticalAlignment="Top" Height="273" Width="272"/>
+        <DataGrid Name="dgDeals" HorizontalAlignment="Left" Margin="572,102,0,0" VerticalAlignment="Top" Height="345" Width="269"/>
+        <Button Name="btnAddClientOrOwner" Content="Add" Padding="10, 5, 10, 5" Background="#EEBA4C" HorizontalAlignment="Left" Margin="476,70,0,0" VerticalAlignment="Top" Width="75" Click="btnAddClientOrOwner_Click"/>
+        <Button Name="btnOwner" Content="Business Owner" Padding="10, 5, 10, 5" Background="#A9DDD9" HorizontalAlignment="Left" Margin="359,70,0,0" VerticalAlignment="Top" Width="112" Click="btnOwner_Click"/>
+        <Button Name="btnClient" Content="Client" Padding="10, 5, 10, 5" Background="#A9DDD9" HorizontalAlignment="Left" Margin="279,70,0,0" VerticalAlignment="Top" Width="75" Click="btnClient_Click"/>
         <Button Name="btnAddBusiness"  Content="Add" HorizontalAlignment="Left" Margin="10,78,0,0" VerticalAlignment="Top" Width="75" />
         <Button Name="btnApprove" Content="Approve" HorizontalAlignment="Left" Margin="572,78,0,0" VerticalAlignment="Top" Width="75" />
         <Button Name="btnAllDeal" Content="All" HorizontalAlignment="Left" Margin="670,78,0,0" VerticalAlignment="Top" Width="75"/>
         <Button Name="btnAddDeal" Content="Add" HorizontalAlignment="Left" Margin="766,78,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Content="Welcome" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="93" />
         <Button Name="btnSearchBusiness" Content="Search" HorizontalAlignment="Left" Margin="93,463,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Name="btnSearchClientOrOwner" Content="Search" HorizontalAlignment="Left" Margin="374,463,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Name="btnSearchUser" Content="Search" HorizontalAlignment="Left" Margin="374,463,0,0" VerticalAlignment="Top" Width="75" Click="btnSearchUser_Click"/>
         <TextBox Name="tbOwnerId"  HorizontalAlignment="Left" Height="23" Margin="67,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
         <TextBox Name="tbBusinessId" HorizontalAlignment="Left" Height="23" Margin="67,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
         <TextBox Name="tbBusinessName" HorizontalAlignment="Left" Height="23" Margin="67,352,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="198"/>
@@ -26,7 +26,7 @@
         <Label Content="Name" HorizontalAlignment="Left" Margin="279,387,0,0" VerticalAlignment="Top"/>
         <Label Content="Id" HorizontalAlignment="Left" Margin="279,420,0,0" VerticalAlignment="Top"/>
         <TextBox Name="tbName" HorizontalAlignment="Left" Height="23" Margin="329,391,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
-        <TextBox Name="tbId"  HorizontalAlignment="Left" Height="23" Margin="329,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" />
+        <TextBox Name="tbUserId"  HorizontalAlignment="Left" Height="23" Margin="329,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" />
         <Button Name="btnSearchDeal" Content="Search" HorizontalAlignment="Left" Margin="647,463,0,0" VerticalAlignment="Top" Width="75"/>
 
     </Grid>

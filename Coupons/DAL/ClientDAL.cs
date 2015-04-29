@@ -13,6 +13,7 @@ namespace Coupons.DAL
 {
     public class ClientDAL
     {
+        
         private CouponsDatasetTableAdapters.UsersTableAdapter mTableUsers = new CouponsDatasetTableAdapters.UsersTableAdapter();
         private CouponsDatasetTableAdapters.ClientsTableAdapter mTableClients = new CouponsDatasetTableAdapters.ClientsTableAdapter();
         private CouponsDatasetTableAdapters.DealsTableAdapter mTableDeals = new CouponsDatasetTableAdapters.DealsTableAdapter();
@@ -22,6 +23,7 @@ namespace Coupons.DAL
         private CouponsDatasetTableAdapters.ClientSocialNetworkTableAdapter mTableSocialNetworks = new CouponsDatasetTableAdapters.ClientSocialNetworkTableAdapter();
         private CouponsDatasetTableAdapters.SocialFriendsTableAdapter mTableSocialFriends = new CouponsDatasetTableAdapters.SocialFriendsTableAdapter();
         private CouponsDatasetTableAdapters.FriendsTableAdapter mTableFriends = new CouponsDatasetTableAdapters.FriendsTableAdapter();
+        private CouponsDatasetTableAdapters.BusinessesTableAdapter mTableBusiness = new CouponsDatasetTableAdapters.BusinessesTableAdapter();
         
         public bool insertNewClient(String username, String password, String mail, String phone, DateTime birthDate, Gender gender, String location)
         {
@@ -188,7 +190,7 @@ namespace Coupons.DAL
                 DataRow row2 = clients.Rows[0];
                 DateTime birthDate;
                 DateTime.TryParse(row2[ClientColumns.BIRTHDATE].ToString(), out birthDate);
-            //  Gender gender = (Gender)row2[ClientColumns.GENDER];
+                Gender gender = (Gender)Enum.Parse(typeof(Gender), clients.Rows[0][ClientColumns.GENDER].ToString());
                 String location = row2[ClientColumns.LOCATION].ToString();
 
                 Client client = new Client(id, username, mail, phone, birthDate, Gender.Female, location);
@@ -197,6 +199,26 @@ namespace Coupons.DAL
             return null;
         }
 
+        public Client getClientByName(String username)
+        {
+            CouponsDataset.ClientsDataTable clients = mTableClients.SelectClientByName(username);
+
+            if (clients.Rows.Count == 1)
+            {
+                int id = (int)clients.Rows[0][ClientColumns.USER_ID];
+                String mail = clients.Rows[0][UserColumns.MAIL].ToString();
+                String phone = clients.Rows[0][UserColumns.PHONE].ToString();
+
+                DateTime birthDate;
+                DateTime.TryParse(clients.Rows[0][ClientColumns.BIRTHDATE].ToString(), out birthDate);
+                Gender gender = (Gender)Enum.Parse(typeof(Gender), clients.Rows[0][ClientColumns.GENDER].ToString());
+                String location = clients.Rows[0][ClientColumns.LOCATION].ToString();
+
+                Client client = new Client(id, username, mail, phone, birthDate, Gender.Female, location);
+                return client;
+            }
+            return null;
+        }
 
         public void loadClientNetworks(Client client)
         {
@@ -272,6 +294,26 @@ namespace Coupons.DAL
 
             return result;
         }
-    
+
+
+        internal List<Business> getAllDeal()
+        {
+            List<Business> result = new List<Business>();
+            DataTable Business = mTableBusiness.selectAllBusiness();
+
+            foreach (DataRow row in Business.Rows)
+            {
+                int id = (int)row[BusinessesColumns.ID];
+                String name = (String)row[BusinessesColumns.NAME];
+                String description = (String)row[BusinessesColumns.DESCRIPTION];
+                int ownerId = (int)row[BusinessesColumns.OWNER_ID];
+                String address = (String)row[BusinessesColumns.ADDRESS];
+                String city = (String)row[BusinessesColumns.CITY];
+                
+
+                result.Add(new Business(id, name, description, ownerId, address,city));
+            }
+            return result;
+        }
     }
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Coupons.Models;
 using Coupons.Constants;
 using Coupons.Enums;
+using System.Data;
 
 namespace Coupons.DAL
 {
@@ -13,6 +14,8 @@ namespace Coupons.DAL
     {
         CouponsDatasetTableAdapters.UsersTableAdapter mTableUsers = new CouponsDatasetTableAdapters.UsersTableAdapter();
         CouponsDatasetTableAdapters.ClientsTableAdapter mTableClient = new CouponsDatasetTableAdapters.ClientsTableAdapter();
+
+        private ClientDAL mClientDal = new ClientDAL();
 
 
         public User login(String username, String password)
@@ -52,6 +55,40 @@ namespace Coupons.DAL
             return null;
         }
 
+        public List<Client> getAllClients()
+        {
+            List<Client> result = new List<Client>();
+            DataTable clients = mTableClient.SelectAllClients();
 
+            foreach (DataRow row in clients.Rows)
+            {
+                int id = (int)row[ClientColumns.USER_ID];
+                String username = (String) row[UserColumns.USERNAME];
+                String mail = (String) row[UserColumns.MAIL];
+                String phone = (String) row[UserColumns.PHONE];
+                DateTime birthDate;
+                DateTime.TryParse(row[ClientColumns.BIRTHDATE].ToString(), out birthDate);
+                Gender gender = (Gender)Enum.Parse(typeof(Gender), row[ClientColumns.GENDER].ToString());
+                String location = row[ClientColumns.LOCATION].ToString();
+                result.Add(new Client(id, username, mail, phone, birthDate, gender, location));
+            }
+            return result;
+        }
+
+        public List<BusinessOwner> getAllBusinessOwner()
+        {
+            List<BusinessOwner> result = new List<BusinessOwner>();
+            DataTable businessOwner = mTableUsers.SelectAllBusinessOwner();
+
+            foreach (DataRow row in businessOwner.Rows)
+            {
+                int id = (int)row[UserColumns.ID];
+                String username = (String)row[UserColumns.USERNAME];
+                String mail = (String)row[UserColumns.MAIL];
+                String phone = (String)row[UserColumns.PHONE];
+                result.Add(new BusinessOwner(id, username, mail, phone));
+            }
+            return result;
+        }
     }
 }

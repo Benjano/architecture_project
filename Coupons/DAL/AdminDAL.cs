@@ -97,19 +97,8 @@ namespace Coupons.DAL
             String address = row[BusinessesColumns.ADDRESS].ToString();
             String city = row[BusinessesColumns.CITY].ToString();
             int ownerId = (int) row[BusinessesColumns.OWNER_ID];
-            // Find the business owner
-            CouponsDataset.UsersDataTable ownertb = mTableUsers.selectUserById(ownerId);
-            DataRow row2 = ownertb[0];
 
-            int id = (int)row2[UserColumns.ID];
-            String username = row2[UserColumns.USERNAME].ToString();
-            String mail = row2[UserColumns.MAIL].ToString();
-            String phone = row2[UserColumns.PHONE].ToString();
-            
-            BusinessOwner businessOwner = new BusinessOwner(id, username, mail, phone);
-
-
-            Business business = new Business(idB, name, description, businessOwner, address, city);
+            Business business = new Business(idB, name, description, ownerId, address, city);
             return business;
         }
 
