@@ -74,6 +74,9 @@
     <Compile Include="GUI\AdminGUI\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\BusinessOwnerGUI\MainOwne.xaml.cs">
+      <DependentUpon>MainOwne.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ClientGUI\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Page Include="GUI\AdminGUI\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\BusinessOwnerGUI\MainOwne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,7 +213,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="GUI\BusinessOwnerGUI\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
