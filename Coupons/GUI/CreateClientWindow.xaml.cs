@@ -23,14 +23,15 @@ namespace Coupons
     /// </summary>
     public partial class CreateClientWindow : Window
     {
+
+        MainWindow mMainWindow;
         ClientBL mClientBL;
         GeoCoordinateWatcher mGeoWatcher;
-        Window mSourceWindow;
 
-        public CreateClientWindow(Window sourceWindow)
+        public CreateClientWindow()
         {
             InitializeComponent();
-            mSourceWindow = sourceWindow;
+            mMainWindow = new MainWindow();
             mClientBL = new ClientBL();
             cbGender.ItemsSource = Enum.GetValues(typeof(Gender));
             cbGender.SelectedIndex = 0;
@@ -53,7 +54,6 @@ namespace Coupons
             if (username.Length > 2 && password.Length > 5 && mail.Length > 7 && phone.Length > 6 && birthdate != null)
             {
                 mClientBL.insertNewClient(username, password, mail, phone, birthdate, gender, location);
-                FINISH();
             }
             else
             {
@@ -69,21 +69,13 @@ namespace Coupons
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            FINISH();
+            mMainWindow.Show();
+            this.Close();
         }
 
         private void ComboBoxItem_Selected(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        public void FINISH()
-        {
-            if (mSourceWindow != null)
-            {
-                mSourceWindow.Show();
-            }
-            this.Close();
         }
     }
 }

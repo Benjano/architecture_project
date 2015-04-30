@@ -15,8 +15,6 @@ using System.Windows.Shapes;
 using Coupons.BL;
 using Coupons.Models;
 using Coupons;
-using Coupons.GUI.ClientGUI;
-using Coupons.GUI.AdminGUI;
 
 namespace CouponsApplication
 {
@@ -45,18 +43,16 @@ namespace CouponsApplication
             {
                 if (user.GetType() == typeof(Admin))
                 {
-                    AdminWindow adminWindow = new AdminWindow((Admin) user);
-                    adminWindow.Show() ;
+
                 }
                 else if (user.GetType() == typeof(BusinessOwner))
                 {
 
                 }
-                else if (user.GetType() == typeof(Client))
+                else if (user.GetType() == typeof(ClientWindow))
                 {
 
                 }
-                this.Close();
             }
             else
             {
@@ -72,9 +68,9 @@ namespace CouponsApplication
 
         private void btnCreateClient_Click(object sender, RoutedEventArgs e)
         {
-            CreateClientWindow createClientWindow = new CreateClientWindow(this);
+            CreateClientWindow createClientWindow = new CreateClientWindow();
             createClientWindow.Show();
-            this.Hide();
+            this.Close();
         }
     }
 }

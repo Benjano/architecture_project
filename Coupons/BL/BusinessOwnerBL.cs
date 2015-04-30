@@ -33,9 +33,9 @@ namespace Coupons.BL
             return mDal.insertNewDeal(name, details, business, price, experationDate);
         }
 
-        public List<Business> loadBusinesses(int ownerId)
+        public void loadBusinesses(BusinessOwner owner)
         {
-           return  mDal.getBusinessesByOwnerId(ownerId);
+            mDal.loadBusinesses(owner);
         }
 
         private void loadDealsToBusiness(Business business)

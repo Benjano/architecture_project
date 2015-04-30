@@ -1,5 +1,4 @@
-﻿namespace Coupons
-{
+﻿namespace Coupons {
     
     
     public partial class CouponsDataset {
@@ -9,8 +8,7 @@
     }
 }
 
-namespace Coupons.CouponsDatasetTableAdapters
-{
+namespace Coupons.CouponsDatasetTableAdapters {
     partial class UsersTableAdapter
     {
     }

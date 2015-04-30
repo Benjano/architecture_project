@@ -58,13 +58,21 @@ namespace Coupons {
         
         private DealsDataTable tableDeals;
         
+        private global::System.Data.DataRelation relationFK_UserId;
+        
         private global::System.Data.DataRelation relationFK_GroupId;
         
         private global::System.Data.DataRelation relationFK_BrandId_Brand;
         
+        private global::System.Data.DataRelation relationFK_ClientId_Brand;
+        
+        private global::System.Data.DataRelation relationFK_ClientId_Group;
+        
         private global::System.Data.DataRelation relationFK_Business_Users;
         
         private global::System.Data.DataRelation relationFK_ClientCategoryPreferences_Categories;
+        
+        private global::System.Data.DataRelation relationFK_ClientCategoryPreferences_Clients;
         
         private global::System.Data.DataRelation relationFK_BusinessCategories_Businesses;
         
@@ -74,7 +82,13 @@ namespace Coupons {
         
         private global::System.Data.DataRelation relationFK_BusinessBrands_Businesses;
         
+        private global::System.Data.DataRelation relationFK_Coupons_Clients;
+        
         private global::System.Data.DataRelation relationFK_GroupDiscount_Groups;
+        
+        private global::System.Data.DataRelation relationFK_Table_Clients1;
+        
+        private global::System.Data.DataRelation relationFK_Table_Clients2;
         
         private global::System.Data.DataRelation relationFK_Coupons_Deals;
         
@@ -82,27 +96,13 @@ namespace Coupons {
         
         private global::System.Data.DataRelation relationFK_Deals_Businesses;
         
-        private global::System.Data.DataRelation relationFK_SocialFriends_Clients;
-        
-        private global::System.Data.DataRelation relationFK_SocialFriends_ClientSocialNetwork;
+        private global::System.Data.DataRelation relationFK_Groups_Clients;
         
         private global::System.Data.DataRelation relationFK_ClientSocialNetwork_Clients;
         
-        private global::System.Data.DataRelation relationFK_Groups_Clients;
+        private global::System.Data.DataRelation relationFK_SocialFriends_Clients;
         
-        private global::System.Data.DataRelation relationFK_Table_Clients2;
-        
-        private global::System.Data.DataRelation relationFK_Table_Clients1;
-        
-        private global::System.Data.DataRelation relationFK_Coupons_Clients;
-        
-        private global::System.Data.DataRelation relationFK_ClientCategoryPreferences_Clients;
-        
-        private global::System.Data.DataRelation relationFK_ClientId_Group;
-        
-        private global::System.Data.DataRelation relationFK_ClientId_Brand;
-        
-        private global::System.Data.DataRelation relationFK_UserId;
+        private global::System.Data.DataRelation relationFK_SocialFriends_ClientSocialNetwork;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -624,29 +624,29 @@ namespace Coupons {
                     this.tableDeals.InitVars();
                 }
             }
+            this.relationFK_UserId = this.Relations["FK_UserId"];
             this.relationFK_GroupId = this.Relations["FK_GroupId"];
             this.relationFK_BrandId_Brand = this.Relations["FK_BrandId_Brand"];
+            this.relationFK_ClientId_Brand = this.Relations["FK_ClientId_Brand"];
+            this.relationFK_ClientId_Group = this.Relations["FK_ClientId_Group"];
             this.relationFK_Business_Users = this.Relations["FK_Business_Users"];
             this.relationFK_ClientCategoryPreferences_Categories = this.Relations["FK_ClientCategoryPreferences_Categories"];
+            this.relationFK_ClientCategoryPreferences_Clients = this.Relations["FK_ClientCategoryPreferences_Clients"];
             this.relationFK_BusinessCategories_Businesses = this.Relations["FK_BusinessCategories_Businesses"];
             this.relationFK_BusinessCategories_Categories = this.Relations["FK_BusinessCategories_Categories"];
             this.relationFK_BusinessBrands_Brands = this.Relations["FK_BusinessBrands_Brands"];
             this.relationFK_BusinessBrands_Businesses = this.Relations["FK_BusinessBrands_Businesses"];
+            this.relationFK_Coupons_Clients = this.Relations["FK_Coupons_Clients"];
             this.relationFK_GroupDiscount_Groups = this.Relations["FK_GroupDiscount_Groups"];
+            this.relationFK_Table_Clients1 = this.Relations["FK_Table_Clients1"];
+            this.relationFK_Table_Clients2 = this.Relations["FK_Table_Clients2"];
             this.relationFK_Coupons_Deals = this.Relations["FK_Coupons_Deals"];
             this.relationFK_GroupDiscount_Deals = this.Relations["FK_GroupDiscount_Deals"];
             this.relationFK_Deals_Businesses = this.Relations["FK_Deals_Businesses"];
+            this.relationFK_Groups_Clients = this.Relations["FK_Groups_Clients"];
+            this.relationFK_ClientSocialNetwork_Clients = this.Relations["FK_ClientSocialNetwork_Clients"];
             this.relationFK_SocialFriends_Clients = this.Relations["FK_SocialFriends_Clients"];
             this.relationFK_SocialFriends_ClientSocialNetwork = this.Relations["FK_SocialFriends_ClientSocialNetwork"];
-            this.relationFK_ClientSocialNetwork_Clients = this.Relations["FK_ClientSocialNetwork_Clients"];
-            this.relationFK_Groups_Clients = this.Relations["FK_Groups_Clients"];
-            this.relationFK_Table_Clients2 = this.Relations["FK_Table_Clients2"];
-            this.relationFK_Table_Clients1 = this.Relations["FK_Table_Clients1"];
-            this.relationFK_Coupons_Clients = this.Relations["FK_Coupons_Clients"];
-            this.relationFK_ClientCategoryPreferences_Clients = this.Relations["FK_ClientCategoryPreferences_Clients"];
-            this.relationFK_ClientId_Group = this.Relations["FK_ClientId_Group"];
-            this.relationFK_ClientId_Brand = this.Relations["FK_ClientId_Brand"];
-            this.relationFK_UserId = this.Relations["FK_UserId"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -691,6 +691,10 @@ namespace Coupons {
             base.Tables.Add(this.tableFriends);
             this.tableDeals = new DealsDataTable();
             base.Tables.Add(this.tableDeals);
+            this.relationFK_UserId = new global::System.Data.DataRelation("FK_UserId", new global::System.Data.DataColumn[] {
+                        this.tableUsers.IdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, false);
+            this.Relations.Add(this.relationFK_UserId);
             this.relationFK_GroupId = new global::System.Data.DataRelation("FK_GroupId", new global::System.Data.DataColumn[] {
                         this.tableGroups.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableClientsInGroup.GroupIdColumn}, false);
@@ -699,6 +703,14 @@ namespace Coupons {
                         this.tableBrands.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableClientBrandPreferences.BrandIdColumn}, false);
             this.Relations.Add(this.relationFK_BrandId_Brand);
+            this.relationFK_ClientId_Brand = new global::System.Data.DataRelation("FK_ClientId_Brand", new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableClientBrandPreferences.ClientIdColumn}, false);
+            this.Relations.Add(this.relationFK_ClientId_Brand);
+            this.relationFK_ClientId_Group = new global::System.Data.DataRelation("FK_ClientId_Group", new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableClientsInGroup.ClientIdColumn}, false);
+            this.Relations.Add(this.relationFK_ClientId_Group);
             this.relationFK_Business_Users = new global::System.Data.DataRelation("FK_Business_Users", new global::System.Data.DataColumn[] {
                         this.tableUsers.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableBusinesses.OwnerIdColumn}, false);
@@ -707,6 +719,10 @@ namespace Coupons {
                         this.tableCategories.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableClientCategoryPreferences.CategoryIdColumn}, false);
             this.Relations.Add(this.relationFK_ClientCategoryPreferences_Categories);
+            this.relationFK_ClientCategoryPreferences_Clients = new global::System.Data.DataRelation("FK_ClientCategoryPreferences_Clients", new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableClientCategoryPreferences.ClientIdColumn}, false);
+            this.Relations.Add(this.relationFK_ClientCategoryPreferences_Clients);
             this.relationFK_BusinessCategories_Businesses = new global::System.Data.DataRelation("FK_BusinessCategories_Businesses", new global::System.Data.DataColumn[] {
                         this.tableBusinesses.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableBusinessCategories.BusinessIdColumn}, false);
@@ -723,10 +739,22 @@ namespace Coupons {
                         this.tableBusinesses.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableBusinessBrands.BusinessIdColumn}, false);
             this.Relations.Add(this.relationFK_BusinessBrands_Businesses);
+            this.relationFK_Coupons_Clients = new global::System.Data.DataRelation("FK_Coupons_Clients", new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableCoupons.ClientIdColumn}, false);
+            this.Relations.Add(this.relationFK_Coupons_Clients);
             this.relationFK_GroupDiscount_Groups = new global::System.Data.DataRelation("FK_GroupDiscount_Groups", new global::System.Data.DataColumn[] {
                         this.tableGroups.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableGroupDiscount.GroupIdColumn}, false);
             this.Relations.Add(this.relationFK_GroupDiscount_Groups);
+            this.relationFK_Table_Clients1 = new global::System.Data.DataRelation("FK_Table_Clients1", new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFriends.ClientIdColumn}, false);
+            this.Relations.Add(this.relationFK_Table_Clients1);
+            this.relationFK_Table_Clients2 = new global::System.Data.DataRelation("FK_Table_Clients2", new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFriends.FriendIdColumn}, false);
+            this.Relations.Add(this.relationFK_Table_Clients2);
             this.relationFK_Coupons_Deals = new global::System.Data.DataRelation("FK_Coupons_Deals", new global::System.Data.DataColumn[] {
                         this.tableDeals.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableCoupons.DealIdColumn}, false);
@@ -739,6 +767,14 @@ namespace Coupons {
                         this.tableBusinesses.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableDeals.BusinessIdColumn}, false);
             this.Relations.Add(this.relationFK_Deals_Businesses);
+            this.relationFK_Groups_Clients = new global::System.Data.DataRelation("FK_Groups_Clients", new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableGroups.GroupManagerIdColumn}, false);
+            this.Relations.Add(this.relationFK_Groups_Clients);
+            this.relationFK_ClientSocialNetwork_Clients = new global::System.Data.DataRelation("FK_ClientSocialNetwork_Clients", new global::System.Data.DataColumn[] {
+                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
+                        this.tableClientSocialNetwork.ClientIdColumn}, false);
+            this.Relations.Add(this.relationFK_ClientSocialNetwork_Clients);
             this.relationFK_SocialFriends_Clients = new global::System.Data.DataRelation("FK_SocialFriends_Clients", new global::System.Data.DataColumn[] {
                         this.tableClientSocialNetwork.ClientIdColumn,
                         this.tableClientSocialNetwork.NameColumn}, new global::System.Data.DataColumn[] {
@@ -751,42 +787,6 @@ namespace Coupons {
                         this.tableSocialFriends.FriendIdColumn,
                         this.tableSocialFriends.FriendNetworkNameColumn}, false);
             this.Relations.Add(this.relationFK_SocialFriends_ClientSocialNetwork);
-            this.relationFK_ClientSocialNetwork_Clients = new global::System.Data.DataRelation("FK_ClientSocialNetwork_Clients", new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableClientSocialNetwork.ClientIdColumn}, false);
-            this.Relations.Add(this.relationFK_ClientSocialNetwork_Clients);
-            this.relationFK_Groups_Clients = new global::System.Data.DataRelation("FK_Groups_Clients", new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableGroups.GroupManagerIdColumn}, false);
-            this.Relations.Add(this.relationFK_Groups_Clients);
-            this.relationFK_Table_Clients2 = new global::System.Data.DataRelation("FK_Table_Clients2", new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFriends.FriendIdColumn}, false);
-            this.Relations.Add(this.relationFK_Table_Clients2);
-            this.relationFK_Table_Clients1 = new global::System.Data.DataRelation("FK_Table_Clients1", new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableFriends.ClientIdColumn}, false);
-            this.Relations.Add(this.relationFK_Table_Clients1);
-            this.relationFK_Coupons_Clients = new global::System.Data.DataRelation("FK_Coupons_Clients", new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableCoupons.ClientIdColumn}, false);
-            this.Relations.Add(this.relationFK_Coupons_Clients);
-            this.relationFK_ClientCategoryPreferences_Clients = new global::System.Data.DataRelation("FK_ClientCategoryPreferences_Clients", new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableClientCategoryPreferences.ClientIdColumn}, false);
-            this.Relations.Add(this.relationFK_ClientCategoryPreferences_Clients);
-            this.relationFK_ClientId_Group = new global::System.Data.DataRelation("FK_ClientId_Group", new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableClientsInGroup.ClientIdColumn}, false);
-            this.Relations.Add(this.relationFK_ClientId_Group);
-            this.relationFK_ClientId_Brand = new global::System.Data.DataRelation("FK_ClientId_Brand", new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableClientBrandPreferences.ClientIdColumn}, false);
-            this.Relations.Add(this.relationFK_ClientId_Brand);
-            this.relationFK_UserId = new global::System.Data.DataRelation("FK_UserId", new global::System.Data.DataColumn[] {
-                        this.tableUsers.IdColumn}, new global::System.Data.DataColumn[] {
-                        this.tableClients.UserIdColumn}, false);
-            this.Relations.Add(this.relationFK_UserId);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1012,12 +1012,6 @@ namespace Coupons {
             
             private global::System.Data.DataColumn columnLocation;
             
-            private global::System.Data.DataColumn columnPhone;
-            
-            private global::System.Data.DataColumn columnMail;
-            
-            private global::System.Data.DataColumn columnUsername;
-            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientsDataTable() {
@@ -1085,30 +1079,6 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PhoneColumn {
-                get {
-                    return this.columnPhone;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MailColumn {
-                get {
-                    return this.columnMail;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UsernameColumn {
-                get {
-                    return this.columnUsername;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1144,16 +1114,13 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientsRow AddClientsRow(UsersRow parentUsersRowByFK_UserId, System.DateTime Birthdate, string Gender, string Location, string Phone, string Mail, string Username) {
+            public ClientsRow AddClientsRow(UsersRow parentUsersRowByFK_UserId, System.DateTime Birthdate, string Gender, string Location) {
                 ClientsRow rowClientsRow = ((ClientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         Birthdate,
                         Gender,
-                        Location,
-                        Phone,
-                        Mail,
-                        Username};
+                        Location};
                 if ((parentUsersRowByFK_UserId != null)) {
                     columnValuesArray[0] = parentUsersRowByFK_UserId[0];
                 }
@@ -1190,9 +1157,6 @@ namespace Coupons {
                 this.columnBirthdate = base.Columns["Birthdate"];
                 this.columnGender = base.Columns["Gender"];
                 this.columnLocation = base.Columns["Location"];
-                this.columnPhone = base.Columns["Phone"];
-                this.columnMail = base.Columns["Mail"];
-                this.columnUsername = base.Columns["Username"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1206,12 +1170,6 @@ namespace Coupons {
                 base.Columns.Add(this.columnGender);
                 this.columnLocation = new global::System.Data.DataColumn("Location", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLocation);
-                this.columnPhone = new global::System.Data.DataColumn("Phone", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPhone);
-                this.columnMail = new global::System.Data.DataColumn("Mail", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMail);
-                this.columnUsername = new global::System.Data.DataColumn("Username", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnUsername);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnUserId}, true));
                 this.columnUserId.AllowDBNull = false;
@@ -1220,12 +1178,6 @@ namespace Coupons {
                 this.columnGender.AllowDBNull = false;
                 this.columnGender.MaxLength = 10;
                 this.columnLocation.MaxLength = 2147483647;
-                this.columnPhone.AllowDBNull = false;
-                this.columnPhone.MaxLength = 20;
-                this.columnMail.AllowDBNull = false;
-                this.columnMail.MaxLength = 2147483647;
-                this.columnUsername.AllowDBNull = false;
-                this.columnUsername.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6236,39 +6188,6 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Phone {
-                get {
-                    return ((string)(this[this.tableClients.PhoneColumn]));
-                }
-                set {
-                    this[this.tableClients.PhoneColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Mail {
-                get {
-                    return ((string)(this[this.tableClients.MailColumn]));
-                }
-                set {
-                    this[this.tableClients.MailColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Username {
-                get {
-                    return ((string)(this[this.tableClients.UsernameColumn]));
-                }
-                set {
-                    this[this.tableClients.UsernameColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UsersRow UsersRow {
                 get {
                     return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK_UserId"])));
@@ -6292,67 +6211,12 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientSocialNetworkRow[] GetClientSocialNetworkRows() {
-                if ((this.Table.ChildRelations["FK_ClientSocialNetwork_Clients"] == null)) {
-                    return new ClientSocialNetworkRow[0];
+            public ClientBrandPreferencesRow[] GetClientBrandPreferencesRows() {
+                if ((this.Table.ChildRelations["FK_ClientId_Brand"] == null)) {
+                    return new ClientBrandPreferencesRow[0];
                 }
                 else {
-                    return ((ClientSocialNetworkRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ClientSocialNetwork_Clients"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GroupsRow[] GetGroupsRows() {
-                if ((this.Table.ChildRelations["FK_Groups_Clients"] == null)) {
-                    return new GroupsRow[0];
-                }
-                else {
-                    return ((GroupsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Groups_Clients"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FriendsRow[] GetFriendsRowsByFK_Table_Clients2() {
-                if ((this.Table.ChildRelations["FK_Table_Clients2"] == null)) {
-                    return new FriendsRow[0];
-                }
-                else {
-                    return ((FriendsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Table_Clients2"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FriendsRow[] GetFriendsRowsByFK_Table_Clients1() {
-                if ((this.Table.ChildRelations["FK_Table_Clients1"] == null)) {
-                    return new FriendsRow[0];
-                }
-                else {
-                    return ((FriendsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Table_Clients1"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public CouponsRow[] GetCouponsRows() {
-                if ((this.Table.ChildRelations["FK_Coupons_Clients"] == null)) {
-                    return new CouponsRow[0];
-                }
-                else {
-                    return ((CouponsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Coupons_Clients"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientCategoryPreferencesRow[] GetClientCategoryPreferencesRows() {
-                if ((this.Table.ChildRelations["FK_ClientCategoryPreferences_Clients"] == null)) {
-                    return new ClientCategoryPreferencesRow[0];
-                }
-                else {
-                    return ((ClientCategoryPreferencesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ClientCategoryPreferences_Clients"])));
+                    return ((ClientBrandPreferencesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ClientId_Brand"])));
                 }
             }
             
@@ -6369,12 +6233,67 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientBrandPreferencesRow[] GetClientBrandPreferencesRows() {
-                if ((this.Table.ChildRelations["FK_ClientId_Brand"] == null)) {
-                    return new ClientBrandPreferencesRow[0];
+            public ClientCategoryPreferencesRow[] GetClientCategoryPreferencesRows() {
+                if ((this.Table.ChildRelations["FK_ClientCategoryPreferences_Clients"] == null)) {
+                    return new ClientCategoryPreferencesRow[0];
                 }
                 else {
-                    return ((ClientBrandPreferencesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ClientId_Brand"])));
+                    return ((ClientCategoryPreferencesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ClientCategoryPreferences_Clients"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public CouponsRow[] GetCouponsRows() {
+                if ((this.Table.ChildRelations["FK_Coupons_Clients"] == null)) {
+                    return new CouponsRow[0];
+                }
+                else {
+                    return ((CouponsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Coupons_Clients"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FriendsRow[] GetFriendsRowsByFK_Table_Clients1() {
+                if ((this.Table.ChildRelations["FK_Table_Clients1"] == null)) {
+                    return new FriendsRow[0];
+                }
+                else {
+                    return ((FriendsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Table_Clients1"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FriendsRow[] GetFriendsRowsByFK_Table_Clients2() {
+                if ((this.Table.ChildRelations["FK_Table_Clients2"] == null)) {
+                    return new FriendsRow[0];
+                }
+                else {
+                    return ((FriendsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Table_Clients2"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public GroupsRow[] GetGroupsRows() {
+                if ((this.Table.ChildRelations["FK_Groups_Clients"] == null)) {
+                    return new GroupsRow[0];
+                }
+                else {
+                    return ((GroupsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Groups_Clients"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ClientSocialNetworkRow[] GetClientSocialNetworkRows() {
+                if ((this.Table.ChildRelations["FK_ClientSocialNetwork_Clients"] == null)) {
+                    return new ClientSocialNetworkRow[0];
+                }
+                else {
+                    return ((ClientSocialNetworkRow[])(base.GetChildRows(this.Table.ChildRelations["FK_ClientSocialNetwork_Clients"])));
                 }
             }
         }
@@ -6461,23 +6380,23 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BusinessesRow[] GetBusinessesRows() {
-                if ((this.Table.ChildRelations["FK_Business_Users"] == null)) {
-                    return new BusinessesRow[0];
-                }
-                else {
-                    return ((BusinessesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Business_Users"])));
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientsRow[] GetClientsRows() {
                 if ((this.Table.ChildRelations["FK_UserId"] == null)) {
                     return new ClientsRow[0];
                 }
                 else {
                     return ((ClientsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_UserId"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public BusinessesRow[] GetBusinessesRows() {
+                if ((this.Table.ChildRelations["FK_Business_Users"] == null)) {
+                    return new BusinessesRow[0];
+                }
+                else {
+                    return ((BusinessesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Business_Users"])));
                 }
             }
         }
@@ -7424,23 +7343,23 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DealsRow DealsRow {
-                get {
-                    return ((DealsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Coupons_Deals"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Coupons_Deals"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientsRow ClientsRow {
                 get {
                     return ((ClientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Coupons_Clients"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Coupons_Clients"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public DealsRow DealsRow {
+                get {
+                    return ((DealsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Coupons_Deals"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Coupons_Deals"]);
                 }
             }
             
@@ -7694,23 +7613,23 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientsRow ClientsRowByFK_Table_Clients2 {
-                get {
-                    return ((ClientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Table_Clients2"])));
-                }
-                set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK_Table_Clients2"]);
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientsRow ClientsRowByFK_Table_Clients1 {
                 get {
                     return ((ClientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Table_Clients1"])));
                 }
                 set {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_Table_Clients1"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public ClientsRow ClientsRowByFK_Table_Clients2 {
+                get {
+                    return ((ClientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Table_Clients2"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Table_Clients2"]);
                 }
             }
         }
@@ -8609,10 +8528,37 @@ namespace Coupons.CouponsDatasetTableAdapters {
             tableMapping.ColumnMappings.Add("Birthdate", "Birthdate");
             tableMapping.ColumnMappings.Add("Gender", "Gender");
             tableMapping.ColumnMappings.Add("Location", "Location");
-            tableMapping.ColumnMappings.Add("Phone", "Phone");
-            tableMapping.ColumnMappings.Add("Mail", "Mail");
-            tableMapping.ColumnMappings.Add("Username", "Username");
             this._adapter.TableMappings.Add(tableMapping);
+            this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.DeleteCommand.Connection = this.Connection;
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Clients] WHERE (([UserId] = @Original_UserId) AND ([Birthdate] = @Or" +
+                "iginal_Birthdate) AND ([Gender] = @Original_Gender))";
+            this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Birthdate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthdate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gender", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.InsertCommand.Connection = this.Connection;
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Clients] ([UserId], [Birthdate], [Gender], [Location]) VALUES (@User" +
+                "Id, @Birthdate, @Gender, @Location);\r\nSELECT UserId, Birthdate, Gender, Location" +
+                " FROM Clients WHERE (UserId = @UserId)";
+            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthdate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gender", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Location", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
+            this._adapter.UpdateCommand.Connection = this.Connection;
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Clients] SET [UserId] = @UserId, [Birthdate] = @Birthdate, [Gender] = @Gender, [Location] = @Location WHERE (([UserId] = @Original_UserId) AND ([Birthdate] = @Original_Birthdate) AND ([Gender] = @Original_Gender));
+SELECT UserId, Birthdate, Gender, Location FROM Clients WHERE (UserId = @UserId)";
+            this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthdate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gender", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Location", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Birthdate", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Birthdate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Gender", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8625,12 +8571,11 @@ namespace Coupons.CouponsDatasetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[4];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Clients.UserId, Clients.Birthdate, Clients.Gender, Clients.Location, Users" +
-                ".Phone, Users.Mail, Users.Username\r\nFROM     Clients INNER JOIN\r\n               " +
-                "   Users ON Clients.UserId = Users.Id\r\nWHERE  (Clients.UserId = @id)";
+            this._commandCollection[0].CommandText = "SELECT UserId, Birthdate, Gender, Location\r\nFROM     Clients\r\nWHERE  (UserId = @i" +
+                "d)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -8645,36 +8590,23 @@ namespace Coupons.CouponsDatasetTableAdapters {
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Location", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "SELECT Clients.Birthdate, Clients.Gender, Clients.Location, Users.Phone, Users.Ma" +
-                "il, Users.Username, Clients.UserId\r\nFROM     Clients INNER JOIN\r\n               " +
-                "   Users ON Clients.UserId = Users.Id";
-            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT Clients.UserId, Clients.Birthdate, Clients.Gender, Clients.Location, Users" +
-                ".Phone, Users.Mail, Users.Username\r\nFROM     Clients INNER JOIN\r\n               " +
-                "   Users ON Clients.UserId = Users.Id\r\nWHERE  (Users.Username = @username)";
-            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "UPDATE Clients\r\nSET          Birthdate = @Birthdate, Gender = @Gender\r\nWHERE  (Us" +
+            this._commandCollection[2].CommandText = "UPDATE Clients\r\nSET          Birthdate = @Birthdate, Gender = @Gender\r\nWHERE  (Us" +
                 "erId = @Original_UserId);     \r\nSELECT UserId, Birthdate, Gender, Location FROM " +
                 "Clients WHERE (UserId = @UserId)";
-            this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthdate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Birthdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gender", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "UPDATE Clients\r\nSET          Location = @Location\r\nWHERE  (UserId = @Original_Use" +
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthdate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Birthdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Gender", global::System.Data.SqlDbType.NChar, 10, global::System.Data.ParameterDirection.Input, 0, 0, "Gender", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[3].Connection = this.Connection;
+            this._commandCollection[3].CommandText = "UPDATE Clients\r\nSET          Location = @Location\r\nWHERE  (UserId = @Original_Use" +
                 "rId); \r\nSELECT UserId, Birthdate, Gender, Location FROM Clients WHERE (UserId = " +
                 "@UserId)";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Location", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Location", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8692,29 +8624,145 @@ namespace Coupons.CouponsDatasetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CouponsDataset.ClientsDataTable SelectAllClients() {
-            this.Adapter.SelectCommand = this.CommandCollection[2];
-            CouponsDataset.ClientsDataTable dataTable = new CouponsDataset.ClientsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
+        public virtual int Update(CouponsDataset.ClientsDataTable dataTable) {
+            return this.Adapter.Update(dataTable);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CouponsDataset.ClientsDataTable SelectClientByName(string username) {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            if ((username == null)) {
-                throw new global::System.ArgumentNullException("username");
+        public virtual int Update(CouponsDataset dataSet) {
+            return this.Adapter.Update(dataSet, "Clients");
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow dataRow) {
+            return this.Adapter.Update(new global::System.Data.DataRow[] {
+                        dataRow});
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        public virtual int Update(global::System.Data.DataRow[] dataRows) {
+            return this.Adapter.Update(dataRows);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
+        public virtual int Delete(int Original_UserId, System.DateTime Original_Birthdate, string Original_Gender) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_UserId));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((System.DateTime)(Original_Birthdate));
+            if ((Original_Gender == null)) {
+                throw new global::System.ArgumentNullException("Original_Gender");
             }
             else {
-                this.Adapter.SelectCommand.Parameters[0].Value = ((string)(username));
+                this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_Gender));
             }
-            CouponsDataset.ClientsDataTable dataTable = new CouponsDataset.ClientsDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
+            if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.DeleteCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.DeleteCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.DeleteCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
+        public virtual int Insert(int UserId, System.DateTime Birthdate, string Gender, string Location) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(UserId));
+            this.Adapter.InsertCommand.Parameters[1].Value = ((System.DateTime)(Birthdate));
+            if ((Gender == null)) {
+                throw new global::System.ArgumentNullException("Gender");
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(Gender));
+            }
+            if ((Location == null)) {
+                this.Adapter.InsertCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[3].Value = ((string)(Location));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
+            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.InsertCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.InsertCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(int UserId, System.DateTime Birthdate, string Gender, string Location, int Original_UserId, System.DateTime Original_Birthdate, string Original_Gender) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(UserId));
+            this.Adapter.UpdateCommand.Parameters[1].Value = ((System.DateTime)(Birthdate));
+            if ((Gender == null)) {
+                throw new global::System.ArgumentNullException("Gender");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(Gender));
+            }
+            if ((Location == null)) {
+                this.Adapter.UpdateCommand.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(Location));
+            }
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_UserId));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(Original_Birthdate));
+            if ((Original_Gender == null)) {
+                throw new global::System.ArgumentNullException("Original_Gender");
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Original_Gender));
+            }
+            global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
+            if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                this.Adapter.UpdateCommand.Connection.Open();
+            }
+            try {
+                int returnValue = this.Adapter.UpdateCommand.ExecuteNonQuery();
+                return returnValue;
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    this.Adapter.UpdateCommand.Connection.Close();
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
+        public virtual int Update(System.DateTime Birthdate, string Gender, string Location, int Original_UserId, System.DateTime Original_Birthdate, string Original_Gender) {
+            return this.Update(Original_UserId, Birthdate, Gender, Location, Original_UserId, Original_Birthdate, Original_Gender);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8764,7 +8812,7 @@ namespace Coupons.CouponsDatasetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateClientInfo(string Birthdate, string Gender, int Original_UserId, int UserId) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((Birthdate == null)) {
                 throw new global::System.ArgumentNullException("Birthdate");
             }
@@ -8801,7 +8849,7 @@ namespace Coupons.CouponsDatasetTableAdapters {
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateLocation(string Location, int Original_UserId, int UserId) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[3];
             if ((Location == null)) {
                 command.Parameters[0].Value = global::System.DBNull.Value;
             }
@@ -8997,7 +9045,7 @@ namespace Coupons.CouponsDatasetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[11];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[10];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Username, Password, Mail, Phone, Type\r\nFROM     Users";
@@ -9036,47 +9084,42 @@ namespace Coupons.CouponsDatasetTableAdapters {
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT Id, Mail, Password, Phone, Type, Username FROM Users WHERE (Type = \'Busine" +
-                "ssOwner\')";
+            this._commandCollection[5].CommandText = "SELECT Id, Mail, Password, Phone, Type, Username FROM Users WHERE (Username = @Us" +
+                "ername) AND (Password = @Password) AND (Type = \'BusinessOwner\')";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT Id, Mail, Password, Phone, Type, Username FROM Users WHERE (Username = @Us" +
-                "ername) AND (Password = @Password) AND (Type = \'BusinessOwner\')";
+            this._commandCollection[6].CommandText = @"SELECT Users.Id, Users.Username, Users.Password, Users.Mail, Users.Phone, Users.Type, Clients.Birthdate, Clients.Location, Clients.Gender
+FROM     Users INNER JOIN
+                  Clients ON Users.Id = Clients.UserId
+WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = @"SELECT Users.Id, Users.Username, Users.Password, Users.Mail, Users.Phone, Users.Type, Clients.Birthdate, Clients.Location, Clients.Gender
-FROM     Users INNER JOIN
-                  Clients ON Users.Id = Clients.UserId
-WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
+            this._commandCollection[7].CommandText = "SELECT Id, Mail, Password, Phone, Type, Username FROM Users WHERE (Username = @Us" +
+                "ername) AND (Password = @Password)";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "SELECT Id, Mail, Password, Phone, Type, Username FROM Users WHERE (Username = @Us" +
-                "ername) AND (Password = @Password)";
+            this._commandCollection[8].CommandText = "SELECT Id, Mail, Password, Phone, Type, Username FROM Users WHERE (Id = @Id)";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[9].Connection = this.Connection;
-            this._commandCollection[9].CommandText = "SELECT Id, Mail, Password, Phone, Type, Username FROM Users WHERE (Id = @Id)";
-            this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[10] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[10].Connection = this.Connection;
-            this._commandCollection[10].CommandText = "UPDATE Users\r\nSET          Password = @Password, Mail = @Mail, Phone = @Phone\r\nWH" +
+            this._commandCollection[9].CommandText = "UPDATE Users\r\nSET          Password = @Password, Mail = @Mail, Phone = @Phone\r\nWH" +
                 "ERE  (Id = @Original_Id) AND (Password = @Original_Password);   \r\n";
-            this._commandCollection[10].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mail", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Mail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._commandCollection[10].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mail", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Mail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9107,19 +9150,8 @@ WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CouponsDataset.UsersDataTable SelectAllBusinessOwner() {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
-            CouponsDataset.UsersDataTable dataTable = new CouponsDataset.UsersDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.UsersDataTable SelectBusinessOwner(string Username, string Password) {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             if ((Username == null)) {
                 throw new global::System.ArgumentNullException("Username");
             }
@@ -9142,7 +9174,7 @@ WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.UsersDataTable SelectClientById(string Username, string Password) {
-            this.Adapter.SelectCommand = this.CommandCollection[7];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             if ((Username == null)) {
                 throw new global::System.ArgumentNullException("Username");
             }
@@ -9165,7 +9197,7 @@ WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.UsersDataTable SelectUser(string Username, string Password) {
-            this.Adapter.SelectCommand = this.CommandCollection[8];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((Username == null)) {
                 throw new global::System.ArgumentNullException("Username");
             }
@@ -9188,7 +9220,7 @@ WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.UsersDataTable selectUserById(int Id) {
-            this.Adapter.SelectCommand = this.CommandCollection[9];
+            this.Adapter.SelectCommand = this.CommandCollection[8];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
             CouponsDataset.UsersDataTable dataTable = new CouponsDataset.UsersDataTable();
             this.Adapter.Fill(dataTable);
@@ -9394,7 +9426,7 @@ WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateUser(string Password, string Mail, string Phone, int Original_Id, string Original_Password) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[10];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[9];
             if ((Password == null)) {
                 throw new global::System.ArgumentNullException("Password");
             }
@@ -10983,7 +11015,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Name, Description, OwnerId, Address, City FROM dbo.Businesses";
@@ -11005,31 +11037,27 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@City", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "City", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT Id, Name, Description, OwnerId, Address, City\r\nFROM     Businesses";
+            this._commandCollection[3].CommandText = "SELECT Address, City, Description, Id, Name, OwnerId FROM Businesses WHERE (Id = " +
+                "@Id)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Address, City, Description, Id, Name, OwnerId FROM Businesses WHERE (Id = " +
-                "@Id)";
+            this._commandCollection[4].CommandText = "SELECT Address, City, Description, Id, Name, OwnerId FROM Businesses WHERE (Owner" +
+                "Id = @OwnerId)";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT Address, City, Description, Id, Name, OwnerId FROM Businesses WHERE (Owner" +
-                "Id = @OwnerId)";
-            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
-            this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "UPDATE Businesses\r\nSET          Name = @Name, Description = @Description, OwnerId" +
+            this._commandCollection[5].CommandText = "UPDATE Businesses\r\nSET          Name = @Name, Description = @Description, OwnerId" +
                 " = @OwnerId, Address = @Address, City = @City\r\nWHERE  (Id = @Original_Id); \r\n";
-            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@City", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "City", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@City", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "City", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11060,19 +11088,8 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CouponsDataset.BusinessesDataTable selectAllBusiness() {
-            this.Adapter.SelectCommand = this.CommandCollection[3];
-            CouponsDataset.BusinessesDataTable dataTable = new CouponsDataset.BusinessesDataTable();
-            this.Adapter.Fill(dataTable);
-            return dataTable;
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.BusinessesDataTable SelectBusinessById(int Id) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[3];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
             CouponsDataset.BusinessesDataTable dataTable = new CouponsDataset.BusinessesDataTable();
             this.Adapter.Fill(dataTable);
@@ -11084,7 +11101,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.BusinessesDataTable SelectBusinessByOwner(global::System.Nullable<int> OwnerId) {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[4];
             if ((OwnerId.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OwnerId.Value));
             }
@@ -11385,7 +11402,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateBusiness(string Name, string Description, global::System.Nullable<int> OwnerId, string Address, string City, int Original_Id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[5];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -15053,6 +15070,8 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
         
         private UpdateOrderOption _updateOrder;
         
+        private ClientsTableAdapter _clientsTableAdapter;
+        
         private UsersTableAdapter _usersTableAdapter;
         
         private GroupsTableAdapter _groupsTableAdapter;
@@ -15095,6 +15114,20 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
             }
             set {
                 this._updateOrder = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
+            "a", "System.Drawing.Design.UITypeEditor")]
+        public ClientsTableAdapter ClientsTableAdapter {
+            get {
+                return this._clientsTableAdapter;
+            }
+            set {
+                this._clientsTableAdapter = value;
             }
         }
         
@@ -15327,6 +15360,10 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
                 if ((this._connection != null)) {
                     return this._connection;
                 }
+                if (((this._clientsTableAdapter != null) 
+                            && (this._clientsTableAdapter.Connection != null))) {
+                    return this._clientsTableAdapter.Connection;
+                }
                 if (((this._usersTableAdapter != null) 
                             && (this._usersTableAdapter.Connection != null))) {
                     return this._usersTableAdapter.Connection;
@@ -15400,6 +15437,9 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
         public int TableAdapterInstanceCount {
             get {
                 int count = 0;
+                if ((this._clientsTableAdapter != null)) {
+                    count = (count + 1);
+                }
                 if ((this._usersTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -15462,6 +15502,15 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._usersTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._clientsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Clients.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._clientsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -15606,6 +15655,14 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._usersTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._clientsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Clients.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._clientsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -15843,6 +15900,14 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
                     allChangedRows.AddRange(deletedRows);
                 }
             }
+            if ((this._clientsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Clients.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._clientsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
             if ((this._usersTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Users.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -15889,6 +15954,11 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
             }
             if ((dataSet.HasChanges() == false)) {
                 return 0;
+            }
+            if (((this._clientsTableAdapter != null) 
+                        && (this.MatchTableAdapterConnection(this._clientsTableAdapter.Connection) == false))) {
+                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
+                        "tring.");
             }
             if (((this._usersTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._usersTableAdapter.Connection) == false))) {
@@ -15997,6 +16067,15 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
             try {
                 // ---- Prepare for update -----------
                 //
+                if ((this._clientsTableAdapter != null)) {
+                    revertConnections.Add(this._clientsTableAdapter, this._clientsTableAdapter.Connection);
+                    this._clientsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
+                    this._clientsTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
+                    if (this._clientsTableAdapter.Adapter.AcceptChangesDuringUpdate) {
+                        this._clientsTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
+                        adaptersWithAcceptChangesDuringUpdate.Add(this._clientsTableAdapter.Adapter);
+                    }
+                }
                 if ((this._usersTableAdapter != null)) {
                     revertConnections.Add(this._usersTableAdapter, this._usersTableAdapter.Connection);
                     this._usersTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
@@ -16189,6 +16268,10 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
             finally {
                 if (workConnOpened) {
                     workConnection.Close();
+                }
+                if ((this._clientsTableAdapter != null)) {
+                    this._clientsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._clientsTableAdapter]));
+                    this._clientsTableAdapter.Transaction = null;
                 }
                 if ((this._usersTableAdapter != null)) {
                     this._usersTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._usersTableAdapter]));
