@@ -21,15 +21,5 @@ namespace Coupons.BL
         {
             return mUserDal.login(username, password);
         }
-
-        public List<Client> getAllClients()
-        {
-            return mUserDal.getAllClients();
-        }
-
-        public List<BusinessOwner> getAllBusinessOwner()
-        {
-            return mUserDal.getAllBusinessOwner();
-        }
     }
 }

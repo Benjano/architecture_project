@@ -72,13 +72,11 @@
     </ApplicationDefinition>
     <Compile Include="BL\AdminBL.cs" />
     <Compile Include="BL\UserBL.cs" />
-    <Compile Include="CouponsDataSet1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CouponsDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="GUI\AdminGUI\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BusinessOwnerGUI\MainOwne.xaml.cs">
+      <DependentUpon>MainOwne.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\ClientGUI\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
@@ -100,8 +98,11 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Util\Colors.cs" />
     <Page Include="GUI\AdminGUI\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\BusinessOwnerGUI\MainOwne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -131,6 +132,11 @@
     <Compile Include="Constants\CouponsColumns.cs" />
     <Compile Include="Constants\DealsColumns.cs" />
     <Compile Include="Constants\UserColumns.cs" />
+    <Compile Include="CouponsDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CouponsDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DAL\AdminDAL.cs" />
     <Compile Include="DAL\BusinessOwnerDAL.cs" />
     <Compile Include="DAL\ClientDAL.cs" />
@@ -177,7 +183,7 @@
     <None Include="CouponsDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CouponsDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>CouponsDataSet.Designer.cs</LastGenOutput>
     </None>
     <None Include="CouponsDataSet.xss">
       <DependentUpon>CouponsDataSet.xsd</DependentUpon>
@@ -215,8 +221,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Data\" />
-    <Folder Include="GUI\BusinessOwnerGUI\" />
+    <Folder Include="Util\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

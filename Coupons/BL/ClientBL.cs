@@ -78,11 +78,6 @@ namespace Coupons.BL
             return mDal.getClientById(clientId);
         }
 
-        public Client getClientByUsername(String username)
-        {
-            return mDal.getClientByName(username);
-        }
-
 
         public void loadClientNetworks(Client client)
         {
@@ -119,11 +114,6 @@ namespace Coupons.BL
             return mDal.getContacts(clientId);
         }
 
-
-        internal List<Business> getAllBusiness()
-        {
-            return mDal.getAllDeal();
-        }
     }
 }
 
