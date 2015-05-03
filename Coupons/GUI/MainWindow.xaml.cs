@@ -17,6 +17,7 @@ using Coupons.Models;
 using Coupons;
 using Coupons.GUI.ClientGUI;
 using Coupons.GUI.AdminGUI;
+using Coupons.GUI.BusinessOwnerGUI;
 
 namespace CouponsApplication
 {
@@ -50,7 +51,8 @@ namespace CouponsApplication
                 }
                 else if (user.GetType() == typeof(BusinessOwner))
                 {
-
+                    BusinessOwnerWindow businessOwnerWindow = new BusinessOwnerWindow((BusinessOwner) user);
+                    businessOwnerWindow.Show();
                 }
                 else if (user.GetType() == typeof(Client))
                 {
@@ -75,6 +77,11 @@ namespace CouponsApplication
             CreateUserWindow createClientWindow = new CreateUserWindow(this, true);
             createClientWindow.Show();
             this.Hide();
+        }
+
+        private void btnRestore_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

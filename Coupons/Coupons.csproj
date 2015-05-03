@@ -75,6 +75,12 @@
     <Compile Include="GUI\AdminGUI\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\BusinessOwnerGUI\BusinessOwnerWindow.xaml.cs">
+      <DependentUpon>BusinessOwnerWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\BusinessOwnerGUI\UpdateBusinessWindow.xaml.cs">
+      <DependentUpon>UpdateBusinessWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\ClientGUI\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
@@ -97,6 +103,14 @@
     <Compile Include="Settings.cs" />
     <Compile Include="Util\CustomColors.cs" />
     <Page Include="GUI\AdminGUI\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\BusinessOwnerGUI\BusinessOwnerWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\BusinessOwnerGUI\UpdateBusinessWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -214,9 +228,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="GUI\BusinessOwnerGUI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
