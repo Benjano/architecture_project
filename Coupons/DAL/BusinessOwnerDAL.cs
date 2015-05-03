@@ -17,7 +17,8 @@ namespace Coupons.DAL
         private CouponsDatasetTableAdapters.DealsTableAdapter mTableDeals = new CouponsDatasetTableAdapters.DealsTableAdapter();
         private CouponsDatasetTableAdapters.CouponsTableAdapter mTableCoupons = new CouponsDatasetTableAdapters.CouponsTableAdapter();
 
-        public BusinessOwner logBusinessOwner (String username, String password){
+        public BusinessOwner logBusinessOwner(String username, String password)
+        {
             CouponsDataset.UsersDataTable user = mTableUsers.SelectBusinessOwner(username, password);
             if (user.Rows.Count == 1)
             {
@@ -45,7 +46,7 @@ namespace Coupons.DAL
 
         public bool insertNewBusiness(int ownerId, String name, String description, String city, String address)
         {
-            return mTableBusiness.InsertBusiness(name, description, ownerId, address, city) == 1; 
+            return mTableBusiness.InsertBusiness(name, description, ownerId, address, city) == 1;
         }
 
         public List<Business> getBusinessesByOwnerId(int ownerId)
@@ -62,7 +63,7 @@ namespace Coupons.DAL
 
                 Business business = new Business(id, name, description, ownerId, address, city);
                 result.Add(business);
-             }
+            }
             return result;
         }
 
@@ -82,7 +83,7 @@ namespace Coupons.DAL
                 bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
                 Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
                 business.addDeal(deal);
-           } 
+            }
         }
 
         public void loadDealCoupons(Deal deal)
@@ -96,14 +97,14 @@ namespace Coupons.DAL
                 int rate = (int)row[CouponsColumns.RATE];
                 bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
-               
+
                 int clientId = (int)row[CouponsColumns.CLIENT_ID];
                 ClientBL clientBL = new ClientBL();
                 Client client = clientBL.getClientById(clientId);
 
                 Coupon coupon = new Coupon(client, deal, originalPrice, boughtPrice, rate, isUsed, serialKey);
                 deal.addCoupon(coupon);
-            } 
+            }
         }
 
         public BusinessOwner getBusinessOwnerById(string userName, string password)
@@ -127,14 +128,14 @@ namespace Coupons.DAL
         public bool UpdateBusiness(int businessId, String name, String description, int ownerId, String address, String city)
         {
             CouponsDataset.BusinessesDataTable business = mTableBusiness.SelectBusinessById(businessId);
-             if (business.Rows.Count == 1)
-             {
-                 return (mTableBusiness.UpdateBusiness(name, description, ownerId, address, city, businessId)==1);
-             }
-             else
-             {
-                 return false;
-             }
+            if (business.Rows.Count == 1)
+            {
+                return (mTableBusiness.UpdateBusiness(name, description, ownerId, address, city, businessId) == 1);
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

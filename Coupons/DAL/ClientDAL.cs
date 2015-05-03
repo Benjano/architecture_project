@@ -13,7 +13,7 @@ namespace Coupons.DAL
 {
     public class ClientDAL
     {
-        
+
         private CouponsDatasetTableAdapters.UsersTableAdapter mTableUsers = new CouponsDatasetTableAdapters.UsersTableAdapter();
         private CouponsDatasetTableAdapters.ClientsTableAdapter mTableClients = new CouponsDatasetTableAdapters.ClientsTableAdapter();
         private CouponsDatasetTableAdapters.DealsTableAdapter mTableDeals = new CouponsDatasetTableAdapters.DealsTableAdapter();
@@ -24,19 +24,23 @@ namespace Coupons.DAL
         private CouponsDatasetTableAdapters.SocialFriendsTableAdapter mTableSocialFriends = new CouponsDatasetTableAdapters.SocialFriendsTableAdapter();
         private CouponsDatasetTableAdapters.FriendsTableAdapter mTableFriends = new CouponsDatasetTableAdapters.FriendsTableAdapter();
         private CouponsDatasetTableAdapters.BusinessesTableAdapter mTableBusiness = new CouponsDatasetTableAdapters.BusinessesTableAdapter();
-        
+
         public bool insertNewClient(String username, String password, String mail, String phone, DateTime birthDate, Gender gender, String location)
         {
             bool isOk = (mTableUsers.InsertClient(username, password, mail, phone) == 1);
-            if (isOk){
+            if (isOk)
+            {
                 int clientId = findClientId(username, password);
-                if (clientId >= 0){
+                if (clientId >= 0)
+                {
                     isOk = (mTableClients.InsertClient(clientId, birthDate.ToShortDateString(), gender.ToString(), location) == 1);
                     if (!isOk)
                     {
                         mTableUsers.DeleteUser(clientId);
                     }
-                } else {
+                }
+                else
+                {
                     isOk = false;
                 }
             }
@@ -50,13 +54,13 @@ namespace Coupons.DAL
             return isOk;
         }
 
-        public int findGroupId(String groupName) 
+        public int findGroupId(String groupName)
         {
             CouponsDataset.GroupsDataTable group = mTableGroups.SelectGroupIdByName(groupName);
             if (group.Rows.Count >= 1)
             {
                 DataRow row = group[0];
-               return (int)row[GroupColumns.ID];
+                return (int)row[GroupColumns.ID];
             }
             else
             {
@@ -78,59 +82,64 @@ namespace Coupons.DAL
         public int findClientId(String username, String password)
         {
             CouponsDataset.UsersDataTable user = mTableUsers.SelectUser(username, password);
-            if (user.Rows.Count == 1){
+            if (user.Rows.Count == 1)
+            {
                 DataRow row = user[0];
                 if (row[UserColumns.TYPE].ToString().Equals("Client"))
                 {
-                    return (int) row[UserColumns.ID];
+                    return (int)row[UserColumns.ID];
                 }
                 else
                 {
                     return -1;
                 }
-            } else {
+            }
+            else
+            {
                 return -1;
             }
         }
 
         public int updateClient(String username, String password, String mail, String phone, String originalPassword)
-        { 
-             CouponsDataset.UsersDataTable user = mTableUsers.SelectUser(username, originalPassword);
-             if (user.Rows.Count == 1){
+        {
+            CouponsDataset.UsersDataTable user = mTableUsers.SelectUser(username, originalPassword);
+            if (user.Rows.Count == 1)
+            {
                 DataRow row = user[0];
                 int id = (int)row[UserColumns.ID];
                 mTableUsers.UpdateUser(password, mail, phone, id, originalPassword);
                 return id;
-             }
-             else
-             {
-                 return -1;
-             }
-        
+            }
+            else
+            {
+                return -1;
+            }
+
         }
 
         public int selectDeal(int businessId)
         {
-             CouponsDataset.DealsDataTable deal = mTableDeals.SelectDealByBusinessId(businessId);
-             if (deal.Rows.Count >= 1) {
-                 DataRow row = deal[0];
-                 int id = (int)row[DealsColumns.ID];
-                 return id;
-             }
+            CouponsDataset.DealsDataTable deal = mTableDeals.SelectDealByBusinessId(businessId);
+            if (deal.Rows.Count >= 1)
+            {
+                DataRow row = deal[0];
+                int id = (int)row[DealsColumns.ID];
+                return id;
+            }
             else
-             {
-                 return -1;
-             }
+            {
+                return -1;
+            }
         }
 
         public int buyCoupon(Deal deal, Client client)
         {
-            int result = 0; 
+            int result = 0;
             //TODO   clac bought price
-             result = mTableCoupons.InsertCoupon(deal.ID, client.ID, deal.Price, deal.Price);
-             CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCoupon(deal.ID, client.ID);
-           if (coupons.Rows.Count >= 1)
-           {
+            result = mTableCoupons.InsertCoupon(deal.ID, client.ID, deal.Price, deal.Price);
+            CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCoupon(deal.ID, client.ID);
+            if (coupons.Rows.Count >= 1)
+            {
                 DataRow row = coupons[0];
 
                 int id = (int)row[CouponsColumns.ID];
@@ -138,19 +147,19 @@ namespace Coupons.DAL
                 decimal boughtPrice = (decimal)row[CouponsColumns.BOUGHT_PRICE];
                 bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
- 
-                
-                   Coupon coupon = new Coupon(client, deal, originalPrice, boughtPrice, -1, isUsed, serialKey );
-                   client.addCoupon(coupon);
-                   return id;
+
+
+                Coupon coupon = new Coupon(client, deal, originalPrice, boughtPrice, -1, isUsed, serialKey);
+                client.addCoupon(coupon);
+                return id;
             }
-           return -1;
+            return -1;
         }
 
         public Deal getDealById(int dealId)
         {
             CouponsDataset.DealsDataTable deals = mTableDeals.SelectDealById(dealId);
-            if (deals.Rows.Count == 1) 
+            if (deals.Rows.Count == 1)
             {
                 DataRow row = deals[0];
                 int id = (int)row[DealsColumns.ID];
@@ -162,7 +171,7 @@ namespace Coupons.DAL
                 DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
                 bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
                 int businessId = (int)row[DealsColumns.BUSINESS_ID];
-                
+
                 AdminDAL mAdminDAL = new AdminDAL();
                 Business business = mAdminDAL.selectBusinessById(businessId);
 
@@ -170,13 +179,14 @@ namespace Coupons.DAL
                 Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
                 return deal;
             }
-            else 
-            { 
-                return null; 
+            else
+            {
+                return null;
             }
         }
 
-        public Client getClientById(int clientId){
+        public Client getClientById(int clientId)
+        {
             CouponsDataset.ClientsDataTable clients = mTableClients.selectClientById(clientId);
 
             if (clients.Rows.Count == 1)
@@ -186,7 +196,7 @@ namespace Coupons.DAL
                 String username = row[UserColumns.USERNAME].ToString();
                 String mail = row[UserColumns.MAIL].ToString();
                 String phone = row[UserColumns.PHONE].ToString();
-                      
+
                 DateTime birthDate;
                 DateTime.TryParse(row[ClientColumns.BIRTHDATE].ToString(), out birthDate);
                 Gender gender = (Gender)Enum.Parse(typeof(Gender), clients.Rows[0][ClientColumns.GENDER].ToString());
@@ -225,31 +235,32 @@ namespace Coupons.DAL
             foreach (DataRow row in networks.Rows)
             {
                 String name = row[SocialNetworksColumns.NAME].ToString();
-                SocialNetwork network = (SocialNetwork) Enum.Parse( typeof(SocialNetwork), name, true );
+                SocialNetwork network = (SocialNetwork)Enum.Parse(typeof(SocialNetwork), name, true);
                 client.addSocialNetwork(network);
             }
         }
 
         public List<ClientNetwork> getClientSocialNetworks(int clientId)
         {
-                CouponsDataset.ClientSocialNetworkDataTable networks = mTableSocialNetworks.SelectClientSocialNetworks(clientId);
+            CouponsDataset.ClientSocialNetworkDataTable networks = mTableSocialNetworks.SelectClientSocialNetworks(clientId);
             List<ClientNetwork> clientNetworks = new List<ClientNetwork>();
             foreach (DataRow row in networks.Rows)
             {
                 String name = row[SocialNetworksColumns.NAME].ToString();
                 String username = row[SocialNetworksColumns.USERNAME].ToString();
                 String token = row[SocialNetworksColumns.TOKEN].ToString();
-                SocialNetwork network = (SocialNetwork) Enum.Parse( typeof(SocialNetwork), name, true );
+                SocialNetwork network = (SocialNetwork)Enum.Parse(typeof(SocialNetwork), name, true);
                 ClientNetwork clientNetwork = new ClientNetwork(clientId, network, username, token);
                 clientNetworks.Add(clientNetwork);
             }
             return clientNetworks;
         }
 
-        public bool addSocialNetwork(int clientId, SocialNetwork networkName, string username, string token ) {
+        public bool addSocialNetwork(int clientId, SocialNetwork networkName, string username, string token)
+        {
             return mTableSocialNetworks.InsertClientSocialNetwork(clientId, networkName.ToString(), username, token) == 1;
         }
-        
+
         public bool addSocialFriend(ClientNetwork clientSocialNetwork, ClientNetwork friendSocialNetwork)
         {
             if (clientSocialNetwork.Name == friendSocialNetwork.Name)
@@ -279,7 +290,8 @@ namespace Coupons.DAL
             return result;
         }
 
-        public List<Client> getContacts(int clientId){
+        public List<Client> getContacts(int clientId)
+        {
             CouponsDataset.FriendsDataTable socialFriends = mTableFriends.SelectClientContacts(clientId);
 
             List<Client> result = new List<Client>();
@@ -308,9 +320,9 @@ namespace Coupons.DAL
                 int ownerId = (int)row[BusinessesColumns.OWNER_ID];
                 String address = (String)row[BusinessesColumns.ADDRESS];
                 String city = (String)row[BusinessesColumns.CITY];
-                
 
-                result.Add(new Business(id, name, description, ownerId, address,city));
+
+                result.Add(new Business(id, name, description, ownerId, address, city));
             }
             return result;
         }

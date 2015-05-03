@@ -109,7 +109,7 @@ namespace Coupons.DAL
             BusinessOwner businessOwner = new BusinessOwner(id, username, mail, phone);
 
 
-            Business business = new Business(idB, name, description, businessOwner, address, city);
+            Business business = new Business(idB, name, description, businessOwner.ID, address, city);
             return business;
         }
 

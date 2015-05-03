@@ -75,9 +75,6 @@
     <Compile Include="GUI\AdminGUI\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\BusinessOwnerGUI\MainOwne.xaml.cs">
-      <DependentUpon>MainOwne.xaml</DependentUpon>
-    </Compile>
     <Compile Include="GUI\ClientGUI\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
@@ -98,11 +95,8 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Settings.cs" />
+    <Compile Include="Util\CustomColors.cs" />
     <Page Include="GUI\AdminGUI\AdminWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\BusinessOwnerGUI\MainOwne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -221,7 +215,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Util\" />
+    <Folder Include="GUI\BusinessOwnerGUI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

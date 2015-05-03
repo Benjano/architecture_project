@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="AdminWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        <DataGrid Name="dgBusinesses" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Height="242" Width="255"/>
+        <DataGrid Name="dgBusinesses" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Height="242" Width="255"/>
         <DataGrid Name="dgUsers" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="279,102,0,0" VerticalAlignment="Top" Height="273" Width="272" SelectionChanged="dgUsers_SelectionChanged"/>
         <DataGrid Name="dgDeals" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="572,102,0,0" VerticalAlignment="Top" Height="345" Width="269"/>
         <Button Name="btnAddClientOrOwner" Content="Add" Padding="10, 5, 10, 5" Background="#EEBA4C" HorizontalAlignment="Left" Margin="476,70,0,0" VerticalAlignment="Top" Width="75" Click="btnAddClientOrOwner_Click"/>
