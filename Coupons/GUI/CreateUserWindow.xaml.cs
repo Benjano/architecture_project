@@ -21,22 +21,35 @@ namespace Coupons
     /// <summary>
     /// Interaction logic for CreateClientWindow.xaml
     /// </summary>
-    public partial class CreateClientWindow : Window
+    public partial class CreateUserWindow : Window
     {
         ClientBL mClientBL;
+        AdminBL mAdminBL;
         GeoCoordinateWatcher mGeoWatcher;
         Window mSourceWindow;
+        bool mIsClient;
 
-        public CreateClientWindow(Window sourceWindow)
+        public CreateUserWindow(Window sourceWindow, bool isClient)
         {
             InitializeComponent();
             mSourceWindow = sourceWindow;
             mClientBL = new ClientBL();
+            mAdminBL = new AdminBL();
             cbGender.ItemsSource = Enum.GetValues(typeof(Gender));
             cbGender.SelectedIndex = 0;
             dpBirthDate.SelectedDate = DateTime.Today;
             mGeoWatcher = new GeoCoordinateWatcher();
             mGeoWatcher.Start();
+            mIsClient = isClient;
+
+            if (!mIsClient)
+            {
+                lblBirthDate.Visibility = Visibility.Hidden;
+                lblGender.Visibility = Visibility.Hidden;
+
+                cbGender.Visibility = Visibility.Hidden;
+                dpBirthDate.Visibility = Visibility.Hidden;
+            }
         }
 
         private void btnCreate_Click(object sender, RoutedEventArgs e)
@@ -50,10 +63,19 @@ namespace Coupons
             DateTime birthdate = (DateTime) dpBirthDate.SelectedDate;
             String location = mGeoWatcher.Position.Location.ToString();
 
-            if (username.Length > 2 && password.Length > 5 && mail.Length > 7 && phone.Length > 6 && birthdate != null)
+            if (username.Length > 2 && password.Length > 5 && mail.Length > 7 && phone.Length > 6)
             {
-                mClientBL.insertNewClient(username, password, mail, phone, birthdate, gender, location);
-                FINISH();
+                if (mIsClient)
+                {
+                    if (birthdate != null)
+                    {
+                        mClientBL.insertNewClient(username, password, mail, phone, birthdate, gender, location);
+                        FINISH();
+                    }
+                } else {
+                        mAdminBL.insertBusinessOwner(username, password, mail, phone);
+                        FINISH();
+                    }   
             }
             else
             {

@@ -72,7 +72,7 @@ namespace CouponsApplication
 
         private void btnCreateClient_Click(object sender, RoutedEventArgs e)
         {
-            CreateClientWindow createClientWindow = new CreateClientWindow(this);
+            CreateUserWindow createClientWindow = new CreateUserWindow(this, true);
             createClientWindow.Show();
             this.Hide();
         }

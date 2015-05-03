@@ -177,21 +177,20 @@ namespace Coupons.DAL
         }
 
         public Client getClientById(int clientId){
-            CouponsDataset.UsersDataTable user = mTableUsers.selectUserById(clientId);
             CouponsDataset.ClientsDataTable clients = mTableClients.selectClientById(clientId);
- 
-            if (user.Rows.Count == 1) {
-                DataRow row = user.Rows[0];
-                int id = (int)row[UserColumns.ID];
+
+            if (clients.Rows.Count == 1)
+            {
+                DataRow row = clients.Rows[0];
+                int id = (int)row[ClientColumns.USER_ID];
                 String username = row[UserColumns.USERNAME].ToString();
                 String mail = row[UserColumns.MAIL].ToString();
                 String phone = row[UserColumns.PHONE].ToString();
                       
-                DataRow row2 = clients.Rows[0];
                 DateTime birthDate;
-                DateTime.TryParse(row2[ClientColumns.BIRTHDATE].ToString(), out birthDate);
+                DateTime.TryParse(row[ClientColumns.BIRTHDATE].ToString(), out birthDate);
                 Gender gender = (Gender)Enum.Parse(typeof(Gender), clients.Rows[0][ClientColumns.GENDER].ToString());
-                String location = row2[ClientColumns.LOCATION].ToString();
+                String location = row[ClientColumns.LOCATION].ToString();
 
                 Client client = new Client(id, username, mail, phone, birthDate, Gender.Female, location);
                 return client;

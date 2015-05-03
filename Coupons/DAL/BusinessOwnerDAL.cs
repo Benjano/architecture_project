@@ -34,11 +34,18 @@ namespace Coupons.DAL
             }
         }
 
+
+
         public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate)
         {
             int result = mTableDeals.InsertDeal(name, details, business.ID, price, experationDate.ToShortDateString());
             loadDealsToBusiness(business);
             return result == 1;
+        }
+
+        public bool insertNewBusiness(int ownerId, String name, String description, String city, String address)
+        {
+            return mTableBusiness.InsertBusiness(name, description, ownerId, address, city) == 1; 
         }
 
         public List<Business> getBusinessesByOwnerId(int ownerId)

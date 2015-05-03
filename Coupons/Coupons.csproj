@@ -70,6 +70,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\AdminBL.cs" />
     <Compile Include="BL\UserBL.cs" />
     <Compile Include="CouponsDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -82,8 +83,11 @@
     <Compile Include="GUI\ClientGUI\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GUI\CreateClientWindow.xaml.cs">
-      <DependentUpon>CreateClientWindow.xaml</DependentUpon>
+    <Compile Include="GUI\CreateBusinessWindow.xaml.cs">
+      <DependentUpon>CreateBusinessWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\CreateUserWindow.xaml.cs">
+      <DependentUpon>CreateUserWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="DAL\UserDAL.cs" />
     <Compile Include="Constants\FriendsColumns.cs" />
@@ -105,7 +109,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GUI\CreateClientWindow.xaml">
+    <Page Include="GUI\CreateBusinessWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\CreateUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

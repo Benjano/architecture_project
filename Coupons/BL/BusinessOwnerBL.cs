@@ -23,6 +23,8 @@ namespace Coupons.BL
             mDal = new BusinessOwnerDAL(); 
         }
 
+
+
         public BusinessOwner logBusinessOwner(String username, String password)
         {
             return mDal.logBusinessOwner(username, password);
@@ -33,7 +35,12 @@ namespace Coupons.BL
             return mDal.insertNewDeal(name, details, business, price, experationDate);
         }
 
-        public List<Business> loadBusinesses(int ownerId)
+        public bool insertNewBusiness(int ownerId, String name, String description, String city, String address)
+        {
+            return mDal.insertNewBusiness(ownerId, name, description, city, address);
+        }
+
+        public List<Business> getBusinessesByOwnerId(int ownerId)
         {
            return  mDal.getBusinessesByOwnerId(ownerId);
         }

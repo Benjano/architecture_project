@@ -26,6 +26,7 @@ namespace Coupons.GUI.AdminGUI
 
         private UserBL mUserBL;
         private ClientBL mClientBL;
+        private BusinessOwnerBL mBusinessOwnerBl;
 
         private List<Client> mClients;
         private List<BusinessOwner> mBusniessOwners;
@@ -33,11 +34,14 @@ namespace Coupons.GUI.AdminGUI
 
         private bool mIsClient;
 
+        BusinessOwner mSelectedBusinessOwner;
+
         public AdminWindow(Admin admin)
         {
             InitializeComponent();
             mUserBL = new UserBL();
             mClientBL = new ClientBL();
+            mBusinessOwnerBl = new BusinessOwnerBL();
             mClients = mUserBL.getAllClients();
             mBusniessOwners = mUserBL.getAllBusinessOwner();
             mBusiness = mClientBL.getAllBusiness();
@@ -106,7 +110,7 @@ namespace Coupons.GUI.AdminGUI
 
         private void btnAddClientOrOwner_Click(object sender, RoutedEventArgs e)
         {
-            CreateClientWindow createClientWindow = new CreateClientWindow(null);
+            CreateUserWindow createClientWindow = new CreateUserWindow(null, mIsClient);
             createClientWindow.Show();
         }
 
@@ -166,5 +170,51 @@ namespace Coupons.GUI.AdminGUI
 
             dgBusinesses.ItemsSource = business;
         }
+
+        private void btnAddBusiness_Click(object sender, RoutedEventArgs e)
+        {
+            if (mSelectedBusinessOwner != null && !mIsClient)
+            {
+                CreateBusinessWindow window = new CreateBusinessWindow(mSelectedBusinessOwner);
+                window.Show();
+            }
+        }
+
+        private void dgUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (mIsClient)
+            {
+
+            }
+            else
+            {
+                mSelectedBusinessOwner = (BusinessOwner) dgUsers.SelectedItem;
+            }
+        }
+
+        private void btnRefreshBusiness_Click(object sender, RoutedEventArgs e)
+        {
+            setBusinessDataGrid(mClientBL.getAllBusiness());
+        }
+
+        private void btnSearchBusiness_Click(object sender, RoutedEventArgs e)
+        {
+            String name = tbBusinessName.Text;
+            String ownerId = tbOwnerId.Text;
+            String businessId = tbBusinessId.Text;
+
+            if (name.Length > 0)
+            {
+            }
+            else if (ownerId.Length > 0 && isNumeric(ownerId))
+            {
+                setBusinessDataGrid(mBusinessOwnerBl.getBusinessesByOwnerId(Convert.ToInt32(ownerId)));
+            }
+            else if (businessId.Length > 0)
+            {
+
+            }
+        }
+
     }
 }
