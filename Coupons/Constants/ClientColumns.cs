@@ -12,5 +12,6 @@ namespace Coupons.Constants
         public static String BIRTHDATE = "Birthdate";
         public static String GENDER = "Gender";
         public static String LOCATION = "Location";
+        public static String TIMESTAMP = "Timestamp";
     }
 }

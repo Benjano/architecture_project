@@ -1018,6 +1018,8 @@ namespace Coupons {
             
             private global::System.Data.DataColumn columnUsername;
             
+            private global::System.Data.DataColumn columnTimestamp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientsDataTable() {
@@ -1109,6 +1111,14 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TimestampColumn {
+                get {
+                    return this.columnTimestamp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1144,7 +1154,7 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientsRow AddClientsRow(UsersRow parentUsersRowByFK_UserId, System.DateTime Birthdate, string Gender, string Location, string Phone, string Mail, string Username) {
+            public ClientsRow AddClientsRow(UsersRow parentUsersRowByFK_UserId, System.DateTime Birthdate, string Gender, string Location, string Phone, string Mail, string Username, System.DateTime Timestamp) {
                 ClientsRow rowClientsRow = ((ClientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1153,7 +1163,8 @@ namespace Coupons {
                         Location,
                         Phone,
                         Mail,
-                        Username};
+                        Username,
+                        Timestamp};
                 if ((parentUsersRowByFK_UserId != null)) {
                     columnValuesArray[0] = parentUsersRowByFK_UserId[0];
                 }
@@ -1193,6 +1204,7 @@ namespace Coupons {
                 this.columnPhone = base.Columns["Phone"];
                 this.columnMail = base.Columns["Mail"];
                 this.columnUsername = base.Columns["Username"];
+                this.columnTimestamp = base.Columns["Timestamp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1212,6 +1224,8 @@ namespace Coupons {
                 base.Columns.Add(this.columnMail);
                 this.columnUsername = new global::System.Data.DataColumn("Username", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsername);
+                this.columnTimestamp = new global::System.Data.DataColumn("Timestamp", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTimestamp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnUserId}, true));
                 this.columnUserId.AllowDBNull = false;
@@ -1226,6 +1240,7 @@ namespace Coupons {
                 this.columnMail.MaxLength = 2147483647;
                 this.columnUsername.AllowDBNull = false;
                 this.columnUsername.MaxLength = 50;
+                this.columnTimestamp.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6297,6 +6312,17 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Timestamp {
+                get {
+                    return ((global::System.DateTime)(this[this.tableClients.TimestampColumn]));
+                }
+                set {
+                    this[this.tableClients.TimestampColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public UsersRow UsersRow {
                 get {
                     return ((UsersRow)(this.GetParentRow(this.Table.ParentRelations["FK_UserId"])));
@@ -8696,6 +8722,7 @@ namespace Coupons.CouponsDatasetTableAdapters {
             tableMapping.ColumnMappings.Add("Phone", "Phone");
             tableMapping.ColumnMappings.Add("Mail", "Mail");
             tableMapping.ColumnMappings.Add("Username", "Username");
+            tableMapping.ColumnMappings.Add("Timestamp", "Timestamp");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8713,8 +8740,9 @@ namespace Coupons.CouponsDatasetTableAdapters {
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Clients.UserId, Clients.Birthdate, Clients.Gender, Clients.Location, Users" +
-                ".Phone, Users.Mail, Users.Username\r\nFROM     Clients INNER JOIN\r\n               " +
-                "   Users ON Clients.UserId = Users.Id\r\nWHERE  (Clients.UserId = @id)";
+                ".Phone, Users.Mail, Users.Username, Clients.Timestamp\r\nFROM     Clients INNER JO" +
+                "IN\r\n                  Users ON Clients.UserId = Users.Id\r\nWHERE  (Clients.UserId" +
+                " = @id)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
@@ -8730,8 +8758,8 @@ namespace Coupons.CouponsDatasetTableAdapters {
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT Clients.Birthdate, Clients.Gender, Clients.Location, Users.Phone, Users.Ma" +
-                "il, Users.Username, Clients.UserId\r\nFROM     Clients INNER JOIN\r\n               " +
-                "   Users ON Clients.UserId = Users.Id";
+                "il, Users.Username, Clients.UserId, Clients.Timestamp\r\nFROM     Clients INNER JO" +
+                "IN\r\n                  Users ON Clients.UserId = Users.Id";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;

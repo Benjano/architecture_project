@@ -201,8 +201,10 @@ namespace Coupons.DAL
                 DateTime.TryParse(row[ClientColumns.BIRTHDATE].ToString(), out birthDate);
                 Gender gender = (Gender)Enum.Parse(typeof(Gender), clients.Rows[0][ClientColumns.GENDER].ToString());
                 String location = row[ClientColumns.LOCATION].ToString();
+                DateTime timestamp;
+                DateTime.TryParse(row[ClientColumns.TIMESTAMP].ToString(), out timestamp);
 
-                Client client = new Client(id, username, mail, phone, birthDate, Gender.Female, location);
+                Client client = new Client(id, username, mail, phone, birthDate, Gender.Female, new Location(location), timestamp);
                 return client;
             }
             return null;
@@ -222,8 +224,10 @@ namespace Coupons.DAL
                 DateTime.TryParse(clients.Rows[0][ClientColumns.BIRTHDATE].ToString(), out birthDate);
                 Gender gender = (Gender)Enum.Parse(typeof(Gender), clients.Rows[0][ClientColumns.GENDER].ToString());
                 String location = clients.Rows[0][ClientColumns.LOCATION].ToString();
+                DateTime timestamp;
+                DateTime.TryParse(clients.Rows[0][ClientColumns.TIMESTAMP].ToString(), out timestamp);
 
-                Client client = new Client(id, username, mail, phone, birthDate, Gender.Female, location);
+                Client client = new Client(id, username, mail, phone, birthDate, Gender.Female, new Location(location), timestamp);
                 return client;
             }
             return null;

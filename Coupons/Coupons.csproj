@@ -100,6 +100,7 @@
       <DependentUpon>CouponsDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\Location.cs" />
     <Compile Include="Settings.cs" />
     <Compile Include="Util\CustomColors.cs" />
     <Page Include="GUI\AdminGUI\AdminWindow.xaml">
