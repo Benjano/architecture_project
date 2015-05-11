@@ -107,7 +107,7 @@ namespace Coupons.DAL
             }
         }
 
-        public BusinessOwner getBusinessOwnerById(string userName, string password)
+        public BusinessOwner getBusinessOwnerByName(string userName, string password)
         {
             CouponsDataset.UsersDataTable user = mTableUsers.SelectBusinessOwner(userName, password);
 
@@ -136,6 +136,79 @@ namespace Coupons.DAL
             {
                 return false;
             }
+        }
+
+        public List<Business> getBusinessesByName(string name)
+        {
+            List<Business> result = new List<Business>();
+            CouponsDataset.BusinessesDataTable businesses = mTableBusiness.selectBusinessByName(name);
+            foreach (DataRow row in businesses.Rows)
+            {
+                int id = (int)row[BusinessesColumns.ID];
+                String description = row[BusinessesColumns.DESCRIPTION].ToString();
+                int ownerId = (int)row[BusinessesColumns.OWNER_ID];
+                String address = row[BusinessesColumns.ADDRESS].ToString();
+                String city = row[BusinessesColumns.CITY].ToString();
+
+                Business business = new Business(id, name, description, ownerId, address, city);
+                result.Add(business);
+            }
+            return result;
+        }
+
+        public List<Business> getBusinessById(int businessId)
+        {
+            List<Business> result = new List<Business>();
+            CouponsDataset.BusinessesDataTable businesses = mTableBusiness.SelectBusinessById(businessId);
+            if (businesses.Rows.Count == 1)
+            {
+                DataRow row = businesses.Rows[0];
+                int id = (int)row[BusinessesColumns.ID];
+                String name = row[BusinessesColumns.NAME].ToString();
+                String description = row[BusinessesColumns.DESCRIPTION].ToString();
+                int ownerId = (int)row[BusinessesColumns.OWNER_ID];
+                String address = row[BusinessesColumns.ADDRESS].ToString();
+                String city = row[BusinessesColumns.CITY].ToString();
+
+                Business business = new Business(id, name, description, ownerId, address, city);
+                result.Add(business);
+            }
+            return result;
+        }
+
+        public BusinessOwner getBusinessOwnerById(int businessOwnerId)
+        {
+            CouponsDataset.UsersDataTable user = mTableUsers.selectBusinessOwnerById(businessOwnerId);
+
+            if (user.Rows.Count == 1)
+            {
+                DataRow row = user.Rows[0];
+                int id = (int)row[UserColumns.ID];
+                String username = row[UserColumns.USERNAME].ToString();
+                String mail = row[UserColumns.MAIL].ToString();
+                String phone = row[UserColumns.PHONE].ToString();
+
+                BusinessOwner businessOwner = new BusinessOwner(id, username, mail, phone);
+                return businessOwner;
+            }
+            return null;  
+        }
+
+        public BusinessOwner getBusinessOwnerByUserName(string businessOwnerUserName)
+        {
+            CouponsDataset.UsersDataTable user = mTableUsers.selectBusinessOwnerByUserName(businessOwnerUserName);
+
+            if (user.Rows.Count == 1)
+            {
+                DataRow row = user.Rows[0];
+                int id = (int)row[UserColumns.ID];
+                String mail = row[UserColumns.MAIL].ToString();
+                String phone = row[UserColumns.PHONE].ToString();
+
+                BusinessOwner businessOwner = new BusinessOwner(id, businessOwnerUserName, mail, phone);
+                return businessOwner;
+            }
+            return null;  
         }
     }
 }

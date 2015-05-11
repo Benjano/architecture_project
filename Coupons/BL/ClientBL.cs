@@ -68,7 +68,7 @@ namespace Coupons.BL
             return mDal.buyCoupon(deal, client);
         }
 
-        public Deal getDealById(int dealId)
+        public List<Deal> getDealById(int dealId)
         {
             return mDal.getDealById(dealId);
         }
@@ -120,9 +120,14 @@ namespace Coupons.BL
         }
 
 
-        internal List<Business> getAllBusiness()
+        public List<Business> getAllBusiness()
         {
             return mDal.getAllDeal();
+        }
+
+        public List<Deal> getAllDeal()
+        {
+            return mDal.getAllDeals();
         }
     }
 }

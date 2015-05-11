@@ -156,9 +156,10 @@ namespace Coupons.DAL
             return -1;
         }
 
-        public Deal getDealById(int dealId)
+        public List<Deal> getDealById(int dealId)
         {
             CouponsDataset.DealsDataTable deals = mTableDeals.SelectDealById(dealId);
+            List<Deal> result = new List<Deal>();
             if (deals.Rows.Count == 1)
             {
                 DataRow row = deals[0];
@@ -177,12 +178,9 @@ namespace Coupons.DAL
 
 
                 Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
-                return deal;
+                result.Add(deal);
             }
-            else
-            {
-                return null;
-            }
+            return result;
         }
 
         public Client getClientById(int clientId)
@@ -326,5 +324,33 @@ namespace Coupons.DAL
             }
             return result;
         }
+
+        public List<Deal> getAllDeals()
+        {
+            List<Deal> result = new List<Deal>();
+            CouponsDataset.DealsDataTable deals = mTableDeals.selectAllDeals();
+            foreach (DataRow row in deals.Rows)
+            {
+                int id = (int)row[DealsColumns.ID];
+                String name = row[DealsColumns.NAME].ToString();
+                String details = row[DealsColumns.DETAILS].ToString(); ;
+                decimal originalPrice = (decimal)row[DealsColumns.ORIGINAL_PRICE];
+                float rate = (float)(double)row[DealsColumns.RATE];
+                DateTime experationDate;
+                DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
+                bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
+                int businessId = (int)row[DealsColumns.BUSINESS_ID];
+
+                AdminDAL mAdminDAL = new AdminDAL();
+                Business business = mAdminDAL.selectBusinessById(businessId);
+
+
+                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
+                result.Add(deal);
+            }
+            return result;
+        }
+
+
     }
 }
