@@ -9,6 +9,10 @@
 }
 
 namespace Coupons.CouponsDatasetTableAdapters {
+    partial class ClientsTableAdapter
+    {
+    }
+
     partial class UsersTableAdapter
     {
     }

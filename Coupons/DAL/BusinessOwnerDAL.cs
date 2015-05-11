@@ -37,9 +37,9 @@ namespace Coupons.DAL
 
 
 
-        public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate)
+        public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate, String startHour, String endHour)
         {
-            int result = mTableDeals.InsertDeal(name, details, business.ID, price, experationDate.ToShortDateString());
+            int result = mTableDeals.InsertDeal(name, details, business.ID, price, experationDate, startHour, endHour);
             loadDealsToBusiness(business);
             return result == 1;
         }

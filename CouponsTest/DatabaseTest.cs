@@ -63,7 +63,7 @@ namespace CouponsTest
             Assert.IsTrue(mAdminDAL.insertNewBusiness("Aroma", "coffee shop", businessOwner.ID, "bs 11", "bs"), "Business was not created");
             int crrdBusinessid = mAdminDAL.findBusinessId(businessOwner.ID);
             Business crrdBusiness = mAdminDAL.selectBusinessById(crrdBusinessid);
-            Assert.IsTrue(mBusinessDAL.insertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3)), "Deal was not created");
+            Assert.IsTrue(mBusinessDAL.insertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3), DateTime.Now, DateTime.Now), "Deal was not created");
             mAdminDAL.deleteDeal(crrdBusiness.Deals[0].ID);
             mAdminDAL.deleteBusiness(crrdBusinessid);
             mAdminDAL.deleteUser(businessOwner.ID);
@@ -87,7 +87,7 @@ namespace CouponsTest
             Assert.IsTrue(mAdminDAL.insertNewBusiness("Aroma", "coffee shop", businessOwner.ID, "bs 11", "bs"), "Business was not created");
             int crrdBusinessId = mAdminDAL.findBusinessId(businessOwner.ID);
             Business crrdBusiness = mAdminDAL.selectBusinessById(crrdBusinessId);
-            Assert.IsTrue(mBusinessDAL.insertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3)), "Deal was not created");
+            Assert.IsTrue(mBusinessDAL.insertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3), DateTime.Now, DateTime.Now), "Deal was not created");
             Assert.IsTrue(mClientDAL.insertNewClient("Aviv89", "password4", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
             int createdClientId = mClientDAL.findClientId("Aviv89", "password4");
             int dealId = mClientDAL.selectDeal(crrdBusinessId);

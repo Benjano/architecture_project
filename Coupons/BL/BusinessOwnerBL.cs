@@ -30,9 +30,9 @@ namespace Coupons.BL
             return mDal.logBusinessOwner(username, password);
         }
 
-        public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate)
+        public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate, String startHour, String endHour)
         {
-            return mDal.insertNewDeal(name, details, business, price, experationDate);
+            return mDal.insertNewDeal(name, details, business, price, experationDate, startHour, endHour);
         }
 
         public bool insertNewBusiness(int ownerId, String name, String description, String city, String address)

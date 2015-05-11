@@ -1018,6 +1018,8 @@ namespace Coupons {
             
             private global::System.Data.DataColumn columnUsername;
             
+            private global::System.Data.DataColumn columnTimestamp;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ClientsDataTable() {
@@ -1109,6 +1111,14 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn TimestampColumn {
+                get {
+                    return this.columnTimestamp;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1144,7 +1154,7 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ClientsRow AddClientsRow(UsersRow parentUsersRowByFK_UserId, System.DateTime Birthdate, string Gender, string Location, string Phone, string Mail, string Username) {
+            public ClientsRow AddClientsRow(UsersRow parentUsersRowByFK_UserId, System.DateTime Birthdate, string Gender, string Location, string Phone, string Mail, string Username, System.DateTime Timestamp) {
                 ClientsRow rowClientsRow = ((ClientsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1153,7 +1163,8 @@ namespace Coupons {
                         Location,
                         Phone,
                         Mail,
-                        Username};
+                        Username,
+                        Timestamp};
                 if ((parentUsersRowByFK_UserId != null)) {
                     columnValuesArray[0] = parentUsersRowByFK_UserId[0];
                 }
@@ -1193,6 +1204,7 @@ namespace Coupons {
                 this.columnPhone = base.Columns["Phone"];
                 this.columnMail = base.Columns["Mail"];
                 this.columnUsername = base.Columns["Username"];
+                this.columnTimestamp = base.Columns["Timestamp"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1212,6 +1224,8 @@ namespace Coupons {
                 base.Columns.Add(this.columnMail);
                 this.columnUsername = new global::System.Data.DataColumn("Username", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUsername);
+                this.columnTimestamp = new global::System.Data.DataColumn("Timestamp", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTimestamp);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnUserId}, true));
                 this.columnUserId.AllowDBNull = false;
@@ -1226,6 +1240,7 @@ namespace Coupons {
                 this.columnMail.MaxLength = 2147483647;
                 this.columnUsername.AllowDBNull = false;
                 this.columnUsername.MaxLength = 50;
+                this.columnTimestamp.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5824,6 +5839,14 @@ namespace Coupons {
             
             private global::System.Data.DataColumn columnIs_Approved;
             
+            private global::System.Data.DataColumn columnStart_Hour;
+            
+            private global::System.Data.DataColumn columnEnd_Hour;
+            
+            private global::System.Data.DataColumn columnStart_Hour1;
+            
+            private global::System.Data.DataColumn columnEnd_Hour1;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DealsDataTable() {
@@ -5923,6 +5946,38 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Start_HourColumn {
+                get {
+                    return this.columnStart_Hour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn End_HourColumn {
+                get {
+                    return this.columnEnd_Hour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Start_Hour1Column {
+                get {
+                    return this.columnStart_Hour1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn End_Hour1Column {
+                get {
+                    return this.columnEnd_Hour1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -5958,7 +6013,7 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DealsRow AddDealsRow(string Name, string Details, BusinessesRow parentBusinessesRowByFK_Deals_Businesses, decimal Original_Price, System.DateTime Experation_Date, double Rate, string Is_Approved) {
+            public DealsRow AddDealsRow(string Name, string Details, BusinessesRow parentBusinessesRowByFK_Deals_Businesses, decimal Original_Price, System.DateTime Experation_Date, double Rate, string Is_Approved, System.DateTime Start_Hour, System.DateTime End_Hour, string Start_Hour1, string End_Hour1) {
                 DealsRow rowDealsRow = ((DealsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -5968,7 +6023,11 @@ namespace Coupons {
                         Original_Price,
                         Experation_Date,
                         Rate,
-                        Is_Approved};
+                        Is_Approved,
+                        Start_Hour,
+                        End_Hour,
+                        Start_Hour1,
+                        End_Hour1};
                 if ((parentBusinessesRowByFK_Deals_Businesses != null)) {
                     columnValuesArray[3] = parentBusinessesRowByFK_Deals_Businesses[0];
                 }
@@ -6009,6 +6068,10 @@ namespace Coupons {
                 this.columnExperation_Date = base.Columns["Experation_Date"];
                 this.columnRate = base.Columns["Rate"];
                 this.columnIs_Approved = base.Columns["Is_Approved"];
+                this.columnStart_Hour = base.Columns["Start_Hour"];
+                this.columnEnd_Hour = base.Columns["End_Hour"];
+                this.columnStart_Hour1 = base.Columns["Start_Hour1"];
+                this.columnEnd_Hour1 = base.Columns["End_Hour1"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6030,6 +6093,14 @@ namespace Coupons {
                 base.Columns.Add(this.columnRate);
                 this.columnIs_Approved = new global::System.Data.DataColumn("Is_Approved", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIs_Approved);
+                this.columnStart_Hour = new global::System.Data.DataColumn("Start_Hour", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStart_Hour);
+                this.columnEnd_Hour = new global::System.Data.DataColumn("End_Hour", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnd_Hour);
+                this.columnStart_Hour1 = new global::System.Data.DataColumn("Start_Hour1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStart_Hour1);
+                this.columnEnd_Hour1 = new global::System.Data.DataColumn("End_Hour1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnd_Hour1);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnId}, true));
                 this.columnId.AutoIncrement = true;
@@ -6045,6 +6116,10 @@ namespace Coupons {
                 this.columnOriginal_Price.AllowDBNull = false;
                 this.columnExperation_Date.AllowDBNull = false;
                 this.columnIs_Approved.MaxLength = 10;
+                this.columnStart_Hour1.Caption = "Start_Hour";
+                this.columnStart_Hour1.MaxLength = 50;
+                this.columnEnd_Hour1.Caption = "End_Hour";
+                this.columnEnd_Hour1.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6264,6 +6339,17 @@ namespace Coupons {
                 }
                 set {
                     this[this.tableClients.UsernameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Timestamp {
+                get {
+                    return ((global::System.DateTime)(this[this.tableClients.TimestampColumn]));
+                }
+                set {
+                    this[this.tableClients.TimestampColumn] = value;
                 }
             }
             
@@ -7834,6 +7920,70 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Start_Hour {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDeals.Start_HourColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Start_Hour\' in table \'Deals\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeals.Start_HourColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime End_Hour {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableDeals.End_HourColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'End_Hour\' in table \'Deals\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeals.End_HourColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Start_Hour1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeals.Start_Hour1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Start_Hour1\' in table \'Deals\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeals.Start_Hour1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string End_Hour1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableDeals.End_Hour1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'End_Hour1\' in table \'Deals\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDeals.End_Hour1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BusinessesRow BusinessesRow {
                 get {
                     return ((BusinessesRow)(this.GetParentRow(this.Table.ParentRelations["FK_Deals_Businesses"])));
@@ -7877,6 +8027,54 @@ namespace Coupons {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetIs_ApprovedNull() {
                 this[this.tableDeals.Is_ApprovedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStart_HourNull() {
+                return this.IsNull(this.tableDeals.Start_HourColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStart_HourNull() {
+                this[this.tableDeals.Start_HourColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEnd_HourNull() {
+                return this.IsNull(this.tableDeals.End_HourColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEnd_HourNull() {
+                this[this.tableDeals.End_HourColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStart_Hour1Null() {
+                return this.IsNull(this.tableDeals.Start_Hour1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStart_Hour1Null() {
+                this[this.tableDeals.Start_Hour1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEnd_Hour1Null() {
+                return this.IsNull(this.tableDeals.End_Hour1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEnd_Hour1Null() {
+                this[this.tableDeals.End_Hour1Column] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8612,6 +8810,7 @@ namespace Coupons.CouponsDatasetTableAdapters {
             tableMapping.ColumnMappings.Add("Phone", "Phone");
             tableMapping.ColumnMappings.Add("Mail", "Mail");
             tableMapping.ColumnMappings.Add("Username", "Username");
+            tableMapping.ColumnMappings.Add("Timestamp", "Timestamp");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
@@ -8625,19 +8824,20 @@ namespace Coupons.CouponsDatasetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[6];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[7];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Clients.UserId, Clients.Birthdate, Clients.Gender, Clients.Location, Users" +
-                ".Phone, Users.Mail, Users.Username\r\nFROM     Clients INNER JOIN\r\n               " +
-                "   Users ON Clients.UserId = Users.Id\r\nWHERE  (Clients.UserId = @id)";
+                ".Phone, Users.Mail, Users.Username, Clients.Timestamp\r\nFROM     Clients INNER JO" +
+                "IN\r\n                  Users ON Clients.UserId = Users.Id\r\nWHERE  (Clients.UserId" +
+                " = @id)";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "INSERT INTO Clients\r\n                  (UserId, Birthdate, Gender, Location)\r\nVAL" +
-                "UES (@UserId,@Birthdate,@Gender,@Location);  \r\nSELECT UserId, Birthdate, Gender," +
-                " Location FROM Clients WHERE (UserId = @UserId)";
+            this._commandCollection[1].CommandText = "INSERT INTO Clients\r\n                  (UserId, Birthdate, Gender, Location, Time" +
+                "stamp)\r\nVALUES (@UserId,@Birthdate,@Gender,@Location, GETDATE());   \r\nSELECT Use" +
+                "rId, Birthdate, Gender, Location FROM Clients WHERE (UserId = @UserId)";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Birthdate", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Birthdate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -8646,14 +8846,15 @@ namespace Coupons.CouponsDatasetTableAdapters {
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT Clients.Birthdate, Clients.Gender, Clients.Location, Users.Phone, Users.Ma" +
-                "il, Users.Username, Clients.UserId\r\nFROM     Clients INNER JOIN\r\n               " +
-                "   Users ON Clients.UserId = Users.Id";
+                "il, Users.Username, Clients.UserId, Clients.Timestamp\r\nFROM     Clients INNER JO" +
+                "IN\r\n                  Users ON Clients.UserId = Users.Id";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "SELECT Clients.UserId, Clients.Birthdate, Clients.Gender, Clients.Location, Users" +
-                ".Phone, Users.Mail, Users.Username\r\nFROM     Clients INNER JOIN\r\n               " +
-                "   Users ON Clients.UserId = Users.Id\r\nWHERE  (Users.Username = @username)";
+                ".Phone, Users.Mail, Users.Username, Clients.Timestamp\r\nFROM     Clients INNER JO" +
+                "IN\r\n                  Users ON Clients.UserId = Users.Id\r\nWHERE  (Users.Username" +
+                " = @username)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
@@ -8669,12 +8870,18 @@ namespace Coupons.CouponsDatasetTableAdapters {
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "UPDATE Clients\r\nSET          Location = @Location\r\nWHERE  (UserId = @Original_Use" +
-                "rId); \r\nSELECT UserId, Birthdate, Gender, Location FROM Clients WHERE (UserId = " +
-                "@UserId)";
+                "rId);  \r\nSELECT UserId, Birthdate, Gender, Location FROM Clients WHERE (UserId =" +
+                " @UserId)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Location", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Location", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[6].Connection = this.Connection;
+            this._commandCollection[6].CommandText = "UPDATE Clients\r\nSET          Timestamp = @Timestamp\r\nWHERE  (UserId = @UserId)";
+            this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Timestamp", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Timestamp", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UserId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "UserId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8810,6 +9017,31 @@ namespace Coupons.CouponsDatasetTableAdapters {
             }
             command.Parameters[1].Value = ((int)(Original_UserId));
             command.Parameters[2].Value = ((int)(UserId));
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
+        public virtual int UpdateTimestamp(System.DateTime Timestamp, int UserId) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[6];
+            command.Parameters[0].Value = ((System.DateTime)(Timestamp));
+            command.Parameters[1].Value = ((int)(UserId));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -14685,53 +14917,67 @@ SELECT ClientId, FriendId, NetworkName FROM SocialFriends WHERE (ClientId = @Cli
             tableMapping.ColumnMappings.Add("Experation_Date", "Experation_Date");
             tableMapping.ColumnMappings.Add("Rate", "Rate");
             tableMapping.ColumnMappings.Add("Is_Approved", "Is_Approved");
+            tableMapping.ColumnMappings.Add("Start_Hour", "Start_Hour1");
+            tableMapping.ColumnMappings.Add("End_Hour", "End_Hour1");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Deals] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([BusinessId] = @Original_BusinessId) AND ([Original_Price] = @p2) AND ([Experation_Date] = @Original_Experation_Date) AND ((@IsNull_Rate = 1 AND [Rate] IS NULL) OR ([Rate] = @Original_Rate)) AND ((@IsNull_Is_Approved = 1 AND [Is_Approved] IS NULL) OR ([Is_Approved] = @Original_Is_Approved)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Deals] WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([BusinessId] = @Original_BusinessId) AND ([Original_Price] = @p2) AND ([Experation_Date] = @Original_Experation_Date) AND ((@IsNull_Rate = 1 AND [Rate] IS NULL) OR ([Rate] = @Original_Rate)) AND ((@IsNull_Is_Approved = 1 AND [Is_Approved] IS NULL) OR ([Is_Approved] = @Original_Is_Approved)) AND ((@IsNull_Start_Hour = 1 AND [Start_Hour] IS NULL) OR ([Start_Hour] = @Original_Start_Hour)) AND ((@IsNull_End_Hour = 1 AND [End_Hour] IS NULL) OR ([End_Hour] = @Original_End_Hour)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BusinessId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BusinessId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Original_Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Experation_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Experation_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Rate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rate", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Is_Approved", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Is_Approved", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Is_Approved", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Is_Approved", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Start_Hour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start_Hour", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Start_Hour", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start_Hour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_End_Hour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End_Hour", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_End_Hour", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End_Hour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Deals] ([Name], [Details], [BusinessId], [Original_Price], [Experation_Date], [Rate], [Is_Approved]) VALUES (@Name, @Details, @BusinessId, @p1, @Experation_Date, @Rate, @Is_Approved);
-SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_Approved FROM Deals WHERE (Id = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Deals] ([Name], [Details], [BusinessId], [Original_Price], [Experation_Date], [Rate], [Is_Approved], [Start_Hour], [End_Hour]) VALUES (@Name, @Details, @BusinessId, @p1, @Experation_Date, @Rate, @Is_Approved, @Start_Hour, @End_Hour);
+SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_Approved, Start_Hour, End_Hour FROM Deals WHERE (Id = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Details", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Details", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BusinessId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BusinessId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Original_Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Experation_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Experation_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rate", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Is_Approved", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Is_Approved", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Start_Hour", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start_Hour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@End_Hour", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End_Hour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [Deals] SET [Name] = @Name, [Details] = @Details, [BusinessId] = @BusinessId, [Original_Price] = @p1, [Experation_Date] = @Experation_Date, [Rate] = @Rate, [Is_Approved] = @Is_Approved WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([BusinessId] = @Original_BusinessId) AND ([Original_Price] = @p2) AND ([Experation_Date] = @Original_Experation_Date) AND ((@IsNull_Rate = 1 AND [Rate] IS NULL) OR ([Rate] = @Original_Rate)) AND ((@IsNull_Is_Approved = 1 AND [Is_Approved] IS NULL) OR ([Is_Approved] = @Original_Is_Approved)));
-SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_Approved FROM Deals WHERE (Id = @Id)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Deals] SET [Name] = @Name, [Details] = @Details, [BusinessId] = @BusinessId, [Original_Price] = @p1, [Experation_Date] = @Experation_Date, [Rate] = @Rate, [Is_Approved] = @Is_Approved, [Start_Hour] = @Start_Hour, [End_Hour] = @End_Hour WHERE (([Id] = @Original_Id) AND ([Name] = @Original_Name) AND ([BusinessId] = @Original_BusinessId) AND ([Original_Price] = @p2) AND ([Experation_Date] = @Original_Experation_Date) AND ((@IsNull_Rate = 1 AND [Rate] IS NULL) OR ([Rate] = @Original_Rate)) AND ((@IsNull_Is_Approved = 1 AND [Is_Approved] IS NULL) OR ([Is_Approved] = @Original_Is_Approved)) AND ((@IsNull_Start_Hour = 1 AND [Start_Hour] IS NULL) OR ([Start_Hour] = @Original_Start_Hour)) AND ((@IsNull_End_Hour = 1 AND [End_Hour] IS NULL) OR ([End_Hour] = @Original_End_Hour)));
+SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_Approved, Start_Hour, End_Hour FROM Deals WHERE (Id = @Id)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Details", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Details", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BusinessId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BusinessId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Original_Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Experation_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Experation_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Rate", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rate", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Is_Approved", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Is_Approved", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Start_Hour", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start_Hour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@End_Hour", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End_Hour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Name", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_BusinessId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BusinessId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p2", global::System.Data.SqlDbType.Money, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Original_Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Experation_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Experation_Date", global::System.Data.SqlDbType.DateTime, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Rate", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rate", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Rate", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Rate", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Is_Approved", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Is_Approved", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Is_Approved", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Is_Approved", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Start_Hour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start_Hour", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Start_Hour", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Start_Hour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_End_Hour", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End_Hour", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_End_Hour", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "End_Hour", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
@@ -14748,8 +14994,8 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_A" +
-                "pproved\r\nFROM     Deals";
+            this._commandCollection[0].CommandText = "SELECT        Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rat" +
+                "e, Is_Approved, Start_Hour, End_Hour\r\nFROM            Deals";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
@@ -14764,37 +15010,38 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT        Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rat" +
-                "e, Is_Approved\r\nFROM            Deals";
+            this._commandCollection[3].CommandText = "SELECT BusinessId, Details, End_Hour, Experation_Date, Id, Is_Approved, Name, Ori" +
+                "ginal_Price, Rate, Start_Hour FROM Deals";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = @"INSERT INTO Deals
-                  (Name, Details, BusinessId, Original_Price, Experation_Date)
-VALUES (@Name,@Details,@BusinessId,@p1,@Experation_Date);  
-SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_Approved FROM Deals WHERE (Id = SCOPE_IDENTITY())";
+            this._commandCollection[4].CommandText = "INSERT INTO Deals\r\n                         (Name, Details, BusinessId, Original_" +
+                "Price, Experation_Date, Start_Hour, End_Hour)\r\nVALUES        (@Name,@Details,@Bu" +
+                "sinessId,@Original_Price,@Experation_Date,@Start_Hour,@End_Hour);    \r\n";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Details", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Details", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BusinessId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BusinessId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@p1", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Original_Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Experation_Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Money, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Original_Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Experation_Date", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Start_Hour", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Start_Hour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@End_Hour", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "End_Hour", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
-            this._commandCollection[5].CommandText = "SELECT BusinessId, Details, Experation_Date, Id, Is_Approved, Name, Original_Pric" +
-                "e, Rate FROM Deals WHERE (BusinessId = @BusinessId)";
+            this._commandCollection[5].CommandText = "SELECT BusinessId, Details, End_Hour, Experation_Date, Id, Is_Approved, Name, Ori" +
+                "ginal_Price, Rate, Start_Hour FROM Deals WHERE (BusinessId = @BusinessId)";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BusinessId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BusinessId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT BusinessId, Details, Experation_Date, Id, Is_Approved, Name, Original_Pric" +
-                "e, Rate\r\nFROM     Deals\r\nWHERE  (Id = @id)";
+            this._commandCollection[6].CommandText = "SELECT BusinessId, Details, End_Hour, Experation_Date, Id, Is_Approved, Name, Ori" +
+                "ginal_Price, Rate, Start_Hour FROM Deals WHERE (Id = @id)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "SELECT        Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rat" +
-                "e, Is_Approved\r\nFROM            Deals\r\nWHERE        (Is_Approved = \'False\')";
+            this._commandCollection[7].CommandText = "SELECT BusinessId, Details, End_Hour, Experation_Date, Id, Is_Approved, Name, Ori" +
+                "ginal_Price, Rate, Start_Hour FROM Deals WHERE (Is_Approved = \'False\')";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -14914,7 +15161,7 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_Id, string Original_Name, int Original_BusinessId, decimal p2, System.DateTime Original_Experation_Date, global::System.Nullable<double> Original_Rate, string Original_Is_Approved) {
+        public virtual int Delete(int Original_Id, string Original_Name, int Original_BusinessId, decimal p2, System.DateTime Original_Experation_Date, global::System.Nullable<double> Original_Rate, string Original_Is_Approved, string Original_Start_Hour, string Original_End_Hour) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
@@ -14941,6 +15188,22 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
                 this.Adapter.DeleteCommand.Parameters[7].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((string)(Original_Is_Approved));
             }
+            if ((Original_Start_Hour == null)) {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((string)(Original_Start_Hour));
+            }
+            if ((Original_End_Hour == null)) {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((string)(Original_End_Hour));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -14961,7 +15224,7 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string Name, string Details, int BusinessId, decimal p1, System.DateTime Experation_Date, global::System.Nullable<double> Rate, string Is_Approved) {
+        public virtual int Insert(string Name, string Details, int BusinessId, decimal p1, System.DateTime Experation_Date, global::System.Nullable<double> Rate, string Is_Approved, string Start_Hour, string End_Hour) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -14989,6 +15252,18 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
             else {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((string)(Is_Approved));
             }
+            if ((Start_Hour == null)) {
+                this.Adapter.InsertCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[7].Value = ((string)(Start_Hour));
+            }
+            if ((End_Hour == null)) {
+                this.Adapter.InsertCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[8].Value = ((string)(End_Hour));
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -15009,7 +15284,26 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string Details, int BusinessId, decimal p1, System.DateTime Experation_Date, global::System.Nullable<double> Rate, string Is_Approved, int Original_Id, string Original_Name, int Original_BusinessId, decimal p2, System.DateTime Original_Experation_Date, global::System.Nullable<double> Original_Rate, string Original_Is_Approved, int Id) {
+        public virtual int Update(
+                    string Name, 
+                    string Details, 
+                    int BusinessId, 
+                    decimal p1, 
+                    System.DateTime Experation_Date, 
+                    global::System.Nullable<double> Rate, 
+                    string Is_Approved, 
+                    string Start_Hour, 
+                    string End_Hour, 
+                    int Original_Id, 
+                    string Original_Name, 
+                    int Original_BusinessId, 
+                    decimal p2, 
+                    System.DateTime Original_Experation_Date, 
+                    global::System.Nullable<double> Original_Rate, 
+                    string Original_Is_Approved, 
+                    string Original_Start_Hour, 
+                    string Original_End_Hour, 
+                    int Id) {
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -15037,33 +15331,61 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
             else {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((string)(Is_Approved));
             }
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_Id));
+            if ((Start_Hour == null)) {
+                this.Adapter.UpdateCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[7].Value = ((string)(Start_Hour));
+            }
+            if ((End_Hour == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(End_Hour));
+            }
+            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_Id));
             if ((Original_Name == null)) {
                 throw new global::System.ArgumentNullException("Original_Name");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_Name));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_Name));
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_BusinessId));
-            this.Adapter.UpdateCommand.Parameters[10].Value = ((decimal)(p2));
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((System.DateTime)(Original_Experation_Date));
+            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_BusinessId));
+            this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(p2));
+            this.Adapter.UpdateCommand.Parameters[13].Value = ((System.DateTime)(Original_Experation_Date));
             if ((Original_Rate.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((double)(Original_Rate.Value));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((double)(Original_Rate.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
-            }
-            if ((Original_Is_Approved == null)) {
                 this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
             }
-            else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_Is_Approved));
+            if ((Original_Is_Approved == null)) {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[17].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Id));
+            else {
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((string)(Original_Is_Approved));
+            }
+            if ((Original_Start_Hour == null)) {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((string)(Original_Start_Hour));
+            }
+            if ((Original_End_Hour == null)) {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[21].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[21].Value = ((string)(Original_End_Hour));
+            }
+            this.Adapter.UpdateCommand.Parameters[22].Value = ((int)(Id));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -15084,8 +15406,26 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string Name, string Details, int BusinessId, decimal p1, System.DateTime Experation_Date, global::System.Nullable<double> Rate, string Is_Approved, int Original_Id, string Original_Name, int Original_BusinessId, decimal p2, System.DateTime Original_Experation_Date, global::System.Nullable<double> Original_Rate, string Original_Is_Approved) {
-            return this.Update(Name, Details, BusinessId, p1, Experation_Date, Rate, Is_Approved, Original_Id, Original_Name, Original_BusinessId, p2, Original_Experation_Date, Original_Rate, Original_Is_Approved, Original_Id);
+        public virtual int Update(
+                    string Name, 
+                    string Details, 
+                    int BusinessId, 
+                    decimal p1, 
+                    System.DateTime Experation_Date, 
+                    global::System.Nullable<double> Rate, 
+                    string Is_Approved, 
+                    string Start_Hour, 
+                    string End_Hour, 
+                    int Original_Id, 
+                    string Original_Name, 
+                    int Original_BusinessId, 
+                    decimal p2, 
+                    System.DateTime Original_Experation_Date, 
+                    global::System.Nullable<double> Original_Rate, 
+                    string Original_Is_Approved, 
+                    string Original_Start_Hour, 
+                    string Original_End_Hour) {
+            return this.Update(Name, Details, BusinessId, p1, Experation_Date, Rate, Is_Approved, Start_Hour, End_Hour, Original_Id, Original_Name, Original_BusinessId, p2, Original_Experation_Date, Original_Rate, Original_Is_Approved, Original_Start_Hour, Original_End_Hour, Original_Id);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -15140,7 +15480,7 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertDeal(string Name, string Details, int BusinessId, decimal p1, string Experation_Date) {
+        public virtual int InsertDeal(string Name, string Details, int BusinessId, decimal Original_Price, System.DateTime Experation_Date, string Start_Hour, string End_Hour) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
@@ -15155,12 +15495,19 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Rate, Experation_Date, Is_
                 command.Parameters[1].Value = ((string)(Details));
             }
             command.Parameters[2].Value = ((int)(BusinessId));
-            command.Parameters[3].Value = ((decimal)(p1));
-            if ((Experation_Date == null)) {
-                throw new global::System.ArgumentNullException("Experation_Date");
+            command.Parameters[3].Value = ((decimal)(Original_Price));
+            command.Parameters[4].Value = ((System.DateTime)(Experation_Date));
+            if ((Start_Hour == null)) {
+                command.Parameters[5].Value = global::System.DBNull.Value;
             }
             else {
-                command.Parameters[4].Value = ((string)(Experation_Date));
+                command.Parameters[5].Value = ((string)(Start_Hour));
+            }
+            if ((End_Hour == null)) {
+                command.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[6].Value = ((string)(End_Hour));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 

@@ -32,7 +32,6 @@
         <Button Name="btnApprove" Content="Approve" HorizontalAlignment="Left" Margin="766,463,0,0" VerticalAlignment="Top" Width="75" Click="btnApprove_Click"/>
         <Label Content="Deal Id" HorizontalAlignment="Left" Margin="572,421,0,0" VerticalAlignment="Top"/>
         <TextBox Name="tbDeal_Id"  HorizontalAlignment="Left" Height="23" Margin="619,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" />
-        <ContentControl Content="ContentControl" HorizontalAlignment="Left" Margin="634,35,0,0" VerticalAlignment="Top"/>
         <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="668,463,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
         <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="668,497,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
         <Button Name="btnDeleteBusiness" Content="Delete" HorizontalAlignment="Left" Margin="190,463,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteBusiness_Click"/>
