@@ -40,7 +40,6 @@ namespace Coupons.DAL
         public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate, String startHour, String endHour)
         {
             int result = mTableDeals.InsertDeal(name, details, business.ID, price, experationDate, startHour, endHour);
-            loadDealsToBusiness(business);
             return result == 1;
         }
 
@@ -67,7 +66,7 @@ namespace Coupons.DAL
             return result;
         }
 
-        public void loadDealsToBusiness(Business business)
+       /* public void loadDealsToBusiness(Business business)
         {
             // Select the deals of each business belonging to owner
             CouponsDataset.DealsDataTable deals = mTableDeals.SelectDealByBusinessId(business.ID);
@@ -86,7 +85,7 @@ namespace Coupons.DAL
                 Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved, startHour, endHour);
                 business.addDeal(deal);
             }
-        }
+        }*/
 
         public void loadDealCoupons(Deal deal)
         {
@@ -212,6 +211,7 @@ namespace Coupons.DAL
             }
             return null;  
         }
+
 
         public BusinessOwner GetBusinessOwnerById(int ownerId)
         {

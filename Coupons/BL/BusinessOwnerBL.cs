@@ -45,10 +45,10 @@ namespace Coupons.BL
            return  mDal.getBusinessesByOwnerId(ownerId);
         }
 
-        private void loadDealsToBusiness(Business business)
+       /* private void loadDealsToBusiness(Business business)
         {
             mDal.loadDealsToBusiness(business);
-        }
+        }*/
 
         private void loadDealCoupons(Deal deal)
         {

@@ -10,19 +10,19 @@ namespace Coupons.BL
 {
     public class DealBL
     {
-        private DealDAL mDal;
+        /*private DealDAL mDal;
 
         public DealBL()
         {
             mDal = new DealDAL();
-            
+
         }
 
         public List<Deal> GetDealsByCategoryAndCity(Category category, string city)
         {
             return mDal.GetDealsByCategoryAndCity(category, city);
         }
-
+        */
 
     }
 }

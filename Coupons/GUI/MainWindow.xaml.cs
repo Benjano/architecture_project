@@ -16,7 +16,6 @@ using Coupons.BL;
 using Coupons.Models;
 using Coupons.GUI.ClientGUI;
 using Coupons;
-using Coupons.GUI.ClientGUI;
 using Coupons.GUI.AdminGUI;
 using Coupons.GUI.BusinessOwnerGUI;
 

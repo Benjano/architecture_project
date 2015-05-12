@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Device;
 using System.Device.Location;
+using Coupons.Enums;
 
 
 namespace Coupons.GUI.ClientGUI
@@ -25,9 +26,15 @@ namespace Coupons.GUI.ClientGUI
     public partial class ClientWindow : Window
     {
 
-        CategoryBL mCategoryBL = new CategoryBL();
+        ClientBL mClientBl = new ClientBL();
         BrandBL mBrandBL = new BrandBL();
-        BusinessBL mBusinessBL = new BusinessBL();
+
+        List<Deal> mDeals;
+        List<Business> mBusinesses;
+        List<Category> mCategories;
+        List<string> mPossibleCities;
+
+
         DealBL mDealBL = new DealBL();
         GeoCoordinateWatcher _watcher;
 
@@ -35,33 +42,86 @@ namespace Coupons.GUI.ClientGUI
         {
             InitializeComponent();
             lblUserName.Content = client.Username;
-    
-            cbCategory.ItemsSource = mCategoryBL.GetAllCategories();
-            cbCity.ItemsSource = mBusinessBL.GetBusinessCities();
+
+
+
+            mDeals = mClientBl.getAllDeal();
+            mBusinesses = mClientBl.getAllBusiness();
+            mCategories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList<Category>();
+            mPossibleCities = mClientBl.getPossibleCities();
+
+            setDealsDataGrid(mDeals);
+
+
+
+            cbCategory.ItemsSource = mCategories;
+            cbCategory.SelectedIndex = 0;
+
+            cbCity.ItemsSource = mPossibleCities;
+            cbCity.SelectedIndex = 0;
         }
+
+
+        private void reloadData()
+        {
+            mDeals = mClientBl.getAllDeal();
+            mBusinesses = mClientBl.getAllBusiness();
+            mCategories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList<Category>();
+            mPossibleCities = mClientBl.getPossibleCities();
+        }
+
+        /***************** SETCTION DEALS *****************/
+        public void setDealsDataGrid(List<Deal> deals)
+        {
+            dgDeals.Columns.Clear();
+            DataGridTextColumn colName = new DataGridTextColumn();
+            colName.Header = "Name";
+            colName.Binding = new Binding("Name");
+            colName.Width = 100;
+
+            DataGridTextColumn colDetails = new DataGridTextColumn();
+            colDetails.Header = "Details";
+            colDetails.Binding = new Binding("Details");
+            colDetails.Width = 200;
+
+         
+
+            dgDeals.Columns.Add(colName);
+            dgDeals.Columns.Add(colDetails);
+
+            dgDeals.ItemsSource = deals;
+        }
+
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
             string city = cbCity.SelectedItem.ToString();
-            Category category = (Category)cbCategory.SelectedItem;
-            //lvDeals.ItemsSource = mDealBL.GetDealsByCategoryAndCity(category,city);
-            List<Deal> deals = mDealBL.GetDealsByCategoryAndCity(category, city);
-            foreach (Deal deal in deals)
+            Category category = (Category) cbCategory.SelectedItem;
+
+            List<Deal> result = new List<Deal>();
+
+            foreach (Business business in mBusinesses)
             {
-                //ListViewItem item = new ListViewItem(){
-                    
-                //}
-                
-                lvDeals.Items.Add(item);
+                if (business.Categories.Contains(category) && business.City.ToLower().Equals(city))
+                {
+                    foreach (Deal deal in mDeals)
+                    {
+                        if (deal.Business == business.ID && deal.ExperationDate >= DateTime.Now)
+                        {
+                            result.Add(deal);
+                        }
+                    }
+                }
             }
 
+            setDealsDataGrid(result);
         }
 
         private void btLocation_Click(object sender, RoutedEventArgs e)
         {
             _watcher = new GeoCoordinateWatcher();
 
-           
+
             _watcher.PositionChanged += watcher_PositionChanged;
             _watcher.Start();
 
@@ -74,6 +134,11 @@ namespace Coupons.GUI.ClientGUI
         {
             MessageBox.Show(e.Position.Location.Latitude.ToString() + "," + e.Position.Location.Longitude.ToString());
             _watcher.Stop();
+        }
+
+        private void btnFavorit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

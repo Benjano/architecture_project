@@ -246,6 +246,10 @@ namespace Coupons.GUI.AdminGUI
                   "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+        private void dgBusinesses_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mSelectedBusiness = (Business)dgBusinesses.SelectedItem;
+        }
 
 
         private void btnRefreshBusiness_Click(object sender, RoutedEventArgs e)
@@ -299,7 +303,7 @@ namespace Coupons.GUI.AdminGUI
 
             DataGridTextColumn colBusinessId = new DataGridTextColumn();
             colBusinessId.Header = "Business Id";
-            colBusinessId.Binding = new Binding("Business.ID");
+            colBusinessId.Binding = new Binding("Business");
             colBusinessId.Width = 80;
 
             DataGridTextColumn colName = new DataGridTextColumn();
@@ -326,9 +330,9 @@ namespace Coupons.GUI.AdminGUI
 
         private void btnAddDeal_Click(object sender, RoutedEventArgs e)
         {
-            if (mSelectedDeal != null)
+            if (mSelectedBusiness != null)
             {
-                mSelectedDeal = (Deal)dgDeals.SelectedItem;
+                mSelectedBusiness = (Business)dgBusinesses.SelectedItem;
                 CreateDealWindow window = new CreateDealWindow(mSelectedBusiness);
                 window.Show();
             }
@@ -339,10 +343,6 @@ namespace Coupons.GUI.AdminGUI
             }
         }
 
-        private void dgBusinesses_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            mSelectedBusiness = (Business)dgBusinesses.SelectedItem;
-        }
 
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)

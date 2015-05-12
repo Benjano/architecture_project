@@ -19,7 +19,7 @@
         <TextBox Name="tbOwnerId"  HorizontalAlignment="Left" Height="23" Margin="95,456,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
         <TextBox Name="tbBusinessId" HorizontalAlignment="Left" Height="23" Margin="95,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
         <TextBox Name="tbBusinessName" HorizontalAlignment="Left" Height="23" Margin="95,420,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="182"/>
-        <Label Name="lblUsername" Content="Aviv" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="469,10,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblUsername" Content="" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="469,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Name" HorizontalAlignment="Left" Margin="22,417,0,0" VerticalAlignment="Top"/>
         <Label Content="Owner Id" HorizontalAlignment="Left" Margin="22,456,0,0" VerticalAlignment="Top"/>
         <Label Content="Business Id" HorizontalAlignment="Left" Margin="22,381,0,0" VerticalAlignment="Top"/>

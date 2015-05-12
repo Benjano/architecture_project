@@ -58,6 +58,8 @@ namespace Coupons {
         
         private DealsDataTable tableDeals;
         
+        private BusinessesDealsViewDataTable tableBusinessesDealsView;
+        
         private global::System.Data.DataRelation relationFK_GroupId;
         
         private global::System.Data.DataRelation relationFK_BrandId_Brand;
@@ -182,6 +184,9 @@ namespace Coupons {
                 }
                 if ((ds.Tables["Deals"] != null)) {
                     base.Tables.Add(new DealsDataTable(ds.Tables["Deals"]));
+                }
+                if ((ds.Tables["BusinessesDealsView"] != null)) {
+                    base.Tables.Add(new BusinessesDealsViewDataTable(ds.Tables["BusinessesDealsView"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -373,6 +378,16 @@ namespace Coupons {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Browsable(false)]
+        [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
+        public BusinessesDealsViewDataTable BusinessesDealsView {
+            get {
+                return this.tableBusinessesDealsView;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
         public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
@@ -488,6 +503,9 @@ namespace Coupons {
                 }
                 if ((ds.Tables["Deals"] != null)) {
                     base.Tables.Add(new DealsDataTable(ds.Tables["Deals"]));
+                }
+                if ((ds.Tables["BusinessesDealsView"] != null)) {
+                    base.Tables.Add(new BusinessesDealsViewDataTable(ds.Tables["BusinessesDealsView"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -624,6 +642,12 @@ namespace Coupons {
                     this.tableDeals.InitVars();
                 }
             }
+            this.tableBusinessesDealsView = ((BusinessesDealsViewDataTable)(base.Tables["BusinessesDealsView"]));
+            if ((initTable == true)) {
+                if ((this.tableBusinessesDealsView != null)) {
+                    this.tableBusinessesDealsView.InitVars();
+                }
+            }
             this.relationFK_GroupId = this.Relations["FK_GroupId"];
             this.relationFK_BrandId_Brand = this.Relations["FK_BrandId_Brand"];
             this.relationFK_Business_Users = this.Relations["FK_Business_Users"];
@@ -691,6 +715,8 @@ namespace Coupons {
             base.Tables.Add(this.tableFriends);
             this.tableDeals = new DealsDataTable();
             base.Tables.Add(this.tableDeals);
+            this.tableBusinessesDealsView = new BusinessesDealsViewDataTable();
+            base.Tables.Add(this.tableBusinessesDealsView);
             this.relationFK_GroupId = new global::System.Data.DataRelation("FK_GroupId", new global::System.Data.DataColumn[] {
                         this.tableGroups.IdColumn}, new global::System.Data.DataColumn[] {
                         this.tableClientsInGroup.GroupIdColumn}, false);
@@ -893,6 +919,12 @@ namespace Coupons {
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private bool ShouldSerializeBusinessesDealsView() {
+            return false;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
             if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
                 this.InitVars();
@@ -996,6 +1028,9 @@ namespace Coupons {
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void DealsRowChangeEventHandler(object sender, DealsRowChangeEvent e);
+        
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public delegate void BusinessesDealsViewRowChangeEventHandler(object sender, BusinessesDealsViewRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
@@ -3732,6 +3767,8 @@ namespace Coupons {
             
             private global::System.Data.DataColumn columnCategoryId;
             
+            private global::System.Data.DataColumn columnName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BusinessCategoriesDataTable() {
@@ -3783,6 +3820,14 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NameColumn {
+                get {
+                    return this.columnName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -3818,11 +3863,12 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public BusinessCategoriesRow AddBusinessCategoriesRow(BusinessesRow parentBusinessesRowByFK_BusinessCategories_Businesses, CategoriesRow parentCategoriesRowByFK_BusinessCategories_Categories) {
+            public BusinessCategoriesRow AddBusinessCategoriesRow(BusinessesRow parentBusinessesRowByFK_BusinessCategories_Businesses, CategoriesRow parentCategoriesRowByFK_BusinessCategories_Categories, string Name) {
                 BusinessCategoriesRow rowBusinessCategoriesRow = ((BusinessCategoriesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        null};
+                        null,
+                        Name};
                 if ((parentBusinessesRowByFK_BusinessCategories_Businesses != null)) {
                     columnValuesArray[0] = parentBusinessesRowByFK_BusinessCategories_Businesses[0];
                 }
@@ -3853,6 +3899,7 @@ namespace Coupons {
             internal void InitVars() {
                 this.columnBusinessId = base.Columns["BusinessId"];
                 this.columnCategoryId = base.Columns["CategoryId"];
+                this.columnName = base.Columns["Name"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3862,8 +3909,12 @@ namespace Coupons {
                 base.Columns.Add(this.columnBusinessId);
                 this.columnCategoryId = new global::System.Data.DataColumn("CategoryId", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCategoryId);
+                this.columnName = new global::System.Data.DataColumn("Name", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnName);
                 this.columnBusinessId.AllowDBNull = false;
                 this.columnCategoryId.AllowDBNull = false;
+                this.columnName.AllowDBNull = false;
+                this.columnName.MaxLength = 50;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6217,6 +6268,472 @@ namespace Coupons {
         }
         
         /// <summary>
+        ///Represents the strongly named DataTable class.
+        ///</summary>
+        [global::System.Serializable()]
+        [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
+        public partial class BusinessesDealsViewDataTable : global::System.Data.TypedTableBase<BusinessesDealsViewRow> {
+            
+            private global::System.Data.DataColumn columnDetails;
+            
+            private global::System.Data.DataColumn columnOriginal_Price;
+            
+            private global::System.Data.DataColumn columnRate;
+            
+            private global::System.Data.DataColumn columnExperation_Date;
+            
+            private global::System.Data.DataColumn columnIs_Approved;
+            
+            private global::System.Data.DataColumn columnDescription;
+            
+            private global::System.Data.DataColumn columnOwnerId;
+            
+            private global::System.Data.DataColumn columnAddress;
+            
+            private global::System.Data.DataColumn columnCity;
+            
+            private global::System.Data.DataColumn columnStart_Hour;
+            
+            private global::System.Data.DataColumn columnEnd_Hour;
+            
+            private global::System.Data.DataColumn columnDealId;
+            
+            private global::System.Data.DataColumn columnDealName;
+            
+            private global::System.Data.DataColumn columnbusId;
+            
+            private global::System.Data.DataColumn columnbusName;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public BusinessesDealsViewDataTable() {
+                this.TableName = "BusinessesDealsView";
+                this.BeginInit();
+                this.InitClass();
+                this.EndInit();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal BusinessesDealsViewDataTable(global::System.Data.DataTable table) {
+                this.TableName = table.TableName;
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                    this.CaseSensitive = table.CaseSensitive;
+                }
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                    this.Locale = table.Locale;
+                }
+                if ((table.Namespace != table.DataSet.Namespace)) {
+                    this.Namespace = table.Namespace;
+                }
+                this.Prefix = table.Prefix;
+                this.MinimumCapacity = table.MinimumCapacity;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected BusinessesDealsViewDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+                    base(info, context) {
+                this.InitVars();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DetailsColumn {
+                get {
+                    return this.columnDetails;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Original_PriceColumn {
+                get {
+                    return this.columnOriginal_Price;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn RateColumn {
+                get {
+                    return this.columnRate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Experation_DateColumn {
+                get {
+                    return this.columnExperation_Date;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Is_ApprovedColumn {
+                get {
+                    return this.columnIs_Approved;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescriptionColumn {
+                get {
+                    return this.columnDescription;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn OwnerIdColumn {
+                get {
+                    return this.columnOwnerId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn AddressColumn {
+                get {
+                    return this.columnAddress;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CityColumn {
+                get {
+                    return this.columnCity;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn Start_HourColumn {
+                get {
+                    return this.columnStart_Hour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn End_HourColumn {
+                get {
+                    return this.columnEnd_Hour;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DealIdColumn {
+                get {
+                    return this.columnDealId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DealNameColumn {
+                get {
+                    return this.columnDealName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn busIdColumn {
+                get {
+                    return this.columnbusId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn busNameColumn {
+                get {
+                    return this.columnbusName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            [global::System.ComponentModel.Browsable(false)]
+            public int Count {
+                get {
+                    return this.Rows.Count;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public BusinessesDealsViewRow this[int index] {
+                get {
+                    return ((BusinessesDealsViewRow)(this.Rows[index]));
+                }
+            }
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event BusinessesDealsViewRowChangeEventHandler BusinessesDealsViewRowChanging;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event BusinessesDealsViewRowChangeEventHandler BusinessesDealsViewRowChanged;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event BusinessesDealsViewRowChangeEventHandler BusinessesDealsViewRowDeleting;
+            
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public event BusinessesDealsViewRowChangeEventHandler BusinessesDealsViewRowDeleted;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void AddBusinessesDealsViewRow(BusinessesDealsViewRow row) {
+                this.Rows.Add(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public BusinessesDealsViewRow AddBusinessesDealsViewRow(string Details, decimal Original_Price, double Rate, System.DateTime Experation_Date, string Is_Approved, string Description, int OwnerId, string Address, string City, string Start_Hour, string End_Hour, string DealName, string busName) {
+                BusinessesDealsViewRow rowBusinessesDealsViewRow = ((BusinessesDealsViewRow)(this.NewRow()));
+                object[] columnValuesArray = new object[] {
+                        Details,
+                        Original_Price,
+                        Rate,
+                        Experation_Date,
+                        Is_Approved,
+                        Description,
+                        OwnerId,
+                        Address,
+                        City,
+                        Start_Hour,
+                        End_Hour,
+                        null,
+                        DealName,
+                        null,
+                        busName};
+                rowBusinessesDealsViewRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowBusinessesDealsViewRow);
+                return rowBusinessesDealsViewRow;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public override global::System.Data.DataTable Clone() {
+                BusinessesDealsViewDataTable cln = ((BusinessesDealsViewDataTable)(base.Clone()));
+                cln.InitVars();
+                return cln;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataTable CreateInstance() {
+                return new BusinessesDealsViewDataTable();
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal void InitVars() {
+                this.columnDetails = base.Columns["Details"];
+                this.columnOriginal_Price = base.Columns["Original_Price"];
+                this.columnRate = base.Columns["Rate"];
+                this.columnExperation_Date = base.Columns["Experation_Date"];
+                this.columnIs_Approved = base.Columns["Is_Approved"];
+                this.columnDescription = base.Columns["Description"];
+                this.columnOwnerId = base.Columns["OwnerId"];
+                this.columnAddress = base.Columns["Address"];
+                this.columnCity = base.Columns["City"];
+                this.columnStart_Hour = base.Columns["Start_Hour"];
+                this.columnEnd_Hour = base.Columns["End_Hour"];
+                this.columnDealId = base.Columns["DealId"];
+                this.columnDealName = base.Columns["DealName"];
+                this.columnbusId = base.Columns["busId"];
+                this.columnbusName = base.Columns["busName"];
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            private void InitClass() {
+                this.columnDetails = new global::System.Data.DataColumn("Details", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDetails);
+                this.columnOriginal_Price = new global::System.Data.DataColumn("Original_Price", typeof(decimal), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOriginal_Price);
+                this.columnRate = new global::System.Data.DataColumn("Rate", typeof(double), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnRate);
+                this.columnExperation_Date = new global::System.Data.DataColumn("Experation_Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnExperation_Date);
+                this.columnIs_Approved = new global::System.Data.DataColumn("Is_Approved", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIs_Approved);
+                this.columnDescription = new global::System.Data.DataColumn("Description", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDescription);
+                this.columnOwnerId = new global::System.Data.DataColumn("OwnerId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOwnerId);
+                this.columnAddress = new global::System.Data.DataColumn("Address", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnAddress);
+                this.columnCity = new global::System.Data.DataColumn("City", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCity);
+                this.columnStart_Hour = new global::System.Data.DataColumn("Start_Hour", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnStart_Hour);
+                this.columnEnd_Hour = new global::System.Data.DataColumn("End_Hour", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEnd_Hour);
+                this.columnDealId = new global::System.Data.DataColumn("DealId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDealId);
+                this.columnDealName = new global::System.Data.DataColumn("DealName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDealName);
+                this.columnbusId = new global::System.Data.DataColumn("busId", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbusId);
+                this.columnbusName = new global::System.Data.DataColumn("busName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnbusName);
+                this.columnDetails.MaxLength = 2147483647;
+                this.columnOriginal_Price.AllowDBNull = false;
+                this.columnExperation_Date.AllowDBNull = false;
+                this.columnIs_Approved.MaxLength = 10;
+                this.columnDescription.MaxLength = 2147483647;
+                this.columnAddress.MaxLength = 2147483647;
+                this.columnCity.MaxLength = 50;
+                this.columnStart_Hour.MaxLength = 50;
+                this.columnEnd_Hour.MaxLength = 50;
+                this.columnDealId.AutoIncrement = true;
+                this.columnDealId.AutoIncrementSeed = -1;
+                this.columnDealId.AutoIncrementStep = -1;
+                this.columnDealId.AllowDBNull = false;
+                this.columnDealId.ReadOnly = true;
+                this.columnDealName.AllowDBNull = false;
+                this.columnDealName.MaxLength = 50;
+                this.columnbusId.AutoIncrement = true;
+                this.columnbusId.AutoIncrementSeed = -1;
+                this.columnbusId.AutoIncrementStep = -1;
+                this.columnbusId.AllowDBNull = false;
+                this.columnbusId.ReadOnly = true;
+                this.columnbusName.AllowDBNull = false;
+                this.columnbusName.MaxLength = 50;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public BusinessesDealsViewRow NewBusinessesDealsViewRow() {
+                return ((BusinessesDealsViewRow)(this.NewRow()));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+                return new BusinessesDealsViewRow(builder);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override global::System.Type GetRowType() {
+                return typeof(BusinessesDealsViewRow);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanged(e);
+                if ((this.BusinessesDealsViewRowChanged != null)) {
+                    this.BusinessesDealsViewRowChanged(this, new BusinessesDealsViewRowChangeEvent(((BusinessesDealsViewRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowChanging(e);
+                if ((this.BusinessesDealsViewRowChanging != null)) {
+                    this.BusinessesDealsViewRowChanging(this, new BusinessesDealsViewRowChangeEvent(((BusinessesDealsViewRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleted(e);
+                if ((this.BusinessesDealsViewRowDeleted != null)) {
+                    this.BusinessesDealsViewRowDeleted(this, new BusinessesDealsViewRowChangeEvent(((BusinessesDealsViewRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+                base.OnRowDeleting(e);
+                if ((this.BusinessesDealsViewRowDeleting != null)) {
+                    this.BusinessesDealsViewRowDeleting(this, new BusinessesDealsViewRowChangeEvent(((BusinessesDealsViewRow)(e.Row)), e.Action));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void RemoveBusinessesDealsViewRow(BusinessesDealsViewRow row) {
+                this.Rows.Remove(row);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+                global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
+                global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
+                CouponsDataset ds = new CouponsDataset();
+                global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
+                any1.Namespace = "http://www.w3.org/2001/XMLSchema";
+                any1.MinOccurs = new decimal(0);
+                any1.MaxOccurs = decimal.MaxValue;
+                any1.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any1);
+                global::System.Xml.Schema.XmlSchemaAny any2 = new global::System.Xml.Schema.XmlSchemaAny();
+                any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1";
+                any2.MinOccurs = new decimal(1);
+                any2.ProcessContents = global::System.Xml.Schema.XmlSchemaContentProcessing.Lax;
+                sequence.Items.Add(any2);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute1 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute1.Name = "namespace";
+                attribute1.FixedValue = ds.Namespace;
+                type.Attributes.Add(attribute1);
+                global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
+                attribute2.Name = "tableTypeName";
+                attribute2.FixedValue = "BusinessesDealsViewDataTable";
+                type.Attributes.Add(attribute2);
+                type.Particle = sequence;
+                global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
+                if (xs.Contains(dsSchema.TargetNamespace)) {
+                    global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
+                    global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
+                    try {
+                        global::System.Xml.Schema.XmlSchema schema = null;
+                        dsSchema.Write(s1);
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                            schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
+                            s2.SetLength(0);
+                            schema.Write(s2);
+                            if ((s1.Length == s2.Length)) {
+                                s1.Position = 0;
+                                s2.Position = 0;
+                                for (; ((s1.Position != s1.Length) 
+                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                    ;
+                                }
+                                if ((s1.Position == s1.Length)) {
+                                    return type;
+                                }
+                            }
+                        }
+                    }
+                    finally {
+                        if ((s1 != null)) {
+                            s1.Close();
+                        }
+                        if ((s2 != null)) {
+                            s2.Close();
+                        }
+                    }
+                }
+                xs.Add(dsSchema);
+                return type;
+            }
+        }
+        
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
         public partial class ClientsRow : global::System.Data.DataRow {
@@ -7145,6 +7662,17 @@ namespace Coupons {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Name {
+                get {
+                    return ((string)(this[this.tableBusinessCategories.NameColumn]));
+                }
+                set {
+                    this[this.tableBusinessCategories.NameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public BusinessesRow BusinessesRow {
                 get {
                     return ((BusinessesRow)(this.GetParentRow(this.Table.ParentRelations["FK_BusinessCategories_Businesses"])));
@@ -8015,6 +8543,339 @@ namespace Coupons {
         }
         
         /// <summary>
+        ///Represents strongly named DataRow class.
+        ///</summary>
+        public partial class BusinessesDealsViewRow : global::System.Data.DataRow {
+            
+            private BusinessesDealsViewDataTable tableBusinessesDealsView;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            internal BusinessesDealsViewRow(global::System.Data.DataRowBuilder rb) : 
+                    base(rb) {
+                this.tableBusinessesDealsView = ((BusinessesDealsViewDataTable)(this.Table));
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Details {
+                get {
+                    try {
+                        return ((string)(this[this.tableBusinessesDealsView.DetailsColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Details\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.DetailsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public decimal Original_Price {
+                get {
+                    return ((decimal)(this[this.tableBusinessesDealsView.Original_PriceColumn]));
+                }
+                set {
+                    this[this.tableBusinessesDealsView.Original_PriceColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public double Rate {
+                get {
+                    try {
+                        return ((double)(this[this.tableBusinessesDealsView.RateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Rate\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.RateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public System.DateTime Experation_Date {
+                get {
+                    return ((global::System.DateTime)(this[this.tableBusinessesDealsView.Experation_DateColumn]));
+                }
+                set {
+                    this[this.tableBusinessesDealsView.Experation_DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Is_Approved {
+                get {
+                    try {
+                        return ((string)(this[this.tableBusinessesDealsView.Is_ApprovedColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Is_Approved\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.Is_ApprovedColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Description {
+                get {
+                    try {
+                        return ((string)(this[this.tableBusinessesDealsView.DescriptionColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Description\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.DescriptionColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int OwnerId {
+                get {
+                    try {
+                        return ((int)(this[this.tableBusinessesDealsView.OwnerIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OwnerId\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.OwnerIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Address {
+                get {
+                    try {
+                        return ((string)(this[this.tableBusinessesDealsView.AddressColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Address\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.AddressColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string City {
+                get {
+                    try {
+                        return ((string)(this[this.tableBusinessesDealsView.CityColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'City\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.CityColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Start_Hour {
+                get {
+                    try {
+                        return ((string)(this[this.tableBusinessesDealsView.Start_HourColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Start_Hour\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.Start_HourColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string End_Hour {
+                get {
+                    try {
+                        return ((string)(this[this.tableBusinessesDealsView.End_HourColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'End_Hour\' in table \'BusinessesDealsView\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBusinessesDealsView.End_HourColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int DealId {
+                get {
+                    return ((int)(this[this.tableBusinessesDealsView.DealIdColumn]));
+                }
+                set {
+                    this[this.tableBusinessesDealsView.DealIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DealName {
+                get {
+                    return ((string)(this[this.tableBusinessesDealsView.DealNameColumn]));
+                }
+                set {
+                    this[this.tableBusinessesDealsView.DealNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public int busId {
+                get {
+                    return ((int)(this[this.tableBusinessesDealsView.busIdColumn]));
+                }
+                set {
+                    this[this.tableBusinessesDealsView.busIdColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string busName {
+                get {
+                    return ((string)(this[this.tableBusinessesDealsView.busNameColumn]));
+                }
+                set {
+                    this[this.tableBusinessesDealsView.busNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDetailsNull() {
+                return this.IsNull(this.tableBusinessesDealsView.DetailsColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDetailsNull() {
+                this[this.tableBusinessesDealsView.DetailsColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsRateNull() {
+                return this.IsNull(this.tableBusinessesDealsView.RateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetRateNull() {
+                this[this.tableBusinessesDealsView.RateColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsIs_ApprovedNull() {
+                return this.IsNull(this.tableBusinessesDealsView.Is_ApprovedColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetIs_ApprovedNull() {
+                this[this.tableBusinessesDealsView.Is_ApprovedColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDescriptionNull() {
+                return this.IsNull(this.tableBusinessesDealsView.DescriptionColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDescriptionNull() {
+                this[this.tableBusinessesDealsView.DescriptionColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsOwnerIdNull() {
+                return this.IsNull(this.tableBusinessesDealsView.OwnerIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetOwnerIdNull() {
+                this[this.tableBusinessesDealsView.OwnerIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsAddressNull() {
+                return this.IsNull(this.tableBusinessesDealsView.AddressColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetAddressNull() {
+                this[this.tableBusinessesDealsView.AddressColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCityNull() {
+                return this.IsNull(this.tableBusinessesDealsView.CityColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCityNull() {
+                this[this.tableBusinessesDealsView.CityColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsStart_HourNull() {
+                return this.IsNull(this.tableBusinessesDealsView.Start_HourColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetStart_HourNull() {
+                this[this.tableBusinessesDealsView.Start_HourColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEnd_HourNull() {
+                return this.IsNull(this.tableBusinessesDealsView.End_HourColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEnd_HourNull() {
+                this[this.tableBusinessesDealsView.End_HourColumn] = global::System.Convert.DBNull;
+            }
+        }
+        
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -8578,6 +9439,40 @@ namespace Coupons {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DealsRow Row {
+                get {
+                    return this.eventRow;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataRowAction Action {
+                get {
+                    return this.eventAction;
+                }
+            }
+        }
+        
+        /// <summary>
+        ///Row event argument class
+        ///</summary>
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public class BusinessesDealsViewRowChangeEvent : global::System.EventArgs {
+            
+            private BusinessesDealsViewRow eventRow;
+            
+            private global::System.Data.DataRowAction eventAction;
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public BusinessesDealsViewRowChangeEvent(BusinessesDealsViewRow row, global::System.Data.DataRowAction action) {
+                this.eventRow = row;
+                this.eventAction = action;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public BusinessesDealsViewRow Row {
                 get {
                     return this.eventRow;
                 }
@@ -11170,7 +12065,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[8];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[10];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Name, Description, OwnerId, Address, City FROM dbo.Businesses";
@@ -11182,47 +12077,60 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO Businesses\r\n                  (Name, Description, OwnerId, Address, C" +
-                "ity)\r\nVALUES (@Name,@Description,@OwnerId,@Address,@City);   \r\n";
+            this._commandCollection[2].CommandText = "SELECT DISTINCT City\r\nFROM            Businesses\r\nORDER BY City";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@City", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "City", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
-            this._commandCollection[3].CommandText = "SELECT Id, Name, Description, OwnerId, Address, City\r\nFROM     Businesses";
+            this._commandCollection[3].CommandText = @"SELECT        Businesses.Id, Businesses.Name, Businesses.Description, Businesses.OwnerId, Businesses.Address, Businesses.City, BusinessCategories.CategoryId, BusinessCategories.BusinessId
+FROM            Businesses INNER JOIN
+                         BusinessCategories ON Businesses.Id = BusinessCategories.BusinessId
+WHERE        (BusinessCategories.CategoryId = @categoryId)";
             this._commandCollection[3].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@categoryId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "SELECT Address, City, Description, Id, Name, OwnerId FROM Businesses WHERE (Id = " +
-                "@Id)";
+            this._commandCollection[4].CommandText = "INSERT INTO Businesses\r\n                  (Name, Description, OwnerId, Address, C" +
+                "ity)\r\nVALUES (@Name,@Description,@OwnerId,@Address,@City);   \r\n";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@City", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "City", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "SELECT        Id, Name, Description, OwnerId, Address, City\r\nFROM            Busi" +
-                "nesses\r\nWHERE        (Name = @name)";
+                "nesses";
             this._commandCollection[5].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[5].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[6] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[6].Connection = this.Connection;
-            this._commandCollection[6].CommandText = "SELECT Address, City, Description, Id, Name, OwnerId FROM Businesses WHERE (Owner" +
-                "Id = @OwnerId)";
+            this._commandCollection[6].CommandText = "SELECT Address, City, Description, Id, Name, OwnerId FROM Businesses WHERE (Id = " +
+                "@Id)";
             this._commandCollection[6].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[6].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[7] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[7].Connection = this.Connection;
-            this._commandCollection[7].CommandText = "UPDATE Businesses\r\nSET          Name = @Name, Description = @Description, OwnerId" +
-                " = @OwnerId, Address = @Address, City = @City\r\nWHERE  (Id = @Original_Id); \r\n";
+            this._commandCollection[7].CommandText = "SELECT        Id, Name, Description, OwnerId, Address, City\r\nFROM            Busi" +
+                "nesses\r\nWHERE        (Name = @name)";
             this._commandCollection[7].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@City", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "City", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[8].Connection = this.Connection;
+            this._commandCollection[8].CommandText = "SELECT Address, City, Description, Id, Name, OwnerId FROM Businesses WHERE (Owner" +
+                "Id = @OwnerId)";
+            this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[9].Connection = this.Connection;
+            this._commandCollection[9].CommandText = "UPDATE Businesses\r\nSET          Name = @Name, Description = @Description, OwnerId" +
+                " = @OwnerId, Address = @Address, City = @City\r\nWHERE  (Id = @Original_Id); \r\n";
+            this._commandCollection[9].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Name", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Name", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Description", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Description", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@OwnerId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "OwnerId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Address", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Address", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@City", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "City", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[9].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11253,8 +12161,31 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual CouponsDataset.BusinessesDataTable selectAllBusiness() {
+        public virtual CouponsDataset.BusinessesDataTable GetBusinessCities() {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            CouponsDataset.BusinessesDataTable dataTable = new CouponsDataset.BusinessesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual CouponsDataset.BusinessesDataTable GetBusinessesByCategoryId(int categoryId) {
             this.Adapter.SelectCommand = this.CommandCollection[3];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(categoryId));
+            CouponsDataset.BusinessesDataTable dataTable = new CouponsDataset.BusinessesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual CouponsDataset.BusinessesDataTable selectAllBusiness() {
+            this.Adapter.SelectCommand = this.CommandCollection[5];
             CouponsDataset.BusinessesDataTable dataTable = new CouponsDataset.BusinessesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -11265,7 +12196,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.BusinessesDataTable SelectBusinessById(int Id) {
-            this.Adapter.SelectCommand = this.CommandCollection[4];
+            this.Adapter.SelectCommand = this.CommandCollection[6];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(Id));
             CouponsDataset.BusinessesDataTable dataTable = new CouponsDataset.BusinessesDataTable();
             this.Adapter.Fill(dataTable);
@@ -11277,7 +12208,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.BusinessesDataTable selectBusinessByName(string name) {
-            this.Adapter.SelectCommand = this.CommandCollection[5];
+            this.Adapter.SelectCommand = this.CommandCollection[7];
             if ((name == null)) {
                 throw new global::System.ArgumentNullException("name");
             }
@@ -11294,7 +12225,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual CouponsDataset.BusinessesDataTable SelectBusinessByOwner(global::System.Nullable<int> OwnerId) {
-            this.Adapter.SelectCommand = this.CommandCollection[6];
+            this.Adapter.SelectCommand = this.CommandCollection[8];
             if ((OwnerId.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(OwnerId.Value));
             }
@@ -11542,7 +12473,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
         public virtual int InsertBusiness(string Name, string Description, global::System.Nullable<int> OwnerId, string Address, string City) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -11595,7 +12526,7 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
         public virtual int UpdateBusiness(string Name, string Description, global::System.Nullable<int> OwnerId, string Address, string City, int Original_Id) {
-            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[7];
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[9];
             if ((Name == null)) {
                 throw new global::System.ArgumentNullException("Name");
             }
@@ -11803,11 +12734,15 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT Id, Name FROM dbo.Categories";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT Id, Name FROM dbo.Categories";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -11829,6 +12764,17 @@ SELECT Id, Name, Description, OwnerId, Address, City FROM Businesses WHERE (Id =
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual CouponsDataset.CategoriesDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            CouponsDataset.CategoriesDataTable dataTable = new CouponsDataset.CategoriesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual CouponsDataset.CategoriesDataTable getAllCategories() {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
             CouponsDataset.CategoriesDataTable dataTable = new CouponsDataset.CategoriesDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -12385,14 +13331,8 @@ SELECT ClientId, CategoryId FROM ClientCategoryPreferences WHERE (ClientId = @Cl
             tableMapping.DataSetTable = "BusinessCategories";
             tableMapping.ColumnMappings.Add("BusinessId", "BusinessId");
             tableMapping.ColumnMappings.Add("CategoryId", "CategoryId");
+            tableMapping.ColumnMappings.Add("Name", "Name");
             this._adapter.TableMappings.Add(tableMapping);
-            this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
-            this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[BusinessCategories] ([BusinessId], [CategoryId]) VALUES (@Busi" +
-                "nessId, @CategoryId)";
-            this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BusinessId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "BusinessId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@CategoryId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "CategoryId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12405,11 +13345,21 @@ SELECT ClientId, CategoryId FROM ClientCategoryPreferences WHERE (ClientId = @Cl
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT BusinessId, CategoryId FROM dbo.BusinessCategories";
+            this._commandCollection[0].CommandText = "SELECT        BusinessCategories.BusinessId, BusinessCategories.CategoryId, Categ" +
+                "ories.Name\r\nFROM            BusinessCategories INNER JOIN\r\n                     " +
+                "    Categories ON BusinessCategories.CategoryId = Categories.Id";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        BusinessCategories.BusinessId, BusinessCategories.CategoryId, Categories.Name
+FROM            BusinessCategories INNER JOIN
+                         Categories ON BusinessCategories.CategoryId = Categories.Id
+WHERE        (BusinessCategories.BusinessId = @BusinessId)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@BusinessId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "BusinessId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -12439,53 +13389,13 @@ SELECT ClientId, CategoryId FROM ClientCategoryPreferences WHERE (ClientId = @Cl
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CouponsDataset.BusinessCategoriesDataTable dataTable) {
-            return this.Adapter.Update(dataTable);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(CouponsDataset dataSet) {
-            return this.Adapter.Update(dataSet, "BusinessCategories");
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow dataRow) {
-            return this.Adapter.Update(new global::System.Data.DataRow[] {
-                        dataRow});
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        public virtual int Update(global::System.Data.DataRow[] dataRows) {
-            return this.Adapter.Update(dataRows);
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int BusinessId, int CategoryId) {
-            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(BusinessId));
-            this.Adapter.InsertCommand.Parameters[1].Value = ((int)(CategoryId));
-            global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
-            if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
-                        != global::System.Data.ConnectionState.Open)) {
-                this.Adapter.InsertCommand.Connection.Open();
-            }
-            try {
-                int returnValue = this.Adapter.InsertCommand.ExecuteNonQuery();
-                return returnValue;
-            }
-            finally {
-                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
-                    this.Adapter.InsertCommand.Connection.Close();
-                }
-            }
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual CouponsDataset.BusinessCategoriesDataTable SelectBusinessCategory(int BusinessId) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(BusinessId));
+            CouponsDataset.BusinessCategoriesDataTable dataTable = new CouponsDataset.BusinessCategoriesDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
         }
     }
     
@@ -15492,6 +16402,225 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
     }
     
     /// <summary>
+    ///Represents the connection and commands used to retrieve and save data.
+    ///</summary>
+    [global::System.ComponentModel.DesignerCategoryAttribute("code")]
+    [global::System.ComponentModel.ToolboxItem(true)]
+    [global::System.ComponentModel.DataObjectAttribute(true)]
+    [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
+    [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+    public partial class BusinessesDealsViewTableAdapter : global::System.ComponentModel.Component {
+        
+        private global::System.Data.SqlClient.SqlDataAdapter _adapter;
+        
+        private global::System.Data.SqlClient.SqlConnection _connection;
+        
+        private global::System.Data.SqlClient.SqlTransaction _transaction;
+        
+        private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
+        
+        private bool _clearBeforeFill;
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public BusinessesDealsViewTableAdapter() {
+            this.ClearBeforeFill = true;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
+            get {
+                if ((this._adapter == null)) {
+                    this.InitAdapter();
+                }
+                return this._adapter;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlConnection Connection {
+            get {
+                if ((this._connection == null)) {
+                    this.InitConnection();
+                }
+                return this._connection;
+            }
+            set {
+                this._connection = value;
+                if ((this.Adapter.InsertCommand != null)) {
+                    this.Adapter.InsertCommand.Connection = value;
+                }
+                if ((this.Adapter.DeleteCommand != null)) {
+                    this.Adapter.DeleteCommand.Connection = value;
+                }
+                if ((this.Adapter.UpdateCommand != null)) {
+                    this.Adapter.UpdateCommand.Connection = value;
+                }
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    if ((this.CommandCollection[i] != null)) {
+                        ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
+                    }
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        internal global::System.Data.SqlClient.SqlTransaction Transaction {
+            get {
+                return this._transaction;
+            }
+            set {
+                this._transaction = value;
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                    this.CommandCollection[i].Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.DeleteCommand != null))) {
+                    this.Adapter.DeleteCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.InsertCommand != null))) {
+                    this.Adapter.InsertCommand.Transaction = this._transaction;
+                }
+                if (((this.Adapter != null) 
+                            && (this.Adapter.UpdateCommand != null))) {
+                    this.Adapter.UpdateCommand.Transaction = this._transaction;
+                }
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
+            get {
+                if ((this._commandCollection == null)) {
+                    this.InitCommandCollection();
+                }
+                return this._commandCollection;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        public bool ClearBeforeFill {
+            get {
+                return this._clearBeforeFill;
+            }
+            set {
+                this._clearBeforeFill = value;
+            }
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitAdapter() {
+            this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
+            global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
+            tableMapping.SourceTable = "Table";
+            tableMapping.DataSetTable = "BusinessesDealsView";
+            tableMapping.ColumnMappings.Add("Details", "Details");
+            tableMapping.ColumnMappings.Add("Original_Price", "Original_Price");
+            tableMapping.ColumnMappings.Add("Rate", "Rate");
+            tableMapping.ColumnMappings.Add("Experation_Date", "Experation_Date");
+            tableMapping.ColumnMappings.Add("Is_Approved", "Is_Approved");
+            tableMapping.ColumnMappings.Add("Description", "Description");
+            tableMapping.ColumnMappings.Add("OwnerId", "OwnerId");
+            tableMapping.ColumnMappings.Add("Address", "Address");
+            tableMapping.ColumnMappings.Add("City", "City");
+            tableMapping.ColumnMappings.Add("Start_Hour", "Start_Hour");
+            tableMapping.ColumnMappings.Add("End_Hour", "End_Hour");
+            tableMapping.ColumnMappings.Add("DealId", "DealId");
+            tableMapping.ColumnMappings.Add("DealName", "DealName");
+            tableMapping.ColumnMappings.Add("busId", "busId");
+            tableMapping.ColumnMappings.Add("busName", "busName");
+            this._adapter.TableMappings.Add(tableMapping);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitConnection() {
+            this._connection = new global::System.Data.SqlClient.SqlConnection();
+            this._connection.ConnectionString = global::Coupons.Properties.Settings.Default.CouponsDBConnectionString;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        private void InitCommandCollection() {
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[0].Connection = this.Connection;
+            this._commandCollection[0].CommandText = @"SELECT        Deals.Id AS DealId, Deals.Name AS DealName, Deals.Details, Deals.Original_Price, Deals.Rate, Deals.Experation_Date, Deals.Is_Approved, Deals.Start_Hour, Deals.End_Hour, Businesses.Id AS busId, 
+                         Businesses.Name AS busName, Businesses.Description, Businesses.OwnerId, Businesses.Address, Businesses.City
+FROM            BusinessCategories INNER JOIN
+                         Businesses ON BusinessCategories.BusinessId = Businesses.Id INNER JOIN
+                         Categories ON BusinessCategories.CategoryId = Categories.Id INNER JOIN
+                         Deals ON Businesses.Id = Deals.BusinessId";
+            this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        Deals.Id AS DealId, Deals.Name AS DealName, Deals.Details, Deals.Original_Price, Deals.Rate, Deals.Experation_Date, Deals.Is_Approved, Businesses.Id AS BusinessId, Businesses.Name AS BusinessName, 
+                         Businesses.Description, Businesses.OwnerId, Businesses.Address, Businesses.City, BusinessCategories.BusinessId AS Expr1, BusinessCategories.CategoryId, Categories.Name, Deals.Start_Hour, 
+                         Deals.End_Hour, Deals.BusinessId AS Expr2
+FROM            Businesses INNER JOIN
+                         BusinessCategories ON Businesses.Id = BusinessCategories.BusinessId INNER JOIN
+                         Categories ON BusinessCategories.CategoryId = Categories.Id INNER JOIN
+                         Deals ON Businesses.Id = Deals.BusinessId
+WHERE        (Categories.Id = @categoryId) AND (Businesses.City = @city) AND (Deals.Experation_Date >= @currentDate) AND (Deals.Is_Approved = 1)";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@categoryId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@city", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "City", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@currentDate", global::System.Data.SqlDbType.DateTime, 8, global::System.Data.ParameterDirection.Input, 0, 0, "Experation_Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
+        public virtual int Fill(CouponsDataset.BusinessesDealsViewDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
+        public virtual CouponsDataset.BusinessesDealsViewDataTable GetData() {
+            this.Adapter.SelectCommand = this.CommandCollection[0];
+            CouponsDataset.BusinessesDealsViewDataTable dataTable = new CouponsDataset.BusinessesDealsViewDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual CouponsDataset.BusinessesDealsViewDataTable SelectDealByCategoryAndCity(int categoryId, string city, System.DateTime currentDate) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            this.Adapter.SelectCommand.Parameters[0].Value = ((int)(categoryId));
+            if ((city == null)) {
+                this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(city));
+            }
+            this.Adapter.SelectCommand.Parameters[2].Value = ((System.DateTime)(currentDate));
+            CouponsDataset.BusinessesDealsViewDataTable dataTable = new CouponsDataset.BusinessesDealsViewDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+    }
+    
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -15518,8 +16647,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
         private CategoriesTableAdapter _categoriesTableAdapter;
         
         private ClientCategoryPreferencesTableAdapter _clientCategoryPreferencesTableAdapter;
-        
-        private BusinessCategoriesTableAdapter _businessCategoriesTableAdapter;
         
         private BusinessBrandsTableAdapter _businessBrandsTableAdapter;
         
@@ -15665,20 +16792,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
         [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
             "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
             "a", "System.Drawing.Design.UITypeEditor")]
-        public BusinessCategoriesTableAdapter BusinessCategoriesTableAdapter {
-            get {
-                return this._businessCategoriesTableAdapter;
-            }
-            set {
-                this._businessCategoriesTableAdapter = value;
-            }
-        }
-        
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        [global::System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso" +
-            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3" +
-            "a", "System.Drawing.Design.UITypeEditor")]
         public BusinessBrandsTableAdapter BusinessBrandsTableAdapter {
             get {
                 return this._businessBrandsTableAdapter;
@@ -15809,10 +16922,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                             && (this._clientCategoryPreferencesTableAdapter.Connection != null))) {
                     return this._clientCategoryPreferencesTableAdapter.Connection;
                 }
-                if (((this._businessCategoriesTableAdapter != null) 
-                            && (this._businessCategoriesTableAdapter.Connection != null))) {
-                    return this._businessCategoriesTableAdapter.Connection;
-                }
                 if (((this._businessBrandsTableAdapter != null) 
                             && (this._businessBrandsTableAdapter.Connection != null))) {
                     return this._businessBrandsTableAdapter.Connection;
@@ -15874,9 +16983,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                 if ((this._clientCategoryPreferencesTableAdapter != null)) {
                     count = (count + 1);
                 }
-                if ((this._businessCategoriesTableAdapter != null)) {
-                    count = (count + 1);
-                }
                 if ((this._businessBrandsTableAdapter != null)) {
                     count = (count + 1);
                 }
@@ -15933,12 +17039,12 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._dealsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Deals.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+            if ((this._clientSocialNetworkTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.ClientSocialNetwork.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
-                    result = (result + this._dealsTableAdapter.Update(updatedRows));
+                    result = (result + this._clientSocialNetworkTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -15951,21 +17057,21 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                     allChangedRows.AddRange(updatedRows);
                 }
             }
+            if ((this._dealsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Deals.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._dealsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this._categoriesTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.Categories.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._categoriesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._clientSocialNetworkTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.ClientSocialNetwork.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._clientSocialNetworkTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -16002,15 +17108,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._clientCategoryPreferencesTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._businessCategoriesTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.BusinessCategories.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._businessCategoriesTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -16075,11 +17172,11 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._dealsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Deals.Select(null, null, global::System.Data.DataViewRowState.Added);
+            if ((this._clientSocialNetworkTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.ClientSocialNetwork.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
-                    result = (result + this._dealsTableAdapter.Update(addedRows));
+                    result = (result + this._clientSocialNetworkTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -16091,19 +17188,19 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                     allAddedRows.AddRange(addedRows);
                 }
             }
+            if ((this._dealsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Deals.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._dealsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this._categoriesTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.Categories.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._categoriesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._clientSocialNetworkTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.ClientSocialNetwork.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._clientSocialNetworkTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -16136,14 +17233,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._clientCategoryPreferencesTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._businessCategoriesTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.BusinessCategories.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._businessCategoriesTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -16205,14 +17294,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._businessCategoriesTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.BusinessCategories.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._businessCategoriesTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._clientCategoryPreferencesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.ClientCategoryPreferences.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
@@ -16245,19 +17326,19 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._clientSocialNetworkTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.ClientSocialNetwork.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._clientSocialNetworkTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._categoriesTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.Categories.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._categoriesTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._dealsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Deals.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._dealsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -16269,11 +17350,11 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._dealsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Deals.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+            if ((this._clientSocialNetworkTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.ClientSocialNetwork.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
-                    result = (result + this._dealsTableAdapter.Update(deletedRows));
+                    result = (result + this._clientSocialNetworkTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -16377,11 +17458,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
             }
             if (((this._clientCategoryPreferencesTableAdapter != null) 
                         && (this.MatchTableAdapterConnection(this._clientCategoryPreferencesTableAdapter.Connection) == false))) {
-                throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
-                        "tring.");
-            }
-            if (((this._businessCategoriesTableAdapter != null) 
-                        && (this.MatchTableAdapterConnection(this._businessCategoriesTableAdapter.Connection) == false))) {
                 throw new global::System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s" +
                         "tring.");
             }
@@ -16517,15 +17593,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                     if (this._clientCategoryPreferencesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
                         this._clientCategoryPreferencesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
                         adaptersWithAcceptChangesDuringUpdate.Add(this._clientCategoryPreferencesTableAdapter.Adapter);
-                    }
-                }
-                if ((this._businessCategoriesTableAdapter != null)) {
-                    revertConnections.Add(this._businessCategoriesTableAdapter, this._businessCategoriesTableAdapter.Connection);
-                    this._businessCategoriesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(workConnection));
-                    this._businessCategoriesTableAdapter.Transaction = ((global::System.Data.SqlClient.SqlTransaction)(workTransaction));
-                    if (this._businessCategoriesTableAdapter.Adapter.AcceptChangesDuringUpdate) {
-                        this._businessCategoriesTableAdapter.Adapter.AcceptChangesDuringUpdate = false;
-                        adaptersWithAcceptChangesDuringUpdate.Add(this._businessCategoriesTableAdapter.Adapter);
                     }
                 }
                 if ((this._businessBrandsTableAdapter != null)) {
@@ -16671,10 +17738,6 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
                 if ((this._clientCategoryPreferencesTableAdapter != null)) {
                     this._clientCategoryPreferencesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._clientCategoryPreferencesTableAdapter]));
                     this._clientCategoryPreferencesTableAdapter.Transaction = null;
-                }
-                if ((this._businessCategoriesTableAdapter != null)) {
-                    this._businessCategoriesTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._businessCategoriesTableAdapter]));
-                    this._businessCategoriesTableAdapter.Transaction = null;
                 }
                 if ((this._businessBrandsTableAdapter != null)) {
                     this._businessBrandsTableAdapter.Connection = ((global::System.Data.SqlClient.SqlConnection)(revertConnections[this._businessBrandsTableAdapter]));

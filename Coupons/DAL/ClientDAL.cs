@@ -24,6 +24,8 @@ namespace Coupons.DAL
         private CouponsDatasetTableAdapters.SocialFriendsTableAdapter mTableSocialFriends = new CouponsDatasetTableAdapters.SocialFriendsTableAdapter();
         private CouponsDatasetTableAdapters.FriendsTableAdapter mTableFriends = new CouponsDatasetTableAdapters.FriendsTableAdapter();
         private CouponsDatasetTableAdapters.BusinessesTableAdapter mTableBusiness = new CouponsDatasetTableAdapters.BusinessesTableAdapter();
+        private CouponsDatasetTableAdapters.BusinessCategoriesTableAdapter mTableBusinessCategory = new CouponsDatasetTableAdapters.BusinessCategoriesTableAdapter();
+
 
         public bool insertNewClient(String username, String password, String mail, String phone, DateTime birthDate, Gender gender, String location)
         {
@@ -175,11 +177,8 @@ namespace Coupons.DAL
                 String startHour = row[DealsColumns.START_HOUR].ToString();
                 String endHour = row[DealsColumns.END_HOUR].ToString();
 
-                AdminDAL mAdminDAL = new AdminDAL();
-                Business business = mAdminDAL.selectBusinessById(businessId);
 
-
-                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved, startHour, endHour);
+                Deal deal = new Deal(id, name, details, businessId, originalPrice, rate, experationDate, isApproved, startHour, endHour);
                 result.Add(deal);
             }
             return result;
@@ -311,7 +310,7 @@ namespace Coupons.DAL
         }
 
 
-        internal List<Business> getAllDeal()
+        internal List<Business> getAllBusinesses()
         {
             List<Business> result = new List<Business>();
             DataTable Business = mTableBusiness.selectAllBusiness();
@@ -325,8 +324,17 @@ namespace Coupons.DAL
                 String address = (String)row[BusinessesColumns.ADDRESS];
                 String city = (String)row[BusinessesColumns.CITY];
 
+                Business business = new Business(id, name, description, ownerId, address, city); 
 
-                result.Add(new Business(id, name, description, ownerId, address, city));
+                DataTable categories = mTableBusinessCategory.SelectBusinessCategory(id);
+
+                foreach (DataRow catRow in categories.Rows)
+                {
+                    business.addCategory((Category) Enum.Parse(typeof(Category), catRow["Name"].ToString()));
+                }
+
+
+                result.Add(business);
             }
             return result;
         }
@@ -348,16 +356,36 @@ namespace Coupons.DAL
                 int businessId = (int)row[DealsColumns.BUSINESS_ID];
                 String startHour = row[DealsColumns.START_HOUR].ToString();
                 String endHour = row[DealsColumns.END_HOUR].ToString();
-                AdminDAL mAdminDAL = new AdminDAL();
-                Business business = mAdminDAL.selectBusinessById(businessId);
 
 
-                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved, startHour, endHour);
+                Deal deal = new Deal(id, name, details, businessId, originalPrice, rate, experationDate, isApproved, startHour, endHour);
                 result.Add(deal);
             }
             return result;
         }
 
 
+
+        public List<string> getPossibleCities()
+        {
+        
+
+            List<string> result = new List<string>();
+            DataTable cities = mTableBusiness.selectAllBusiness();
+
+            foreach (DataRow row in cities.Rows)
+            {
+                string city = row[BusinessesColumns.CITY].ToString();
+                string cityLower = city.ToLower();
+
+                if (result.IndexOf(cityLower) == -1)
+                {
+                    result.Add(cityLower);
+                }
+
+            }
+
+            return result;
+        }
     }
 }

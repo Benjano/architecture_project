@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Coupons.Enums
 {
-   public enum CategoryType
+    public enum Category
     {
-        Food, Sports
+        Food, Sport, Clothes
     }
 }

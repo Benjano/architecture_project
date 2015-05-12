@@ -27,10 +27,10 @@ namespace Coupons.Models
             get { return mDetails; }
         }
 
-        private Business mBusiness;
-        public Business Business
+        private int mBusinessId;
+        public int Business
         {
-            get { return mBusiness; }
+            get { return mBusinessId; }
         }
 
         private decimal mPrice;
@@ -79,12 +79,12 @@ namespace Coupons.Models
             get { return mCoupons; }
         }
 
-        public Deal(int id, String name, String details, Business business, decimal price, float rate, DateTime experationDate, bool isApproved, String startHour, String endHour)
+        public Deal(int id, String name, String details, int businessId, decimal price, float rate, DateTime experationDate, bool isApproved, String startHour, String endHour)
         {
             mId = id;
             mName = name;
             mDetails = details;
-            mBusiness = business;
+            mBusinessId = businessId;
             mPrice = price;
             mRate = rate;
             mExperationDate = experationDate;

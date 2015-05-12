@@ -71,7 +71,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BL\AdminBL.cs" />
+    <Compile Include="BL\BrandBL.cs" />
+    <Compile Include="BL\BusinessBL.cs" />
+    <Compile Include="BL\DealBL.cs" />
     <Compile Include="BL\UserBL.cs" />
+    <Compile Include="Constants\BrandColumns.cs" />
+    <Compile Include="Constants\CategoryColumns.cs" />
+    <Compile Include="DAL\BrandDAL.cs" />
+    <Compile Include="DAL\BusinessDAL.cs" />
+    <Compile Include="DAL\DealDAL.cs" />
+    <Compile Include="Enums\Category.cs" />
     <Compile Include="GUI\AdminGUI\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
     </Compile>
@@ -174,7 +183,6 @@
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Business.cs" />
     <Compile Include="Models\BusinessOwner.cs" />
-    <Compile Include="Enums\Category.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientNetworks.cs" />
     <Compile Include="Models\Coupon.cs" />

@@ -146,11 +146,8 @@ namespace Coupons.DAL
                 String startHour = row[DealsColumns.START_HOUR].ToString();
                 String endHour = row[DealsColumns.END_HOUR].ToString();
 
-                AdminDAL mAdminDAL = new AdminDAL();
-                Business business = mAdminDAL.selectBusinessById(businessId);
-
-
-                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved, startHour, endHour);
+            
+                Deal deal = new Deal(id, name, details, businessId, originalPrice, rate, experationDate, isApproved, startHour, endHour);
                 result.Add(deal);
             }
             return result;

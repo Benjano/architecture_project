@@ -122,7 +122,12 @@ namespace Coupons.BL
 
         public List<Business> getAllBusiness()
         {
-            return mDal.getAllDeal();
+            return mDal.getAllBusinesses();
+        }
+
+        public List<String> getPossibleCities()
+        {
+            return mDal.getPossibleCities();
         }
 
         public List<Deal> getAllDeal()
