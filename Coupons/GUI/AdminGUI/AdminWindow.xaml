@@ -5,17 +5,17 @@
     <Grid>
         <DataGrid Name="dgBusinesses" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="22,134,0,0" VerticalAlignment="Top" Height="242" Width="255"   SelectionChanged="dgBusinesses_SelectionChanged"/>
         <DataGrid Name="dgUsers" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="295,134,0,0" VerticalAlignment="Top" Height="273" Width="272" SelectionChanged="dgUsers_SelectionChanged"/>
-        <DataGrid Name="dgDeals" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="584,134,0,0" VerticalAlignment="Top" Height="312" Width="269" SelectionChanged="dgDeals_SelectionChanged"/>
-        <Button Name="btnAddClientOrOwner" Content="Add" Padding="10, 5, 10, 5" Background="#EEBA4C" HorizontalAlignment="Left" Margin="492,102,0,0" VerticalAlignment="Top" Width="75" Click="btnAddClientOrOwner_Click"/>
-        <Button Name="btnOwner" Content="Business Owner" Padding="10, 5, 10, 5" Background="#A9DDD9" HorizontalAlignment="Left" Margin="375,102,0,0" VerticalAlignment="Top" Width="112" Click="btnOwner_Click"/>
-        <Button Name="btnClient" Content="Client" Padding="10, 5, 10, 5" Background="#A9DDD9" HorizontalAlignment="Left" Margin="295,102,0,0" VerticalAlignment="Top" Width="75" Click="btnClient_Click"/>
-        <Button Name="btnAddBusiness"  Content="Add" HorizontalAlignment="Left" Margin="22,102,0,0" VerticalAlignment="Top" Width="75" Click="btnAddBusiness_Click" Height="28" />
-        <Button Name="btnNotApprove" Content="Not Approve Yet" HorizontalAlignment="Left" Margin="584,102,0,0" VerticalAlignment="Top" Width="112" Click="btnNotApprove_Click" Height="28" />
-        <Button Name="btnAllDeal" Content="All" HorizontalAlignment="Left" Margin="701,102,0,0" VerticalAlignment="Top" Width="72" Click="btnAllDeal_Click" Height="28"/>
-        <Button Name="btnAddDeal" Content="Add" HorizontalAlignment="Left" Margin="778,102,0,0" VerticalAlignment="Top" Width="75" Height="28" Click="btnAddDeal_Click"/>
-        <Label Content="Welcome" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="335,10,0,0" VerticalAlignment="Top" Width="93" />
-        <Button Name="btnSearchBusiness" Content="Search" HorizontalAlignment="Left" Margin="105,495,0,0" VerticalAlignment="Top" Width="75" Click="btnSearchBusiness_Click"/>
-        <Button Name="btnSearchUser" Content="Search" HorizontalAlignment="Left" Margin="401,495,0,0" VerticalAlignment="Top" Width="75" Click="btnSearchUser_Click"/>
+        <DataGrid Name="dgDeals" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="584,134,0,0" VerticalAlignment="Top" Height="273" Width="269" SelectionChanged="dgDeals_SelectionChanged"/>
+        <Button Name="btnAddClientOrOwner" Content="Add Business Owner" HorizontalAlignment="Left" Margin="423,495,0,0" VerticalAlignment="Top" Width="128" Click="btnAddClientOrOwner_Click" Height="19"/>
+        <Button Name="btnOwner" Content="Business Owner" Padding="10, 5, 10, 5" Background="#A9DDD9" HorizontalAlignment="Left" Margin="439,102,0,0" VerticalAlignment="Top" Width="112" Click="btnOwner_Click"/>
+        <Button Name="btnClient" Content="Client" Padding="10, 5, 10, 5" Background="#A9DDD9" HorizontalAlignment="Left" Margin="335,102,0,0" VerticalAlignment="Top" Width="75" Click="btnClient_Click"/>
+        <Button Name="btnAddBusiness"  Content="Add" HorizontalAlignment="Left" Margin="105,493,0,0" VerticalAlignment="Top" Width="75" Click="btnAddBusiness_Click" Height="20" />
+        <Button Name="btnNotApprove" Content="Not Approve Yet" HorizontalAlignment="Left" Margin="606,101,0,0" VerticalAlignment="Top" Width="112" Click="btnNotApprove_Click" Height="28" />
+        <Button Name="btnAllDeal" Content="All" HorizontalAlignment="Left" Margin="750,102,0,0" VerticalAlignment="Top" Width="72" Click="btnAllDeal_Click" Height="28"/>
+        <Button Name="btnAddDeal" Content="Add" HorizontalAlignment="Left" Margin="778,494,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="btnAddDeal_Click"/>
+        <Label Content="Welcome" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="335,10,0,0" VerticalAlignment="Top" Width="109" />
+        <Button Name="btnSearchBusiness" Content="Search" HorizontalAlignment="Left" Margin="22,493,0,0" VerticalAlignment="Top" Width="68" Click="btnSearchBusiness_Click"/>
+        <Button Name="btnSearchUser" Content="Search" HorizontalAlignment="Left" Margin="313,495,0,0" VerticalAlignment="Top" Width="75" Click="btnSearchUser_Click"/>
         <TextBox Name="tbOwnerId"  HorizontalAlignment="Left" Height="23" Margin="95,456,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
         <TextBox Name="tbBusinessId" HorizontalAlignment="Left" Height="23" Margin="95,381,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="182"/>
         <TextBox Name="tbBusinessName" HorizontalAlignment="Left" Height="23" Margin="95,420,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="182"/>
@@ -27,16 +27,16 @@
         <Label Content="User Id" HorizontalAlignment="Left" Margin="295,419,0,0" VerticalAlignment="Top"/>
         <TextBox Name="tbName" HorizontalAlignment="Left" Height="23" Margin="345,458,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222"/>
         <TextBox Name="tbUserId"  HorizontalAlignment="Left" Height="23" Margin="345,423,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" />
-        <Button Name="btnSearchDeal" Content="Search" HorizontalAlignment="Left" Margin="584,495,0,0" VerticalAlignment="Top" Width="75" Click="btnSearchDeal_Click"/>
-        <Button Name="btnRefreshBusiness" Content="Refresh" HorizontalAlignment="Left" Margin="105,102,0,0" VerticalAlignment="Top" Width="75" Click="btnRefreshBusiness_Click" Height="28"/>
-        <Button Name="btnApprove" Content="Approve" HorizontalAlignment="Left" Margin="778,495,0,0" VerticalAlignment="Top" Width="75" Click="btnApprove_Click"/>
-        <Label Content="Deal Id" HorizontalAlignment="Left" Margin="584,453,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="tbDeal_Id"  HorizontalAlignment="Left" Height="23" Margin="631,456,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" />
-        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="680,495,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
-        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="680,529,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
-        <Button Name="btnDeleteBusiness" Content="Delete" HorizontalAlignment="Left" Margin="202,495,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteBusiness_Click"/>
+        <Button Name="btnSearchDeal" Content="Search" HorizontalAlignment="Left" Margin="584,464,0,0" VerticalAlignment="Top" Width="75" Click="btnSearchDeal_Click"/>
+        <Button Name="btnRefreshBusiness" Content="Refresh" HorizontalAlignment="Left" Margin="22,102,0,0" VerticalAlignment="Top" Width="75" Click="btnRefreshBusiness_Click" Height="28"/>
+        <Button Name="btnApprove" Content="Approve" HorizontalAlignment="Left" Margin="778,464,0,0" VerticalAlignment="Top" Width="75" Click="btnApprove_Click"/>
+        <Label Content="Deal Id" HorizontalAlignment="Left" Margin="584,422,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="tbDeal_Id"  HorizontalAlignment="Left" Height="23" Margin="631,425,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="222" />
+        <Button Name="btnDelete" Content="Delete" HorizontalAlignment="Left" Margin="680,464,0,0" VerticalAlignment="Top" Width="75" Click="btnDelete_Click"/>
+        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Margin="680,494,0,0" VerticalAlignment="Top" Width="75" Click="btnUpdate_Click"/>
+        <Button Name="btnDeleteBusiness" Content="Delete" HorizontalAlignment="Left" Margin="202,493,0,0" VerticalAlignment="Top" Width="75" Click="btnDeleteBusiness_Click"/>
         <Label Content="Businesses" HorizontalAlignment="Left" Margin="60,58,0,0" FontSize="22" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="0.579,-1.231"/>
-        <Label Content="Deals" HorizontalAlignment="Left" Margin="621,58,0,0" FontSize="22" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="0.579,-1.231"/>
+        <Label Content="Deals" HorizontalAlignment="Left" Margin="689,58,0,0" FontSize="22" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="0.579,-1.231"/>
         <Label Content="Client / Business Owner" HorizontalAlignment="Left" Margin="313,58,0,0" FontSize="22" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="0.579,-1.231"/>
 
     </Grid>

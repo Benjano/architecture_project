@@ -27,15 +27,11 @@ namespace Coupons.GUI.ClientGUI
     {
 
         ClientBL mClientBl = new ClientBL();
-        BrandBL mBrandBL = new BrandBL();
-
         List<Deal> mDeals;
         List<Business> mBusinesses;
         List<Category> mCategories;
         List<string> mPossibleCities;
 
-
-        DealBL mDealBL = new DealBL();
         GeoCoordinateWatcher _watcher;
 
         public ClientWindow(Client client)

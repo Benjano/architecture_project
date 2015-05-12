@@ -119,8 +119,12 @@ namespace Coupons.GUI.AdminGUI
 
         private void btnAddClientOrOwner_Click(object sender, RoutedEventArgs e)
         {
-            CreateUserWindow createClientWindow = new CreateUserWindow(null, mIsClient);
-            createClientWindow.Show();
+            if (!mIsClient)
+            {
+                CreateUserWindow createClientWindow = new CreateUserWindow(null, mIsClient);
+                createClientWindow.Show();
+            }
+
         }
 
         private void btnSearchUser_Click(object sender, RoutedEventArgs e)
