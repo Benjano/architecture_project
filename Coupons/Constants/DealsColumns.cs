@@ -16,5 +16,7 @@ namespace Coupons.Constants
         public static String RATE = "Rate";
         public static String EXPERATION_DATE = "Experation_Date";
         public static String IS_APPROVED = "Is_Approved";
+        public static String START_HOUR = "Start_Hour";
+        public static String END_HOUR = "End_Hour";
     }
 }

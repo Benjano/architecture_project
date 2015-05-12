@@ -11,7 +11,7 @@ namespace Coupons.BL
     class UserBL
     {
         UserDAL mUserDal;
-        
+
         public UserBL()
         {
             mUserDal = new UserDAL();
@@ -20,6 +20,16 @@ namespace Coupons.BL
         public User login(String username, String password)
         {
             return mUserDal.login(username, password);
+        }
+
+        public List<Client> getAllClients()
+        {
+            return mUserDal.getAllClients();
+        }
+
+        public List<BusinessOwner> getAllBusinessOwner()
+        {
+            return mUserDal.getAllBusinessOwner();
         }
     }
 }

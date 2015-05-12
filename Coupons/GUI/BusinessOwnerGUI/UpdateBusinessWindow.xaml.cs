@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Coupons.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,11 +16,11 @@ using System.Windows.Shapes;
 namespace Coupons.GUI.BusinessOwnerGUI
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for UpdateBusinessWindow.xaml
     /// </summary>
-    public partial class Window1 : Window
+    public partial class UpdateBusinessWindow : Window
     {
-        public Window1()
+        public UpdateBusinessWindow(BusinessOwner owner)
         {
             InitializeComponent();
         }

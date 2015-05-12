@@ -1,0 +1,20 @@
+﻿<Window x:Class="Coupons.GUI.BusinessOwnerGUI.UpdateBusinessWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="UpdateBusinessWindow" Height="300" Width="300">
+    <Grid>
+        <Label Content="Buisness Name: " HorizontalAlignment="Left" Height="28" Margin="35,64,0,0" VerticalAlignment="Top" Width="102"/>
+        <Label Content="Description: " HorizontalAlignment="Left" Height="26" Margin="35,97,0,0" VerticalAlignment="Top" Width="89"/>
+        <Label Content="Adress: " HorizontalAlignment="Left" Height="34" Margin="35,151,0,0" VerticalAlignment="Top" Width="74"/>
+        <Label Content="City: " HorizontalAlignment="Left" Height="28" Margin="35,184,0,0" VerticalAlignment="Top" Width="74"/>
+        <TextBox Name="tbBuisName" HorizontalAlignment="Left" Height="28" Margin="142,64,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="92"/>
+        <TextBox Name="tbDescription" HorizontalAlignment="Left" Height="49" Margin="124,97,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97"/>
+        <TextBox Name="tbAdress" HorizontalAlignment="Left" Height="28" Margin="124,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="96"/>
+        <TextBox Name="tbCity" HorizontalAlignment="Left" Height="28" Margin="123,184,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97"/>
+        <Label Content="Update My Buisness" HorizontalAlignment="Left" Height="30" Margin="65,0,0,0" VerticalAlignment="Top" Width="169"/>
+        
+        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Height="26" Margin="180,234,0,0" VerticalAlignment="Top" Width="81"/>
+        <Button Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Height="26" Margin="35,234,0,0" VerticalAlignment="Top" Width="74"/>
+
+    </Grid>
+</Window>

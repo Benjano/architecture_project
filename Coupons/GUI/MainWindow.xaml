@@ -5,7 +5,7 @@
         >
     <Grid>
         <Button Name="btnLogin" Content="Login" HorizontalAlignment="Left" Margin="303,27,0,0" VerticalAlignment="Top" Width="75" Click="Login_Click"/>
-        <Button Name="btnRestore" Content="Restore" HorizontalAlignment="Left" Margin="171,83,0,0" VerticalAlignment="Top" Width="75" Height="20"/>
+        <Button Name="btnRestore" Content="Restore" HorizontalAlignment="Left" Margin="171,83,0,0" VerticalAlignment="Top" Width="75" Height="20" Click="btnRestore_Click"/>
         <Button Name="btnCreateClient" Content="New Client" HorizontalAlignment="Left" Margin="79,83,0,0" VerticalAlignment="Top" Width="75" Click="btnCreateClient_Click"/>
 
 

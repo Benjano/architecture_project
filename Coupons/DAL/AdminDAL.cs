@@ -109,7 +109,7 @@ namespace Coupons.DAL
             BusinessOwner businessOwner = new BusinessOwner(id, username, mail, phone);
 
 
-            Business business = new Business(idB, name, description, businessOwner, address, city);
+            Business business = new Business(idB, name, description, businessOwner.ID, address, city);
             return business;
         }
 
@@ -126,6 +126,37 @@ namespace Coupons.DAL
         public bool deleteGroup(int groupId)
         {
             return mTableGroups.DeleteGroup(groupId) == 1;
+        }
+
+        public List<Deal> getDealsNotApproval()
+        {
+            List<Deal> result = new List<Deal>();
+            CouponsDataset.DealsDataTable deals = mTableDeals.selectDealsNotApproval();
+            foreach (DataRow row in deals.Rows)
+            {
+                int id = (int)row[DealsColumns.ID];
+                String name = row[DealsColumns.NAME].ToString();
+                String details = row[DealsColumns.DETAILS].ToString(); ;
+                decimal originalPrice = (decimal)row[DealsColumns.ORIGINAL_PRICE];
+                float rate = (float)(double)row[DealsColumns.RATE];
+                DateTime experationDate;
+                DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
+                bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
+                int businessId = (int)row[DealsColumns.BUSINESS_ID];
+
+                AdminDAL mAdminDAL = new AdminDAL();
+                Business business = mAdminDAL.selectBusinessById(businessId);
+
+
+                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
+                result.Add(deal);
+            }
+            return result;
+        }
+
+        public bool approveDeal(int dealId)
+        {
+            return  mTableDeals.approveDeal(dealId)==1 ;
         }
     }
 

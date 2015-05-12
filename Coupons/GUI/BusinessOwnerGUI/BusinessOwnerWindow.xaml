@@ -1,0 +1,32 @@
+﻿<Window x:Class="Coupons.GUI.BusinessOwnerGUI.BusinessOwnerWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="OwnerWindow" Height="600" Width="900">
+    <Grid>
+        <DataGrid Name="dgBusinesses" HorizontalAlignment="Left" Margin="10,102,0,0" VerticalAlignment="Top" Height="242" Width="255" />
+        <DataGrid Name="dgUsers" IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left" Margin="279,102,0,0" VerticalAlignment="Top" Height="242" Width="260" />
+        <DataGrid Name="dgDeals" HorizontalAlignment="Left" Margin="572,102,0,0" VerticalAlignment="Top" Height="345" Width="269" />
+        
+        <Button Name="btnUpdateBusiness"  Content="Update" HorizontalAlignment="Left" Margin="39,363,0,0" VerticalAlignment="Top" Width="86"  Height="28" />
+        <Button Name="btnTotal" Content="Total eraning:" HorizontalAlignment="Left" Margin="614,493,0,0" VerticalAlignment="Top" Width="96" />
+        <Button Name="btnAverage" Content="Average:" HorizontalAlignment="Left" Margin="614,468,0,0" VerticalAlignment="Top" Width="96"/>
+        <Button Name="btnCount" Content="Count:" HorizontalAlignment="Left" Margin="614,518,0,0" VerticalAlignment="Top" Width="96"/>
+        <Button Name="btnDeleteBusiness" Content="Delete" HorizontalAlignment="Left" Margin="147,363,0,0" VerticalAlignment="Top" Width="80" Height="28"/>
+        <Button Name="btnAdddDeal" Content="Add New Deal" HorizontalAlignment="Left" Margin="69,396,0,0" VerticalAlignment="Top" Width="119"  Height="29"/>
+        <Button Name="btnSearchDeal" Content="Search" HorizontalAlignment="Left" Margin="379,410,0,0" VerticalAlignment="Top" Width="94" Height="26"/>
+
+        <TextBox Name="tbAverage" HorizontalAlignment="Left" Height="20" Margin="741,468,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="84"/>
+        <TextBox Name ="tbTotal" HorizontalAlignment="Left" Height="20" Margin="741,493,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="84"/>
+        <TextBox Name="tbCount" HorizontalAlignment="Left" Height="20" Margin="741,518,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="84"/>
+
+        <Label Content="Welcome" HorizontalAlignment="Left" Margin="10,18,0,0" VerticalAlignment="Top" Width="93" />
+        <Label Name="lblUsername" Content="Yarden" HorizontalAlignment="Left" Margin="93,18,0,0" VerticalAlignment="Top"/>
+        <Label Content="Buisnesses" HorizontalAlignment="Left" Margin="106,70,0,0" VerticalAlignment="Top"/>
+        <Label Content="Deals" HorizontalAlignment="Left" Margin="379,70,0,0" VerticalAlignment="Top"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="328,363,0,0" VerticalAlignment="Top"/>
+        <Label Content="Purchases" HorizontalAlignment="Left" Height="24" Margin="652,70,0,0" VerticalAlignment="Top" Width="104"/>
+
+        <Calendar HorizontalAlignment="Left" Height="28" Margin="379,362,0,0" VerticalAlignment="Top" Width="134"/>
+        
+    </Grid>
+</Window>

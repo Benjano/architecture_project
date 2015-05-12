@@ -22,8 +22,8 @@ namespace Coupons.Models
             get { return mGender; }
         }
 
-        private String mLocation;
-        public String Location
+        private Location mLocation;
+        public Location Location
         {
             get { return mLocation; }
             set { mLocation = value; }
@@ -65,8 +65,14 @@ namespace Coupons.Models
             get { return mFriends; }
         }
 
+        private DateTime mTimestamp;
+        public DateTime Timestamp
+        {
+            get { return mTimestamp; }
+        }
 
-        public Client(int id, String username, String mail, String phone, DateTime birthDate, Gender gender, String location):base(id, username, mail, phone)
+        public Client(int id, String username, String mail, String phone, DateTime birthDate, Gender gender, Location location, DateTime timestamp)
+            : base(id, username, mail, phone)
         {
             mBirthDate = birthDate;
             mGender = gender;
@@ -78,6 +84,7 @@ namespace Coupons.Models
             mGroups = new List<Group>();
             mSocialNetworks = new List<SocialNetwork>();
             mFriends = new List<Client>();
+            mTimestamp = timestamp;
         }
 
         public bool addCategory(Category category)
