@@ -35,7 +35,7 @@ namespace Coupons.GUI.AdminGUI
         private List<Deal> mDeal;
 
         private bool mIsClient;
-
+        private Admin mAdmin;
         BusinessOwner mSelectedBusinessOwner;
         Business mSelectedBusiness;
         Deal mSelectedDeal;
@@ -51,11 +51,13 @@ namespace Coupons.GUI.AdminGUI
             mBusniessOwners = mUserBL.getAllBusinessOwner();
             mBusiness = mClientBL.getAllBusiness();
             mDeal = mClientBL.getAllDeal();
-            
+            mAdmin = admin;
 
             setClientDataGrid(mClients);
             setBusinessDataGrid(mBusiness);
             setDealsDataGrid(mDeal);
+
+            lblUsername.Content = mAdmin.Username;
         }
 
 
@@ -238,6 +240,11 @@ namespace Coupons.GUI.AdminGUI
                 CreateBusinessWindow window = new CreateBusinessWindow(mSelectedBusinessOwner);
                 window.Show();
             }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Business Owner",
+                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
 
@@ -267,8 +274,16 @@ namespace Coupons.GUI.AdminGUI
         }
         private void btnDeleteBusiness_Click(object sender, RoutedEventArgs e)
         {
-            mSelectedBusiness = (Business)dgBusinesses.SelectedItem;
-            bool isOk = mAdminBL.deleteBusiness(mSelectedBusiness.ID);
+            if (mSelectedBusiness != null)
+            {
+                mSelectedBusiness = (Business)dgBusinesses.SelectedItem;
+                bool isOk = mAdminBL.deleteBusiness(mSelectedBusiness.ID);
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Business that you want to delete!",
+                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
      
         
@@ -311,10 +326,16 @@ namespace Coupons.GUI.AdminGUI
 
         private void btnAddDeal_Click(object sender, RoutedEventArgs e)
         {
-            if (mSelectedBusiness != null)
+            if (mSelectedDeal != null)
             {
+                mSelectedDeal = (Deal)dgDeals.SelectedItem;
                 CreateDealWindow window = new CreateDealWindow(mSelectedBusiness);
                 window.Show();
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Business",
+                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
 
@@ -326,21 +347,46 @@ namespace Coupons.GUI.AdminGUI
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            mSelectedDeal = (Deal)dgDeals.SelectedItem;
-            bool isOk = mAdminBL.deleteDeal(mSelectedDeal);
+            if (mSelectedDeal != null)
+            {
+                mSelectedDeal = (Deal)dgDeals.SelectedItem;
+                bool isOk = mAdminBL.deleteDeal(mSelectedDeal);
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Deal that you want to delete!",
+                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-
+            if (mSelectedDeal != null)
+            {
+                mSelectedDeal = (Deal)dgDeals.SelectedItem;
+                UpdateDealWindow window = new UpdateDealWindow(mSelectedDeal);
+                window.Show();
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Deal that you want to update!",
+               "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
 
 
         private void btnApprove_Click(object sender, RoutedEventArgs e)
         {
-            mSelectedDeal = (Deal)dgDeals.SelectedItem;
-            bool isOk = mAdminBL.ApproveDeal(mSelectedDeal);
+            if (mSelectedDeal != null)
+            {
+                bool isOk = mAdminBL.ApproveDeal(mSelectedDeal);
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Deal that you want to approve!",
+                 "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void btnSearchDeal_Click(object sender, RoutedEventArgs e)
@@ -355,8 +401,10 @@ namespace Coupons.GUI.AdminGUI
             }
         }
 
-
-
+        private void dgDeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mSelectedDeal = (Deal)dgDeals.SelectedItem;
+        }
 
 
     }

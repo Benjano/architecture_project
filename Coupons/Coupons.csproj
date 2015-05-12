@@ -78,6 +78,9 @@
     <Compile Include="GUI\AdminGUI\CreateDealWindow.xaml.cs">
       <DependentUpon>CreateDealWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GUI\AdminGUI\UpdateDealWindow.xaml.cs">
+      <DependentUpon>UpdateDealWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="GUI\BusinessOwnerGUI\BusinessOwnerWindow.xaml.cs">
       <DependentUpon>BusinessOwnerWindow.xaml</DependentUpon>
     </Compile>
@@ -111,6 +114,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="GUI\AdminGUI\CreateDealWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\AdminGUI\UpdateDealWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

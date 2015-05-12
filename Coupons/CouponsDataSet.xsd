@@ -1420,8 +1420,8 @@ SELECT Id, Name, Details, BusinessId, Original_Price, Experation_Date, Rate, Is_
               <Mapping SourceColumn="Experation_Date" DataSetColumn="Experation_Date" />
               <Mapping SourceColumn="Rate" DataSetColumn="Rate" />
               <Mapping SourceColumn="Is_Approved" DataSetColumn="Is_Approved" />
-              <Mapping SourceColumn="Start_Hour" DataSetColumn="Start_Hour1" />
-              <Mapping SourceColumn="End_Hour" DataSetColumn="End_Hour1" />
+              <Mapping SourceColumn="Start_Hour" DataSetColumn="Start_Hour" />
+              <Mapping SourceColumn="End_Hour" DataSetColumn="End_Hour" />
             </Mappings>
             <Sources>
               <DbSource ConnectionRef="CouponsDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="approveDeal" Modifier="Public" Name="approveDeal" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="approveDeal">
@@ -1447,14 +1447,6 @@ WHERE  (Id = @Id)</CommandText>
                   </DbCommand>
                 </DeleteCommand>
               </DbSource>
-              <DbSource ConnectionRef="CouponsDBConnectionString (Settings)" DbObjectName="dbo.Deals" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="selectAllDeals" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="selectAllDeals" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="selectAllDeals" UserSourceName="FillBy">
-                <SelectCommand>
-                  <DbCommand CommandType="Text" ModifiedByUser="true">
-                    <CommandText>SELECT BusinessId, Details, End_Hour, Experation_Date, Id, Is_Approved, Name, Original_Price, Rate, Start_Hour FROM Deals</CommandText>
-                    <Parameters />
-                  </DbCommand>
-                </SelectCommand>
-              </DbSource>
               <DbSource ConnectionRef="CouponsDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="InsertDeal" Modifier="Public" Name="InsertDeal" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy2" UserSourceName="InsertDeal">
                 <InsertCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
@@ -1473,6 +1465,15 @@ VALUES        (@Name,@Details,@BusinessId,@Original_Price,@Experation_Date,@Star
                     </Parameters>
                   </DbCommand>
                 </InsertCommand>
+              </DbSource>
+              <DbSource ConnectionRef="CouponsDBConnectionString (Settings)" DbObjectName="dbo.Deals" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="selectAllDeals" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="selectAllDeals" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="selectAllDeals" UserSourceName="selectAllDeals">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        BusinessId, Details, End_Hour, Experation_Date, Id, Is_Approved, Name, Original_Price, Rate, Start_Hour
+FROM            Deals</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
               </DbSource>
               <DbSource ConnectionRef="CouponsDBConnectionString (Settings)" DbObjectName="dbo.Deals" DbObjectType="Table" GenerateMethods="Get" GenerateShortCommands="true" GeneratorGetMethodName="SelectDealByBusinessId" GetMethodModifier="Public" GetMethodName="SelectDealByBusinessId" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="SelectDealByBusinessId" UserSourceName="SelectDealByBusinessId">
                 <SelectCommand>
@@ -1501,6 +1502,25 @@ VALUES        (@Name,@Details,@BusinessId,@Original_Price,@Experation_Date,@Star
                     <Parameters />
                   </DbCommand>
                 </SelectCommand>
+              </DbSource>
+              <DbSource ConnectionRef="CouponsDBConnectionString (Settings)" DbObjectName="" DbObjectType="Unknown" GenerateShortCommands="true" GeneratorSourceName="UpdateDeal" Modifier="Public" Name="UpdateDeal" QueryType="NoData" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy3" UserSourceName="UpdateDeal">
+                <UpdateCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>UPDATE       Deals
+SET                Name = @Name, Details = @Details, Original_Price = @p1, Experation_Date = @Experation_Date, Start_Hour = @Start_Hour, End_Hour = @End_Hour
+WHERE        (Id = @Original_Id);   
+</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="Name" ColumnName="Name" DataSourceName="[C:\USERS\AVIV\SOURCE\REPOS\ARCHITECTURE_PROJECT\COUPONS\COUPONSDB.MDF].dbo.Deals" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Name" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Name" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Details" ColumnName="Details" DataSourceName="[C:\USERS\AVIV\SOURCE\REPOS\ARCHITECTURE_PROJECT\COUPONS\COUPONSDB.MDF].dbo.Deals" DataTypeServer="nvarchar(MAX)" DbType="String" Direction="Input" ParameterName="@Details" Precision="0" ProviderType="NVarChar" Scale="0" Size="2147483647" SourceColumn="Details" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="p1" ColumnName="Original_Price" DataSourceName="[C:\USERS\AVIV\SOURCE\REPOS\ARCHITECTURE_PROJECT\COUPONS\COUPONSDB.MDF].dbo.Deals" DataTypeServer="money" DbType="Currency" Direction="Input" ParameterName="@p1" Precision="0" ProviderType="Money" Scale="0" Size="8" SourceColumn="Original_Price" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Experation_Date" ColumnName="Experation_Date" DataSourceName="[C:\USERS\AVIV\SOURCE\REPOS\ARCHITECTURE_PROJECT\COUPONS\COUPONSDB.MDF].dbo.Deals" DataTypeServer="datetime" DbType="DateTime" Direction="Input" ParameterName="@Experation_Date" Precision="0" ProviderType="DateTime" Scale="0" Size="8" SourceColumn="Experation_Date" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="Start_Hour" ColumnName="Start_Hour" DataSourceName="[C:\USERS\AVIV\SOURCE\REPOS\ARCHITECTURE_PROJECT\COUPONS\COUPONSDB.MDF].dbo.Deals" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@Start_Hour" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="Start_Hour" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="End_Hour" ColumnName="End_Hour" DataSourceName="[C:\USERS\AVIV\SOURCE\REPOS\ARCHITECTURE_PROJECT\COUPONS\COUPONSDB.MDF].dbo.Deals" DataTypeServer="nvarchar(50)" DbType="String" Direction="Input" ParameterName="@End_Hour" Precision="0" ProviderType="NVarChar" Scale="0" Size="50" SourceColumn="End_Hour" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="false" AutogeneratedName="Original_Id" ColumnName="Id" DataSourceName="[C:\USERS\AVIV\SOURCE\REPOS\ARCHITECTURE_PROJECT\COUPONS\COUPONSDB.MDF].dbo.Deals" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@Original_Id" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="Id" SourceColumnNullMapping="false" SourceVersion="Original" />
+                    </Parameters>
+                  </DbCommand>
+                </UpdateCommand>
               </DbSource>
             </Sources>
           </TableAdapter>
@@ -1789,16 +1809,14 @@ VALUES        (@Name,@Details,@BusinessId,@Original_Price,@Experation_Date,@Star
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Start_Hour" msprop:Generator_ColumnVarNameInTable="columnStart_Hour" msprop:Generator_ColumnPropNameInRow="Start_Hour" msprop:Generator_ColumnPropNameInTable="Start_HourColumn" msprop:Generator_UserColumnName="Start_Hour" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="End_Hour" msprop:Generator_ColumnVarNameInTable="columnEnd_Hour" msprop:Generator_ColumnPropNameInRow="End_Hour" msprop:Generator_ColumnPropNameInTable="End_HourColumn" msprop:Generator_UserColumnName="End_Hour" type="xs:dateTime" minOccurs="0" />
-              <xs:element name="Start_Hour1" msdata:Caption="Start_Hour" msprop:Generator_ColumnVarNameInTable="columnStart_Hour1" msprop:Generator_ColumnPropNameInRow="Start_Hour1" msprop:Generator_ColumnPropNameInTable="Start_Hour1Column" msprop:Generator_UserColumnName="Start_Hour1" minOccurs="0">
+              <xs:element name="Start_Hour" msprop:Generator_ColumnVarNameInTable="columnStart_Hour" msprop:Generator_ColumnPropNameInRow="Start_Hour" msprop:Generator_ColumnPropNameInTable="Start_HourColumn" msprop:Generator_UserColumnName="Start_Hour" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="End_Hour1" msdata:Caption="End_Hour" msprop:Generator_ColumnVarNameInTable="columnEnd_Hour1" msprop:Generator_ColumnPropNameInRow="End_Hour1" msprop:Generator_ColumnPropNameInTable="End_Hour1Column" msprop:Generator_UserColumnName="End_Hour1" minOccurs="0">
+              <xs:element name="End_Hour" msprop:Generator_ColumnVarNameInTable="columnEnd_Hour" msprop:Generator_ColumnPropNameInRow="End_Hour" msprop:Generator_ColumnPropNameInTable="End_HourColumn" msprop:Generator_UserColumnName="End_Hour" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
