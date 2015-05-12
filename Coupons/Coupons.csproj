@@ -70,12 +70,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BL\BusinessBL.cs" />
+    <Compile Include="BL\BrandBL.cs" />
+    <Compile Include="BL\CategoryBL.cs" />
+    <Compile Include="BL\DealBL.cs" />
     <Compile Include="BL\UserBL.cs" />
+    <Compile Include="Constants\BrandColumns.cs" />
+    <Compile Include="Constants\CategoryColumns.cs" />
+    <Compile Include="DAL\DealDAL.cs" />
+    <Compile Include="DAL\BusinessDAL.cs" />
+    <Compile Include="DAL\BrandDAL.cs" />
+    <Compile Include="DAL\CategoryDAL.cs" />
     <Compile Include="GUI\AdminGUI\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GUI\BusinessOwnerGUI\MainOwne.xaml.cs">
-      <DependentUpon>MainOwne.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\ClientGUI\ClientWindow.xaml.cs">
       <DependentUpon>ClientWindow.xaml</DependentUpon>
@@ -93,12 +100,9 @@
       <DependentUpon>CouponsDataSet.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Settings.cs" />
     <Page Include="GUI\AdminGUI\AdminWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GUI\BusinessOwnerGUI\MainOwne.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -143,7 +147,7 @@
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Business.cs" />
     <Compile Include="Models\BusinessOwner.cs" />
-    <Compile Include="Enums\Category.cs" />
+    <Compile Include="Enums\CategoryType.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientNetworks.cs" />
     <Compile Include="Models\Coupon.cs" />
@@ -190,10 +194,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CouponsDB.mdf" />
+    <Content Include="CouponsDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="CouponsDB_log.ldf">
       <DependentUpon>CouponsDB.mdf</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="GUI\ClientGUI\Map.html" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -213,6 +221,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="GUI\BusinessOwnerGUI\" />
     <Folder Include="Util\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

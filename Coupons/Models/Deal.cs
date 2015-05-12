@@ -39,8 +39,8 @@ namespace Coupons.Models
             get { return mPrice; }
         }
 
-        private float mRate;
-        public float Rate
+        private double mRate;
+        public double Rate
         {
             get { return mRate; }
             set { mRate= value; }
@@ -65,7 +65,7 @@ namespace Coupons.Models
             get { return mCoupons; }
         }
 
-        public Deal(int id, String name, String details, Business business, decimal price, float rate, DateTime experationDate, bool isApproved)
+        public Deal(int id, String name, String details, Business business, decimal price, double rate, DateTime experationDate, bool isApproved)
         {
             mId = id;
             mName = name;
@@ -88,6 +88,11 @@ namespace Coupons.Models
                 result = true;
             }        
             return result; 
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 }

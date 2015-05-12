@@ -127,5 +127,23 @@ namespace Coupons.DAL
                  return false;
              }
         }
+
+        public BusinessOwner GetBusinessOwnerById(int ownerId)
+        {
+            CouponsDataset.UsersDataTable user = mTableUsers.selectUserById(ownerId);
+
+            if (user.Rows.Count == 1)
+            {
+                DataRow row = user.Rows[0];
+                int id = (int)row[UserColumns.ID];
+                String username = row[UserColumns.USERNAME].ToString();
+                String mail = row[UserColumns.MAIL].ToString();
+                String phone = row[UserColumns.PHONE].ToString();
+
+                BusinessOwner businessOwner = new BusinessOwner(id, username, mail, phone);
+                return businessOwner;
+            }
+            return null;
+        }
     }
 }

@@ -14,7 +14,9 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Coupons.BL;
 using Coupons.Models;
+using Coupons.GUI.ClientGUI;
 using Coupons;
+
 
 namespace CouponsApplication
 {
@@ -49,9 +51,10 @@ namespace CouponsApplication
                 {
 
                 }
-                else if (user.GetType() == typeof(ClientWindow))
+                else if (user.GetType() == typeof(Client))
                 {
-
+                    ClientWindow clientWindow = new ClientWindow((Client)user);
+                    clientWindow.Show();
                 }
             }
             else

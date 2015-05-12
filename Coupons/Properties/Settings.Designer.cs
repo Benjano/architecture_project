@@ -33,5 +33,16 @@ namespace Coupons.Properties {
                 return ((string)(this["CouponsDBConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(LocalDB)\\v11.0;AttachDbFilename=|DataDirectory|\\CouponsDB.mdf;Integr" +
+            "ated Security=True;Connect Timeout=30")]
+        public string CouponsDBConnectionStringRelative {
+            get {
+                return ((string)(this["CouponsDBConnectionStringRelative"]));
+            }
+        }
     }
 }
