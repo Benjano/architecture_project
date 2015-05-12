@@ -143,12 +143,14 @@ namespace Coupons.DAL
                 DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
                 bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
                 int businessId = (int)row[DealsColumns.BUSINESS_ID];
+                String startHour = row[DealsColumns.START_HOUR].ToString();
+                String endHour = row[DealsColumns.END_HOUR].ToString();
 
                 AdminDAL mAdminDAL = new AdminDAL();
                 Business business = mAdminDAL.selectBusinessById(businessId);
 
 
-                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
+                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved, startHour, endHour);
                 result.Add(deal);
             }
             return result;
@@ -157,6 +159,11 @@ namespace Coupons.DAL
         public bool approveDeal(int dealId)
         {
             return  mTableDeals.approveDeal(dealId)==1 ;
+        }
+
+        public bool updateDeal(Deal selectedDeal, string name, string details, decimal originalPrice, DateTime experationDate, string startHour, string endHour)
+        {
+            return mTableDeals.UpdateDeal(name, details, originalPrice, experationDate, startHour, endHour, selectedDeal.ID)==1;
         }
     }
 

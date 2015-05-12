@@ -59,13 +59,27 @@ namespace Coupons.Models
             set { mIsApproved = value; }
         }
 
+        private String mStartHour;
+        public String StartHour
+        {
+            get { return mStartHour; }
+            set { mStartHour = value; }
+        }
+
+        private String mEndHour;
+        public String EndHour
+        {
+            get { return mEndHour; }
+            set { mEndHour = value; }
+        }
+
         private List<Coupon> mCoupons;
         public List<Coupon> Coupons
         {
             get { return mCoupons; }
         }
 
-        public Deal(int id, String name, String details, Business business, decimal price, float rate, DateTime experationDate, bool isApproved)
+        public Deal(int id, String name, String details, Business business, decimal price, float rate, DateTime experationDate, bool isApproved, String startHour, String endHour)
         {
             mId = id;
             mName = name;
@@ -75,6 +89,8 @@ namespace Coupons.Models
             mRate = rate;
             mExperationDate = experationDate;
             mIsApproved = isApproved;
+            mStartHour = startHour;
+            mEndHour = endHour;
             mCoupons = new List<Coupon>();
         }
 

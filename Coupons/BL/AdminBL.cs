@@ -37,9 +37,20 @@ namespace Coupons.BL
             return mDal.deleteDeal(mSelectedDeal.ID);
         }
 
-        public bool ApproveDeal(Deal mSelectedDeal)
+        public bool ApproveDeal(Deal selectedDeal)
         {
-            return mDal.approveDeal(mSelectedDeal.ID);
+            if (selectedDeal != null)
+                return mDal.approveDeal(selectedDeal.ID);
+            else
+                return false;
+        }
+
+        public bool updateDeal(Deal selectedDeal, string name, string details, decimal originalPrice, DateTime experationDate, string startHour, string endHour)
+        {
+            if (selectedDeal != null)
+                return mDal.updateDeal(selectedDeal, name, details, originalPrice, experationDate, startHour, endHour);
+            else
+                return false; 
         }
     }
 }

@@ -81,7 +81,9 @@ namespace Coupons.DAL
                 DateTime experationDate;
                 DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
                 bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
-                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
+                String startHour = row[DealsColumns.START_HOUR].ToString();
+                String endHour = row[DealsColumns.END_HOUR].ToString();
+                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved, startHour, endHour);
                 business.addDeal(deal);
             }
         }
