@@ -94,6 +94,11 @@ namespace Coupons.BL
             return mDal.getClientSocialNetworks(clientId);
         }
 
+        public List<Coupon> getClientCouponsByClient(Client client)
+        {
+            return mDal.getClientCouponsByClient(client);
+        }
+        
         public bool addSocialNetwork(int clientId, SocialNetwork networkName, string username, string token)
         {
             return mDal.addSocialNetwork(clientId, networkName, username, token);
