@@ -25,11 +25,9 @@ namespace Coupons.GUI.BusinessOwnerGUI
     public partial class BusinessOwnerWindow : Window
     {
         private UserBL mUserBL;
-        private ClientBL mClientBL;
+
         private BusinessOwnerBL mBusinessOwnerBl;
 
-        private List<Client> mClients;
-        private List<BusinessOwner> mBusniessOwners;
         private List<Business> mBusiness;
         private List<Coupon> mCoupons;
         private List<Deal> mDeals;
@@ -38,21 +36,42 @@ namespace Coupons.GUI.BusinessOwnerGUI
         Business mSelectedBusiness;
         Deal mSelectedDeal;
         Coupon mSelectedCoupon;
+        BusinessOwner mBusinessOwner;
 
-        public BusinessOwnerWindow(BusinessOwner mSelectedBusinessOwner)
+        public BusinessOwnerWindow(BusinessOwner BusinessOwner)
         {
 
             InitializeComponent();
+
+            mBusinessOwner = BusinessOwner;
             mUserBL = new UserBL();
-            mClientBL = new ClientBL();
             mBusinessOwnerBl = new BusinessOwnerBL();
-            mClients = mUserBL.getAllClients();
-            mBusniessOwners = mUserBL.getAllBusinessOwner();
-            mBusiness = mClientBL.getAllBusiness();
-            setBusinessDataGrid(mBusiness);
+            mBusiness = new List<Business>();
+            mDeals = new List<Deal>();
+            loadAllOwnerDeals();
             setDealsDataGrid(mDeals);
+            setBusinessDataGrid(mBusiness);
             setPurchasDataGrid(mCoupons);
 
+            lblUsername.Content = mBusinessOwner.Username;
+
+        }
+
+        private void loadAllOwnerDeals()
+        {
+            List<Business> businesses = mBusinessOwnerBl.getBusinessesByOwnerId(mBusinessOwner.ID);
+            mBusiness.Clear();
+            mDeals.Clear();
+
+            foreach (Business business in businesses)
+            {
+                mBusiness.Add(business);
+                List<Deal> businessDeals = mBusinessOwnerBl.getAllDealsByBussinesId(business.ID);
+                foreach (Deal deal in businessDeals)
+                {
+                    mDeals.Add(deal);
+                }
+            }
         }
 
         private bool isNumeric(String text)
@@ -106,15 +125,22 @@ namespace Coupons.GUI.BusinessOwnerGUI
         }
         private void btnAdddDeal_Click(object sender, RoutedEventArgs e)
         {
-            CreateDealWindow window = new CreateDealWindow(mSelectedBusiness);
-            window.Show();
+            if (mSelectedBusiness != null)
+            {
+                CreateDealWindow window = new CreateDealWindow(mSelectedBusiness);
+                window.Show();
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Business",
+                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         public void setDealsDataGrid(List<Deal> deals)
         {
 
             btnSearchDeal.Background = CustomColors.BLUE;
-
             dgDeals.Columns.Clear();
             DataGridTextColumn colId = new DataGridTextColumn();
             colId.Header = "ID";
@@ -154,19 +180,26 @@ namespace Coupons.GUI.BusinessOwnerGUI
         {
 
             String dealId = tbId.Text;
+            String businessId = tbBusinessId.Text;
+            List<Deal> deals = new List<Deal>();
+            Deal deal = null;
 
-
-
-            if (tbId.Text.Length > 0 && isNumeric(tbId.Text) && (mClientBL.getDealById(Convert.ToInt32(dealId)) != null))
+            if (dealId.Length > 0 && isNumeric(dealId) && mBusinessOwnerBl.getDealById(Convert.ToInt32(dealId))!= null)
             {
-                setDealsDataGrid(mClientBL.getDealById(Convert.ToInt32(dealId)));
+                deal = mBusinessOwnerBl.getDealById(Convert.ToInt32(dealId));
+                deals.Add(deal);
+                setDealsDataGrid(deals);
+            }
+            else if (businessId.Length > 0 && isNumeric(businessId) && mBusinessOwnerBl.getAllDealsByBussinesId(Convert.ToInt32(businessId)) != null)
+            {
+                deals = mBusinessOwnerBl.getAllDealsByBussinesId(Convert.ToInt32(businessId));  
+                setDealsDataGrid(deals);
             }
             else
             {
                 MessageBoxResult results = MessageBox.Show("You enterd an invalid deal Id. Please try again",
                     "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
             }
-
         }
 
         public void setPurchasDataGrid(List<Coupon> coupons)
@@ -201,6 +234,28 @@ namespace Coupons.GUI.BusinessOwnerGUI
         {
             mSelectedCoupon = (Coupon)dgPurchases.SelectedItem;
         }
+
+        private void dgDeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mSelectedDeal = (Deal)dgDeals.SelectedItem;
+        }
+
+        private void btnRefreshBusiness_Click(object sender, RoutedEventArgs e)
+        {
+            setBusinessDataGrid(mBusiness);
+        }
+
+        private void btnRefreshDeals_Click(object sender, RoutedEventArgs e)
+        {
+            loadAllOwnerDeals();
+            setDealsDataGrid(mDeals);
+        }
+
+        private void btnRefreshPurchases_Click(object sender, RoutedEventArgs e)
+        {
+            setPurchasDataGrid(mCoupons);
+        }
+
 
 
 

@@ -336,7 +336,6 @@ namespace Coupons.GUI.AdminGUI
         {
             if (mSelectedBusiness != null)
             {
-                mSelectedBusiness = (Business)dgBusinesses.SelectedItem;
                 CreateDealWindow window = new CreateDealWindow(mSelectedBusiness);
                 window.Show();
             }
@@ -367,7 +366,6 @@ namespace Coupons.GUI.AdminGUI
         {
             if (mSelectedDeal != null)
             {
-                mSelectedDeal = (Deal)dgDeals.SelectedItem;
                 UpdateDealWindow window = new UpdateDealWindow(mSelectedDeal);
                 window.Show();
             }

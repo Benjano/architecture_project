@@ -84,6 +84,16 @@ namespace Coupons.BL
         {
             return mDal.getBusinessOwnerByUserName(businessOwnerUserName);
         }
+
+        public List<Deal> getAllDealsByBussinesId(int businessId)
+        {
+            return mDal.getAllDealsByBussinesId(businessId);
+        }
+
+        public Deal getDealById(int dealId)
+        {
+            return mDal.getDealById(dealId);
+        }
     }
 }
 
