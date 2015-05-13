@@ -72,8 +72,6 @@
     </ApplicationDefinition>
     <Compile Include="BL\AdminBL.cs" />
     <Compile Include="BL\UserBL.cs" />
-    <Compile Include="Constants\BrandColumns.cs" />
-    <Compile Include="Constants\CategoryColumns.cs" />
     <Compile Include="Enums\Category.cs" />
     <Compile Include="GUI\AdminGUI\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
