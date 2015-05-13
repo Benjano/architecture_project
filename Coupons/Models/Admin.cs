@@ -9,9 +9,6 @@ namespace Coupons.Models
     public class Admin : User
     {
 
-        List<Client> mClients;
-        List<Business> mBusinesses;
-        List<BusinessOwner> mBusinessOwner;
 
         public Admin(int id, String username, String mail, String phone) : base(id, username, mail, phone) { }
 

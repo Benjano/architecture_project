@@ -14,10 +14,11 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Coupons.BL;
 using Coupons.Models;
-using Coupons;
 using Coupons.GUI.ClientGUI;
+using Coupons;
 using Coupons.GUI.AdminGUI;
 using Coupons.GUI.BusinessOwnerGUI;
+
 
 namespace CouponsApplication
 {
@@ -56,7 +57,8 @@ namespace CouponsApplication
                 }
                 else if (user.GetType() == typeof(Client))
                 {
-
+                    ClientWindow clientWindow = new ClientWindow((Client)user);
+                    clientWindow.Show();
                 }
                 this.Close();
             }

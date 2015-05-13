@@ -1,0 +1,29 @@
+﻿<Window x:Class="Coupons.GUI.AdminGUI.CreateDealWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="CreateDeal" Height="350" Width="300" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="155*"/>
+            <ColumnDefinition Width="139*"/>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="tbName" HorizontalAlignment="Left" Height="23" Margin="135,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbDetails" HorizontalAlignment="Left" Height="23" Margin="135,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbOriginalPrice" HorizontalAlignment="Left" Height="23" Margin="135,132,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <DatePicker Name="dpExperationDate" HorizontalAlignment="Left" Margin="135,160,0,0" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+
+        <Label Content="Name" HorizontalAlignment="Left" Margin="36,76,0,0" VerticalAlignment="Top"/>
+        <Label Content="Details" HorizontalAlignment="Left" Margin="36,104,0,0" VerticalAlignment="Top"/>
+        <Label Content="Original Price" HorizontalAlignment="Left" Margin="36,132,0,0" VerticalAlignment="Top"/>
+        <Label Content="Experation Date" HorizontalAlignment="Left" Margin="35,158,0,0" VerticalAlignment="Top"/>
+
+        <Button Name="btnSave" Content="Save" HorizontalAlignment="Left" Margin="20,246,0,0" VerticalAlignment="Top" Width="75" Click="btnSave_Click" Grid.Column="1"/>
+        <Button Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="42,251,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click"/>
+        <Label Content="Start Hour" HorizontalAlignment="Left" Margin="35,189,0,0" VerticalAlignment="Top"/>
+        <Label Content="End Hour" HorizontalAlignment="Left" Margin="35,215,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="tbStart_hour" HorizontalAlignment="Left" Height="23" Margin="135,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbEnd_Hour" HorizontalAlignment="Left" Height="23" Margin="135,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <Label Content="Create New Deal" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="54,10,0,0" VerticalAlignment="Top" Width="201" Grid.ColumnSpan="2" />
+
+    </Grid>
+</Window>

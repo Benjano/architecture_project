@@ -25,5 +25,39 @@ namespace Coupons.Models
             mId = id;
             mName = name;
         }
+
+        // override object.Equals
+        public override bool Equals(object obj)
+        {
+            if (obj == null || GetType() != obj.GetType())
+            {
+                return false;
+            }
+
+            if (this == obj)
+            {
+                return true;
+            }
+
+            Brand brandObj = (Brand)obj;
+            if (this.Name.Equals(brandObj.Name) && this.ID.Equals(brandObj.ID))
+            {
+                return true;
+            }
+            
+            
+            return false;
+        }
+
+        // override object.GetHashCode
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
+        }
     }
 }

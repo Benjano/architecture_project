@@ -30,7 +30,7 @@ namespace Coupons.BL
             return mDal.logBusinessOwner(username, password);
         }
 
-        public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate, DateTime startHour, DateTime endHour)
+        public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate, String startHour, String endHour)
         {
             return mDal.insertNewDeal(name, details, business, price, experationDate, startHour, endHour);
         }
@@ -45,24 +45,44 @@ namespace Coupons.BL
            return  mDal.getBusinessesByOwnerId(ownerId);
         }
 
-        private void loadDealsToBusiness(Business business)
+       /* private void loadDealsToBusiness(Business business)
         {
             mDal.loadDealsToBusiness(business);
-        }
+        }*/
 
         private void loadDealCoupons(Deal deal)
         {
             mDal.loadDealCoupons(deal);
         }
 
-        public BusinessOwner getBusinessOwnerById(string userName, string password)
+        public BusinessOwner getBusinessOwnerByNmae(string userName, string password)
         {
-            return mDal.getBusinessOwnerById(userName, password);
+            return mDal.getBusinessOwnerByName(userName, password);
         }
 
         public bool UpdateBusiness(int businessId, String name, String description, int ownerId, String address, String city)
         {
             return mDal.UpdateBusiness(businessId, name, description, ownerId, address, city);
+        }
+        public List<Business> getBusinessesByName(string name)
+        {
+            return mDal.getBusinessesByName(name);
+        }
+
+        public List<Business> getBusinessById(int businessId)
+        {
+            return mDal.getBusinessById(businessId);
+        }
+
+
+        public BusinessOwner getBusinessOwnerById(int businessOwnerId)
+        {
+            return mDal.getBusinessOwnerById(businessOwnerId);
+        }
+
+        public BusinessOwner getBusinessOwnerByUserName(string businessOwnerUserName)
+        {
+            return mDal.getBusinessOwnerByUserName(businessOwnerUserName);
         }
     }
 }

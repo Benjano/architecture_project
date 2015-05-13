@@ -57,6 +57,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="TestBrandDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Coupons\Coupons.csproj">

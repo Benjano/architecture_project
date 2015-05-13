@@ -72,8 +72,17 @@
     </ApplicationDefinition>
     <Compile Include="BL\AdminBL.cs" />
     <Compile Include="BL\UserBL.cs" />
+    <Compile Include="Constants\BrandColumns.cs" />
+    <Compile Include="Constants\CategoryColumns.cs" />
+    <Compile Include="Enums\Category.cs" />
     <Compile Include="GUI\AdminGUI\AdminWindow.xaml.cs">
       <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AdminGUI\CreateDealWindow.xaml.cs">
+      <DependentUpon>CreateDealWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GUI\AdminGUI\UpdateDealWindow.xaml.cs">
+      <DependentUpon>UpdateDealWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="GUI\BusinessOwnerGUI\BusinessOwnerWindow.xaml.cs">
       <DependentUpon>BusinessOwnerWindow.xaml</DependentUpon>
@@ -106,6 +115,14 @@
     <Page Include="GUI\AdminGUI\AdminWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GUI\AdminGUI\CreateDealWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="GUI\AdminGUI\UpdateDealWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="GUI\BusinessOwnerGUI\BusinessOwnerWindow.xaml">
       <SubType>Designer</SubType>
@@ -160,7 +177,6 @@
     <Compile Include="Models\Brand.cs" />
     <Compile Include="Models\Business.cs" />
     <Compile Include="Models\BusinessOwner.cs" />
-    <Compile Include="Enums\Category.cs" />
     <Compile Include="Models\Client.cs" />
     <Compile Include="Models\ClientNetworks.cs" />
     <Compile Include="Models\Coupon.cs" />

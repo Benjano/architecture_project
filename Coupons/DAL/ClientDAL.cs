@@ -24,6 +24,8 @@ namespace Coupons.DAL
         private CouponsDatasetTableAdapters.SocialFriendsTableAdapter mTableSocialFriends = new CouponsDatasetTableAdapters.SocialFriendsTableAdapter();
         private CouponsDatasetTableAdapters.FriendsTableAdapter mTableFriends = new CouponsDatasetTableAdapters.FriendsTableAdapter();
         private CouponsDatasetTableAdapters.BusinessesTableAdapter mTableBusiness = new CouponsDatasetTableAdapters.BusinessesTableAdapter();
+        private CouponsDatasetTableAdapters.BusinessCategoriesTableAdapter mTableBusinessCategory = new CouponsDatasetTableAdapters.BusinessCategoriesTableAdapter();
+
 
         public bool insertNewClient(String username, String password, String mail, String phone, DateTime birthDate, Gender gender, String location)
         {
@@ -156,9 +158,10 @@ namespace Coupons.DAL
             return -1;
         }
 
-        public Deal getDealById(int dealId)
+        public List<Deal> getDealById(int dealId)
         {
             CouponsDataset.DealsDataTable deals = mTableDeals.SelectDealById(dealId);
+            List<Deal> result = new List<Deal>();
             if (deals.Rows.Count == 1)
             {
                 DataRow row = deals[0];
@@ -171,18 +174,14 @@ namespace Coupons.DAL
                 DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
                 bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
                 int businessId = (int)row[DealsColumns.BUSINESS_ID];
+                String startHour = row[DealsColumns.START_HOUR].ToString();
+                String endHour = row[DealsColumns.END_HOUR].ToString();
 
-                AdminDAL mAdminDAL = new AdminDAL();
-                Business business = mAdminDAL.selectBusinessById(businessId);
 
-
-                Deal deal = new Deal(id, name, details, business, originalPrice, rate, experationDate, isApproved);
-                return deal;
+                Deal deal = new Deal(id, name, details, businessId, originalPrice, rate, experationDate, isApproved, startHour, endHour);
+                result.Add(deal);
             }
-            else
-            {
-                return null;
-            }
+            return result;
         }
 
         public Client getClientById(int clientId)
@@ -311,7 +310,7 @@ namespace Coupons.DAL
         }
 
 
-        internal List<Business> getAllDeal()
+        internal List<Business> getAllBusinesses()
         {
             List<Business> result = new List<Business>();
             DataTable Business = mTableBusiness.selectAllBusiness();
@@ -325,9 +324,67 @@ namespace Coupons.DAL
                 String address = (String)row[BusinessesColumns.ADDRESS];
                 String city = (String)row[BusinessesColumns.CITY];
 
+                Business business = new Business(id, name, description, ownerId, address, city); 
 
-                result.Add(new Business(id, name, description, ownerId, address, city));
+                DataTable categories = mTableBusinessCategory.SelectBusinessCategory(id);
+
+                foreach (DataRow catRow in categories.Rows)
+                {
+                    business.addCategory((Category) Enum.Parse(typeof(Category), catRow["Name"].ToString()));
+                }
+
+
+                result.Add(business);
             }
+            return result;
+        }
+
+        public List<Deal> getAllDeals()
+        {
+            List<Deal> result = new List<Deal>();
+            CouponsDataset.DealsDataTable deals = mTableDeals.selectAllDeals();
+            foreach (DataRow row in deals.Rows)
+            {
+                int id = (int)row[DealsColumns.ID];
+                String name = row[DealsColumns.NAME].ToString();
+                String details = row[DealsColumns.DETAILS].ToString(); ;
+                decimal originalPrice = (decimal)row[DealsColumns.ORIGINAL_PRICE];
+                float rate = (float)(double)row[DealsColumns.RATE];
+                DateTime experationDate;
+                DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
+                bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
+                int businessId = (int)row[DealsColumns.BUSINESS_ID];
+                String startHour = row[DealsColumns.START_HOUR].ToString();
+                String endHour = row[DealsColumns.END_HOUR].ToString();
+
+
+                Deal deal = new Deal(id, name, details, businessId, originalPrice, rate, experationDate, isApproved, startHour, endHour);
+                result.Add(deal);
+            }
+            return result;
+        }
+
+
+
+        public List<string> getPossibleCities()
+        {
+        
+
+            List<string> result = new List<string>();
+            DataTable cities = mTableBusiness.selectAllBusiness();
+
+            foreach (DataRow row in cities.Rows)
+            {
+                string city = row[BusinessesColumns.CITY].ToString();
+                string cityLower = city.ToLower();
+
+                if (result.IndexOf(cityLower) == -1)
+                {
+                    result.Add(cityLower);
+                }
+
+            }
+
             return result;
         }
     }

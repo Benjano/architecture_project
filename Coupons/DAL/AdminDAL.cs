@@ -127,6 +127,41 @@ namespace Coupons.DAL
         {
             return mTableGroups.DeleteGroup(groupId) == 1;
         }
+
+        public List<Deal> getDealsNotApproval()
+        {
+            List<Deal> result = new List<Deal>();
+            CouponsDataset.DealsDataTable deals = mTableDeals.selectDealsNotApproval();
+            foreach (DataRow row in deals.Rows)
+            {
+                int id = (int)row[DealsColumns.ID];
+                String name = row[DealsColumns.NAME].ToString();
+                String details = row[DealsColumns.DETAILS].ToString(); ;
+                decimal originalPrice = (decimal)row[DealsColumns.ORIGINAL_PRICE];
+                float rate = (float)(double)row[DealsColumns.RATE];
+                DateTime experationDate;
+                DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
+                bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
+                int businessId = (int)row[DealsColumns.BUSINESS_ID];
+                String startHour = row[DealsColumns.START_HOUR].ToString();
+                String endHour = row[DealsColumns.END_HOUR].ToString();
+
+            
+                Deal deal = new Deal(id, name, details, businessId, originalPrice, rate, experationDate, isApproved, startHour, endHour);
+                result.Add(deal);
+            }
+            return result;
+        }
+
+        public bool approveDeal(int dealId)
+        {
+            return  mTableDeals.approveDeal(dealId)==1 ;
+        }
+
+        public bool updateDeal(Deal selectedDeal, string name, string details, decimal originalPrice, DateTime experationDate, string startHour, string endHour)
+        {
+            return mTableDeals.UpdateDeal(name, details, originalPrice, experationDate, startHour, endHour, selectedDeal.ID)==1;
+        }
     }
 
 }
