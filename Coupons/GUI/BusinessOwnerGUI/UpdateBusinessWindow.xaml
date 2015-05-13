@@ -12,9 +12,9 @@
         <TextBox Name="tbAdress" HorizontalAlignment="Left" Height="28" Margin="124,151,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="96"/>
         <TextBox Name="tbCity" HorizontalAlignment="Left" Height="28" Margin="123,184,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="97"/>
         <Label Content="Update My Buisness" HorizontalAlignment="Left" Height="30" Margin="65,0,0,0" VerticalAlignment="Top" Width="169"/>
-        
-        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Height="26" Margin="180,234,0,0" VerticalAlignment="Top" Width="81"/>
-        <Button Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Height="26" Margin="35,234,0,0" VerticalAlignment="Top" Width="74"/>
+
+        <Button Name="btnUpdate" Content="Update" HorizontalAlignment="Left" Height="26" Margin="180,234,0,0" VerticalAlignment="Top" Width="81" Click="btnUpdate_Click"/>
+        <Button Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Height="26" Margin="35,234,0,0" VerticalAlignment="Top" Width="74" Click="btnCancel_Click"/>
 
     </Grid>
 </Window>
