@@ -33,6 +33,7 @@ namespace Coupons.GUI.AdminGUI
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+
             String name = tbName.Text;
             String details = tbDetails.Text;
             decimal originalPrice = Convert.ToDecimal(tbOriginalPrice.Text);
