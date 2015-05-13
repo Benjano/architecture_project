@@ -184,6 +184,48 @@ namespace Coupons.DAL
             return result;
         }
 
+        public List<Coupon> getClientCouponsByClient(Client client)
+        {
+            CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectAllClientCoupons(client.ID);
+            List<Coupon> result = new List<Coupon>();
+            Deal deal = null;
+            Coupon coupon;
+            foreach (DataRow row in coupons.Rows)
+            {
+
+                int dealId = (int)row[CouponsColumns.DEAL_ID];
+                decimal originalPrice = (decimal)row[CouponsColumns.ORIGINAL_PRICE];
+                decimal boughtPrice = (decimal)row[CouponsColumns.BOUGHT_PRICE];
+                bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
+                String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
+
+                CouponsDataset.DealsDataTable deals = mTableDeals.SelectDealById(dealId);
+                List<Deal> dealResult = new List<Deal>();
+                if (deals.Rows.Count == 1)
+                {
+                    DataRow Dealrow = deals[0];
+                    int id = (int)Dealrow[DealsColumns.ID];
+                    String name = Dealrow[DealsColumns.NAME].ToString();
+                    String details = Dealrow[DealsColumns.DETAILS].ToString(); ;
+                    decimal dealOriginalPrice = (decimal)Dealrow[DealsColumns.ORIGINAL_PRICE];
+                    float dealRate = (float)(double)Dealrow[DealsColumns.RATE];
+                    DateTime experationDate;
+                    DateTime.TryParse(Dealrow[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
+                    bool isApproved = (Dealrow[DealsColumns.IS_APPROVED].ToString().Equals("True"));
+                    int businessId = (int)Dealrow[DealsColumns.BUSINESS_ID];
+                    String startHour = Dealrow[DealsColumns.START_HOUR].ToString();
+                    String endHour = Dealrow[DealsColumns.END_HOUR].ToString();
+
+
+                    deal = new Deal(id, name, details, businessId, dealOriginalPrice, dealRate, experationDate, isApproved, startHour, endHour);
+                }
+
+                coupon = new Coupon(client, deal, originalPrice, boughtPrice, -1, isUsed, serialKey);
+                result.Add(coupon);
+            }
+            return result;
+        }
+
         public Client getClientById(int clientId)
         {
             CouponsDataset.ClientsDataTable clients = mTableClients.selectClientById(clientId);

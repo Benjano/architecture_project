@@ -31,11 +31,14 @@ namespace Coupons.GUI.ClientGUI
         List<Business> mBusinesses;
         List<Category> mCategories;
         List<string> mPossibleCities;
+        Deal mSelectedDeal;
+        Client mClient;
 
         GeoCoordinateWatcher _watcher;
 
         public ClientWindow(Client client)
         {
+            mClient = client;
             InitializeComponent();
             lblUserName.Content = client.Username;
 
@@ -47,7 +50,7 @@ namespace Coupons.GUI.ClientGUI
             mPossibleCities = mClientBl.getPossibleCities();
 
             setDealsDataGrid(mDeals);
-
+            setCouponDataGrid(mClientBl.getClientCouponsByClient(mClient));
 
 
             cbCategory.ItemsSource = mCategories;
@@ -80,12 +83,42 @@ namespace Coupons.GUI.ClientGUI
             colDetails.Binding = new Binding("Details");
             colDetails.Width = 200;
 
-         
+
 
             dgDeals.Columns.Add(colName);
             dgDeals.Columns.Add(colDetails);
 
             dgDeals.ItemsSource = deals;
+        }
+
+        public void setCouponDataGrid(List<Coupon> coupons)
+        {
+            dgMy_Coupons.Columns.Clear();
+
+            DataGridTextColumn colId = new DataGridTextColumn();
+            colId.Header = "ID";
+            colId.Binding = new Binding("ID");
+            colId.Width = 20;
+
+            DataGridTextColumn colOriginalPrice = new DataGridTextColumn();
+            colOriginalPrice.Header = "Original Price";
+            colOriginalPrice.Binding = new Binding("originalPrice");
+            colOriginalPrice.Width = 20;
+
+            DataGridTextColumn colBoughtPrice = new DataGridTextColumn();
+            colBoughtPrice.Header = "Original Price";
+            colBoughtPrice.Binding = new Binding("boughtPrice");
+            colBoughtPrice.Width = 20;
+
+            DataGridTextColumn colRate = new DataGridTextColumn();
+            colRate.Header = "Rate";
+            colRate.Binding = new Binding("Rate");
+            colRate.Width = 20;
+            
+            dgMy_Coupons.Columns.Add(colOriginalPrice);
+            dgMy_Coupons.Columns.Add(colBoughtPrice);
+
+            dgMy_Coupons.ItemsSource = coupons;
         }
 
 
@@ -133,6 +166,35 @@ namespace Coupons.GUI.ClientGUI
         }
 
         private void btnFavorit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnBuy_coupon(object sender, RoutedEventArgs e)
+        {
+            if (mSelectedDeal != null)
+            {
+                if (mClientBl.buyCoupon(mSelectedDeal, mClient) != -1)
+                {
+                    MessageBoxResult result = MessageBox.Show("Success",
+                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                setCouponDataGrid(mClientBl.getClientCouponsByClient(mClient));
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Deal",
+                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
+
+        private void dgDeals_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            mSelectedDeal = (Deal)dgDeals.SelectedItem;
+        }
+
+
+        private void cbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

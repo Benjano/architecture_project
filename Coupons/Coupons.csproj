@@ -206,7 +206,7 @@
     <None Include="CouponsDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CouponsDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>CouponsDataSet1.Designer.cs</LastGenOutput>
     </None>
     <None Include="CouponsDataSet.xss">
       <DependentUpon>CouponsDataSet.xsd</DependentUpon>
