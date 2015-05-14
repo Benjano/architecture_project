@@ -98,7 +98,7 @@ namespace Coupons.Models
         {
             bool result = false;
 
-            if (this == coupon.Deal & !mCoupons.Contains(coupon))
+            if (this.ID == coupon.DealId & !mCoupons.Contains(coupon))
             {
                 mCoupons.Add(coupon);
                 result = true;

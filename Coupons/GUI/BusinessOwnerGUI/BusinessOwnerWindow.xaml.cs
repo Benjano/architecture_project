@@ -29,9 +29,8 @@ namespace Coupons.GUI.BusinessOwnerGUI
         private BusinessOwnerBL mBusinessOwnerBl;
 
         private List<Business> mBusiness;
-        private List<Coupon> mCoupons;
         private List<Deal> mDeals;
-
+        private List<Coupon> mCoupons;
 
         Business mSelectedBusiness;
         Deal mSelectedDeal;
@@ -48,6 +47,7 @@ namespace Coupons.GUI.BusinessOwnerGUI
             mBusinessOwnerBl = new BusinessOwnerBL();
             mBusiness = new List<Business>();
             mDeals = new List<Deal>();
+            mCoupons = new List<Coupon>();
             loadAllOwnerDeals();
             setDealsDataGrid(mDeals);
             setBusinessDataGrid(mBusiness);
@@ -62,6 +62,7 @@ namespace Coupons.GUI.BusinessOwnerGUI
             List<Business> businesses = mBusinessOwnerBl.getBusinessesByOwnerId(mBusinessOwner.ID);
             mBusiness.Clear();
             mDeals.Clear();
+            mCoupons.Clear();
 
             foreach (Business business in businesses)
             {
@@ -70,9 +71,16 @@ namespace Coupons.GUI.BusinessOwnerGUI
                 foreach (Deal deal in businessDeals)
                 {
                     mDeals.Add(deal);
+                    List<Coupon> businessDealsCoupon = mBusinessOwnerBl.getAllCouponByDealId(deal.ID);
+                    foreach (Coupon coupon in businessDealsCoupon)
+                    {
+                        mCoupons.Add(coupon);
+                    }
                 }
             }
         }
+
+       
 
         private bool isNumeric(String text)
         {
@@ -120,8 +128,19 @@ namespace Coupons.GUI.BusinessOwnerGUI
 
         private void btnUpdateBusiness_Click(object sender, RoutedEventArgs e)
         {
-            UpdateBusinessWindow window = new UpdateBusinessWindow(mSelectedBusiness);
-            window.Show();
+            if (mSelectedBusiness != null)
+            {
+                UpdateBusinessWindow window = new UpdateBusinessWindow(mSelectedBusiness);
+                window.Show();
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Business that you want to update!",
+               "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+
+
+
         }
         private void btnAdddDeal_Click(object sender, RoutedEventArgs e)
         {

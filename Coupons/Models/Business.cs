@@ -35,7 +35,7 @@ namespace Coupons.Models
         }
 
         private String mAddress;
-        private String Address
+        public String Address
         {
             get { return mAddress; }
             set { mAddress = value; }

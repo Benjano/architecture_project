@@ -23,43 +23,29 @@ namespace Coupons.GUI.BusinessOwnerGUI
     /// </summary>
     public partial class UpdateBusinessWindow : Window
     {
-        private UserBL mUserBL;
-        private ClientBL mClientBL;
         private BusinessOwnerBL mBusinessOwnerBL;
-
-        private List<Client> mClients;
-
-        private List<Business> mBusiness;
-        private List<Coupon> mTableCoupons;
-        private List<Deal> mTableDeals;
-        private List<User> mTableUsers;
-
-        private bool mIsOwner;
         Business mSelectedBusiness;
-
 
 
         public UpdateBusinessWindow(Business buisness)
         {
             InitializeComponent();
-            mUserBL = new UserBL();
-            mClientBL = new ClientBL();
-            mBusinessOwnerBL = new BusinessOwnerBL();
-            mClients = mUserBL.getAllClients();
-
-            mBusiness = mClientBL.getAllBusiness();
             mSelectedBusiness = buisness;
-
+            mBusinessOwnerBL = new BusinessOwnerBL();
+            tbBusinessName.Text = mSelectedBusiness.Name;
+            tbDescription.Text = mSelectedBusiness.Description;
+            tbAddress.Text = mSelectedBusiness.Address;
+            tbCity.Text = mSelectedBusiness.City;
         }
 
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
-            string name = tbBuisName.Text;
+            string name = tbBusinessName.Text;
             string description = tbDescription.Text;
-            string adress = tbAdress.Text;
+            string address = tbAddress.Text;
             string city = tbCity.Text;
-            mBusinessOwnerBL.UpdateBusiness(mSelectedBusiness.ID, name, description, mSelectedBusiness.Owner, adress, city);
+            mBusinessOwnerBL.UpdateBusiness(mSelectedBusiness.ID, name, description, mSelectedBusiness.Owner, address, city);
             Close();
 
         }

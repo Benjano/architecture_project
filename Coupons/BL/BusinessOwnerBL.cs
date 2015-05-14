@@ -45,10 +45,10 @@ namespace Coupons.BL
            return  mDal.getBusinessesByOwnerId(ownerId);
         }
 
-       /* private void loadDealsToBusiness(Business business)
+        private void loadDealsToBusiness(Business business)
         {
             mDal.loadDealsToBusiness(business);
-        }*/
+        }
 
         private void loadDealCoupons(Deal deal)
         {
@@ -93,6 +93,11 @@ namespace Coupons.BL
         public Deal getDealById(int dealId)
         {
             return mDal.getDealById(dealId);
+        }
+
+        public List<Coupon> getAllCouponByDealId(int dealId)
+        {
+            return mDal.getAllCouponByDealId(dealId);
         }
     }
 }

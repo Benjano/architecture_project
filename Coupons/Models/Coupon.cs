@@ -13,15 +13,15 @@ namespace Coupons.Models
             get { return mId; }
         }
 
-        private Deal mDeal;
-        public Deal Deal
+        private int mDealId;
+        public int DealId
         {
-            get { return mDeal; }
+            get { return mDealId; }
         }
-        private Client mClient;
-        public Client Client
+        private int mClientId;
+        public int ClientId
         {
-            get { return mClient; }
+            get { return mClientId; }
         }
 
         private decimal mOriginalPrice;
@@ -57,10 +57,10 @@ namespace Coupons.Models
             get { return mSerialKey; }
         }
 
-        public Coupon(Client client, Deal deal, decimal originalPrice, decimal boughtPrice, int rate, bool isUsed, String serialKey)
+        public Coupon(int clientId, int dealId, decimal originalPrice, decimal boughtPrice, int rate, bool isUsed, String serialKey)
         {
-            mClient = client;
-            mDeal = deal;
+            mClientId = clientId;
+            mDealId = dealId;
             mOriginalPrice = originalPrice;
             mBoughtPrice = boughtPrice;
             mRate = rate;

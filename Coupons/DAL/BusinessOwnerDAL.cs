@@ -98,12 +98,10 @@ namespace Coupons.DAL
                 int rate = (int)row[CouponsColumns.RATE];
                 bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
-
                 int clientId = (int)row[CouponsColumns.CLIENT_ID];
-                ClientBL clientBL = new ClientBL();
-                Client client = clientBL.getClientById(clientId);
 
-                Coupon coupon = new Coupon(client, deal, originalPrice, boughtPrice, rate, isUsed, serialKey);
+
+                Coupon coupon = new Coupon(clientId, deal.ID, originalPrice, boughtPrice, rate, isUsed, serialKey);
                 deal.addCoupon(coupon);
             }
         }
@@ -277,6 +275,24 @@ namespace Coupons.DAL
                 return deal;
             }
             return null;
+        }
+
+
+        public List<Coupon> getAllCouponByDealId(int dealId)
+        {
+            CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCouponByDealID(dealId);
+            List<Coupon> result = new List<Coupon>();
+            foreach (DataRow row in coupons.Rows)
+            {
+                decimal originalPrice = (decimal)row[CouponsColumns.ORIGINAL_PRICE];
+                decimal boughtPrice = (decimal)row[CouponsColumns.BOUGHT_PRICE];
+                bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
+                String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
+                int clientId = (int)row[CouponsColumns.CLIENT_ID];
+                Coupon coupon = new Coupon(clientId, dealId, originalPrice, boughtPrice, -1, isUsed, serialKey);
+                result.Add(coupon);
+            }
+            return result;
         }
 
     }
