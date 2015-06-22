@@ -246,5 +246,10 @@ namespace Coupons.GUI.ClientGUI
             mSelectedCoupon = (Coupon)dgMy_Coupons.SelectedItem;
         }
 
+        private void btnAdddDeal_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
     }
 }

@@ -93,12 +93,11 @@ namespace Coupons.BL
                 int clientId = (int)row[CouponsColumns.CLIENT_ID];
                 int dealId = (int)row[CouponsColumns.DEAL_ID];
                 int rate = Convert.ToInt32(row[CouponsColumns.RATE]);
-                decimal originalPrice = (decimal)row[CouponsColumns.ORIGINAL_PRICE];
                 decimal boughtPrice = (decimal)row[CouponsColumns.BOUGHT_PRICE];
                 bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True      "));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
 
-                Coupon coupon = new Coupon(id, clientId, dealId, originalPrice, boughtPrice, rate, isUsed, serialKey);
+                Coupon coupon = new Coupon(id, clientId, dealId, boughtPrice, rate, isUsed, serialKey);
                 return coupon;
             }
             catch

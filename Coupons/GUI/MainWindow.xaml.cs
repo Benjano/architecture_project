@@ -83,7 +83,33 @@ namespace CouponsApplication
 
         private void btnRestore_Click(object sender, RoutedEventArgs e)
         {
+            MessageBoxResult result = MessageBox.Show("your password was reset check your e-mail",
+                                  "sorry", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
 
+        private void btnAddOwner_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("www.gmail.com");
+            }
+            catch (Exception exc1)
+            {
+                if (exc1.GetType().ToString() != "System.ComponentModel.Win32Exception")
+                {
+                    try
+                    {
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo("IExplore.exe", "www.google.com");
+                        System.Diagnostics.Process.Start(startInfo);
+                        startInfo = null;
+                    }
+                    catch (Exception exc2)
+                    {
+                        MessageBoxResult result = MessageBox.Show("whay you don't have browser",
+                                  "loser", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
         }
     }
 }

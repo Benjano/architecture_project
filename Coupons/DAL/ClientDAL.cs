@@ -155,13 +155,12 @@ namespace Coupons.DAL
 
                 int id = (int)row[CouponsColumns.ID];
                 int dealId = (int)row[CouponsColumns.DEAL_ID];
-                int originalPrice = Convert.ToInt32(row[CouponsColumns.ORIGINAL_PRICE]);
                 int boughtPrice = Convert.ToInt32(row[CouponsColumns.BOUGHT_PRICE]);
                 int rate = Convert.ToInt32(row[CouponsColumns.RATE]);
                 bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True      "));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
 
-                Coupon coupon = new Coupon(id, client.ID, dealId, originalPrice, boughtPrice, rate, isUsed, serialKey);
+                Coupon coupon = new Coupon(id, client.ID, dealId, boughtPrice, rate, isUsed, serialKey);
                 result.Add(coupon);
             }
             return result;
