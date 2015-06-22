@@ -34,6 +34,7 @@ namespace Coupons.GUI.ClientGUI
         Deal mSelectedDeal;
         Client mClient;
         List<Coupon> mCoupon;
+        Coupon mSelectedCoupon;
 
         GeoCoordinateWatcher _watcher;
 
@@ -217,19 +218,33 @@ namespace Coupons.GUI.ClientGUI
         }
 
 
-        private void cbCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void btRate_coupon_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void cbCity_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
+            if (mSelectedCoupon != null)
+            {
+                if (mSelectedCoupon.IsUsed ==true && mSelectedCoupon.Rate == -1)
+                {
+                    rate rateWindow = new rate(mSelectedCoupon);
+                    rateWindow.Show();
+                }
+                else
+                {
+                    MessageBoxResult result = MessageBox.Show("Coupon allreday Rate Or Not Use Yet! ",
+                    "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }               
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Please select a Coupon",
+                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
         }
 
         private void dgMy_Coupons_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            mSelectedCoupon = (Coupon)dgMy_Coupons.SelectedItem;
         }
+
     }
 }

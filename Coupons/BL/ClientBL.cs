@@ -139,6 +139,11 @@ namespace Coupons.BL
         {
             return mDal.getAllDeals();
         }
+
+        public void rateCoupon(Coupon coupon, int rate)
+        {
+            mDal.rateCoupon(coupon, rate);
+        }
     }
 }
 

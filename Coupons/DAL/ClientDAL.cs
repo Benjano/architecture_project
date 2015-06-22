@@ -147,11 +147,12 @@ namespace Coupons.DAL
                 int id = (int)row[CouponsColumns.ID];
                 decimal originalPrice = (decimal)row[CouponsColumns.ORIGINAL_PRICE];
                 decimal boughtPrice = (decimal)row[CouponsColumns.BOUGHT_PRICE];
-                bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
+                bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True      "));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
+                int rate = Convert.ToInt32(row[CouponsColumns.RATE]);
 
 
-                Coupon coupon = new Coupon(client.ID, deal.ID, originalPrice, boughtPrice, -1, isUsed, serialKey);
+                Coupon coupon = new Coupon(id, client.ID, deal.ID, originalPrice, boughtPrice, rate, isUsed, serialKey);
                 client.addCoupon(coupon);
                 return id;
             }
@@ -172,7 +173,7 @@ namespace Coupons.DAL
                 float rate = (float)(double)row[DealsColumns.RATE];
                 DateTime experationDate;
                 DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
-                bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
+                bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True      "));
                 int businessId = (int)row[DealsColumns.BUSINESS_ID];
                 String startHour = row[DealsColumns.START_HOUR].ToString();
                 String endHour = row[DealsColumns.END_HOUR].ToString();
@@ -191,13 +192,15 @@ namespace Coupons.DAL
             foreach (DataRow row in coupons.Rows)
             {
 
+                int id = (int)row[CouponsColumns.ID];
                 int dealId = (int)row[CouponsColumns.DEAL_ID];
                 int originalPrice = Convert.ToInt32(row[CouponsColumns.ORIGINAL_PRICE]);
                 int boughtPrice = Convert.ToInt32(row[CouponsColumns.BOUGHT_PRICE]);
-                bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
+                int rate = Convert.ToInt32(row[CouponsColumns.RATE]);
+                bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True      "));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
 
-                Coupon coupon = new Coupon(client.ID, dealId, originalPrice, boughtPrice, -1, isUsed, serialKey);
+                Coupon coupon = new Coupon(id, client.ID, dealId, originalPrice, boughtPrice, rate, isUsed, serialKey);
                 result.Add(coupon);
             }
             return result;
@@ -405,6 +408,11 @@ namespace Coupons.DAL
             }
 
             return result;
+        }
+
+        public void rateCoupon(Coupon coupon, int rate)
+        {
+             mTableCoupons.rate(rate, coupon.ID);
         }
     }
 }
