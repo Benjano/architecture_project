@@ -6,26 +6,29 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ComboBox Name="cbCategory" HorizontalAlignment="Left" Margin="243,83,0,0" VerticalAlignment="Top" Width="120" Text="Category" SelectionChanged="cbCategory_SelectionChanged"/>
-        <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="828,79,0,0" VerticalAlignment="Top" Width="75" Click="btnSearch_Click"/>
-        <Button x:Name="btnFavorit" Content="My Favorite" HorizontalAlignment="Left" Margin="60,456,0,0" VerticalAlignment="Top" Width="75" Click="btnFavorit_Click"/>
-        <Menu Name="menuBox" HorizontalAlignment="Left" Height="100" Margin="908,15,0,0" VerticalAlignment="Top" Width="100"/>
-        <TextBox HorizontalAlignment="Left" Height="290" Margin="787,129,0,0" TextWrapping="Wrap" Text="Map" VerticalAlignment="Top" Width="316"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="290" Margin="787,129,0,0" VerticalAlignment="Top" Width="316"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="290" Margin="24,129,0,0" VerticalAlignment="Top" Width="339">
-            <DataGrid Name="dgDeals"  IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="287" Width="338" SelectionChanged="dgDeals_SelectionChanged" Margin="0.2,0.2,-0.6,0"/>
+        <ComboBox Name="cbCategory" HorizontalAlignment="Left" Margin="192,116,0,0" VerticalAlignment="Top" Width="82" Text="Category" SelectionChanged="cbCategory_SelectionChanged"/>
+        <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="283,115,0,0" VerticalAlignment="Top" Width="80" Click="btnSearch_Click" Height="24"/>
+        <Button x:Name="btnFavorit" Content="My Favorite" HorizontalAlignment="Left" Margin="285,72,0,0" VerticalAlignment="Top" Width="78" Click="btnFavorit_Click" RenderTransformOrigin="0.4,0.6" Height="22"/>
+        <TextBox HorizontalAlignment="Left" Height="316" Margin="787,188,0,0" TextWrapping="Wrap" Text="Map" VerticalAlignment="Top" Width="316"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="316" Margin="788,188,0,0" VerticalAlignment="Top" Width="316"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="316" Margin="24,188,0,0" VerticalAlignment="Top" Width="339">
+            <DataGrid Name="dgDeals"  IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="320" Width="338" SelectionChanged="dgDeals_SelectionChanged" Margin="0,-1,-1,-5"/>
         </Border>
-        <Label Content="Welcome" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="38,10,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblUserName" Content="" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="176,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Categories" RenderTransformOrigin="0.523,-0.429" Margin="180,79,663,561.8"/>
-        <ComboBox x:Name="cbCity" HorizontalAlignment="Left" Margin="60,83,0,0" VerticalAlignment="Top" Width="115"/>
-        <Label x:Name="lblCity" Content="City" HorizontalAlignment="Left" Margin="30,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.433,1.654"/>
-        <Button x:Name="btLocation" Content="Get Location" HorizontalAlignment="Left" Margin="825,27,0,0" VerticalAlignment="Top" Width="75" Click="btLocation_Click"/>
-        <Button Name="btBuy_coupon" Content="Buy Coupon" HorizontalAlignment="Left" Margin="162,456,0,0" VerticalAlignment="Top" Width="75" Click="btnBuy_coupon"/>
-        <Label x:Name="lblCity_Copy" Content="Categoty" HorizontalAlignment="Left" Margin="180,80,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.433,1.654" Width="86"/>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="290" Margin="403,129,0,0" VerticalAlignment="Top" Width="339">
-            <DataGrid Name="dgMy_Coupons"  IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="287" Width="339" SelectionChanged="dgDeals_SelectionChanged" Margin="-0.8,-0.8,-0.6,0"/>
+        <Label Content="Welcome" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="423,10,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblUserName" Content="" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="561,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Categories" RenderTransformOrigin="0.523,-0.429" Margin="167,57,676,504"/>
+        <ComboBox x:Name="cbCity" HorizontalAlignment="Left" Margin="35,116,0,0" VerticalAlignment="Top" Width="84" SelectionChanged="cbCity_SelectionChanged"/>
+        <Label x:Name="lblCity" Content="City" HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.433,1.654"/>
+        <Button x:Name="btLocation" Content="Get Location" HorizontalAlignment="Left" Margin="904,148,0,0" VerticalAlignment="Top" Width="91" Click="btLocation_Click" Height="29"/>
+        <Button Name="btBuy_coupon" Content="Buy Coupon" HorizontalAlignment="Left" Margin="146,520,0,0" VerticalAlignment="Top" Width="75" Click="btnBuy_coupon"/>
+        <Label x:Name="lblCity_Copy" Content="Categoty" HorizontalAlignment="Left" Margin="126,113,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.433,1.654" Width="86"/>
+        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="316" Margin="403,188,0,0" VerticalAlignment="Top" Width="339" RenderTransformOrigin="0.504,0.579">
+            <DataGrid Name="dgMy_Coupons"  IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="319" Width="339" Margin="-1,-1,-1,-4" SelectionChanged="dgMy_Coupons_SelectionChanged"/>
         </Border>
+        <Label Content="Deals" HorizontalAlignment="Left" Margin="146,138,0,0" FontSize="22" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="0.579,-1.231"/>
+        <Label Content="My Coupons" HorizontalAlignment="Left" Margin="489,139,0,0" FontSize="22" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="0.579,-1.231"/>
+        <ComboBox x:Name="cbCategoryFav" HorizontalAlignment="Left" Margin="193,72,0,0" VerticalAlignment="Top" Width="81" Text="Category" SelectionChanged="cbCategory_SelectionChanged"/>
+        <Label Content="My Favorite Category:" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-2.433,1.654" Width="175"/>
 
     </Grid>
 </Window>

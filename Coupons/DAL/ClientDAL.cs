@@ -192,8 +192,8 @@ namespace Coupons.DAL
             {
 
                 int dealId = (int)row[CouponsColumns.DEAL_ID];
-                decimal originalPrice = (decimal)row[CouponsColumns.ORIGINAL_PRICE];
-                decimal boughtPrice = (decimal)row[CouponsColumns.BOUGHT_PRICE];
+                int originalPrice = Convert.ToInt32(row[CouponsColumns.ORIGINAL_PRICE]);
+                int boughtPrice = Convert.ToInt32(row[CouponsColumns.BOUGHT_PRICE]);
                 bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
 
