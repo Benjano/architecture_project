@@ -34,8 +34,11 @@ namespace Coupons.GUI.AdminGUI
             tbDetails.Text = mDeal.Details;
             tbOriginalPrice.Text = Convert.ToString(mDeal.Price);
             dpExperationDate.SelectedDate= mDeal.ExperationDate;
-            tbStart_hour_h.Text = mDeal.StartHour;
-            tbEnd_Hour.Text = mDeal.EndHour;
+            string[] StartHour = mDeal.StartHour.Split(new Char[] { ':' }), EndHour = mDeal.EndHour.Split(new Char[] { ':' });
+            tbStart_hour_h.Text = StartHour[0];
+            tbStart_hour_m.Text = StartHour[1];
+            tbEnd_Hour_h.Text = EndHour[0];
+            tbEnd_Hour_m.Text = EndHour[1];
         }
 
 
