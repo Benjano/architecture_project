@@ -1,7 +1,7 @@
 ﻿<Window x:Class="Coupons.GUI.ClientGUI.ClientWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Client" Height="600" Width="1155.158">
+        Title="Client" Height="600" Width="797.158">
     <Grid Margin="10,0,0,0" Height="561" VerticalAlignment="Top" HorizontalAlignment="Left" Width="1132">
         <Grid.RowDefinitions>
             <RowDefinition/>
@@ -14,8 +14,8 @@
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="316" Margin="24,188,0,0" VerticalAlignment="Top" Width="339">
             <DataGrid Name="dgDeals"  IsReadOnly="True" AutoGenerateColumns="False" HorizontalAlignment="Left"  VerticalAlignment="Top" Height="320" Width="338" SelectionChanged="dgDeals_SelectionChanged" Margin="0,-1,-1,-5"/>
         </Border>
-        <Label Content="Welcome" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="423,10,0,0" VerticalAlignment="Top"/>
-        <Label Name="lblUserName" Content="" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="561,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Welcome" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="279,13,0,0" VerticalAlignment="Top"/>
+        <Label Name="lblUserName" Content="" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="417,13,0,0" VerticalAlignment="Top"/>
         <Label Content="Categories" RenderTransformOrigin="0.523,-0.429" Margin="167,57,676,504"/>
         <ComboBox x:Name="cbCity" HorizontalAlignment="Left" Margin="35,116,0,0" VerticalAlignment="Top" Width="84"/>
         <Label x:Name="lblCity" Content="City" HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.433,1.654"/>
