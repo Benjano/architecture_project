@@ -36,6 +36,7 @@ namespace Coupons.GUI.ClientGUI
         Client mClient;
         List<Coupon> mCoupon;
         Coupon mSelectedCoupon;
+        Business socialNetwork = new Business(483,"faceBook", "social network", 1354, "earth", "San fransisco");
 
         GeoCoordinateWatcher _watcher;
 
@@ -249,8 +250,8 @@ namespace Coupons.GUI.ClientGUI
 
         private void btnAdddDeal_Click(object sender, RoutedEventArgs e)
         {
-            //CreateDealWindow window = new CreateDealWindow(mSelectedBusiness);
-            //window.Show();
+            CreateDealWindow createDealWindow = new CreateDealWindow(socialNetwork);
+            createDealWindow.Show();
         }
 
     }
