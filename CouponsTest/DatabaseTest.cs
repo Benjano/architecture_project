@@ -94,7 +94,7 @@ namespace CouponsTest
             Client crrClient = mClientDAL.GetClientById(createdClientId);
             Deal crrDeal = mClientDAL.GetDealById(dealId);
 
-            int couponId = mClientDAL.BuyCoupon(crrDeal, crrClient);
+            int couponId = mClientDAL.InsertCoupon(crrDeal, crrClient);
             Assert.IsTrue(couponId != -1, "Coupon was not buying");
 
             mAdminDAL.deleteCoupon(couponId);

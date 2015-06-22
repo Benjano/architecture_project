@@ -85,12 +85,13 @@ namespace Coupons.DAL
             }
         }
 
-        public int BuyCoupon(Deal deal, Client client)
+        public bool InsertCoupon(Deal deal, Client client)
         {
-            int result = 0;
             //TODO   clac bought price
+            int result = 0;
             result = mTableCoupons.InsertCoupon(deal.ID, client.ID, deal.Price, deal.Price);
-            CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCoupon(deal.ID, client.ID);
+            return result > 0;
+            /*CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCoupon(deal.ID, client.ID);
             if (coupons.Rows.Count >= 1)
             {
                 DataRow row = coupons[0];
@@ -107,7 +108,7 @@ namespace Coupons.DAL
                 client.addCoupon(coupon);
                 return id;
             }
-            return -1;
+            return -1;*/
         }
 
         public List<Deal> GetDealById(int dealId)

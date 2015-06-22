@@ -92,7 +92,7 @@ namespace Coupons.BL
 
         public int BuyCoupon(Deal deal, Client client)
         {
-            return mDal.BuyCoupon(deal, client);
+            return mDal.InsertCoupon(deal, client);
         }
 
         public List<Deal> GetDealById(int dealId)
