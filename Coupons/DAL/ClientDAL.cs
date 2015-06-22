@@ -85,9 +85,13 @@ namespace Coupons.DAL
             }
         }
 
-        public int BuyCoupon(Deal deal, Client client)
+        public bool InsertCoupon(int dealId, int clientId, decimal dealPrice, string serialKey)
         {
-            int result = 0;
+           int result = 0;
+           result = mTableCoupons.InsertCoupon(dealId, clientId, dealPrice, serialKey);
+           return result > 0;
+            /*
+           / int result = 0;
             //TODO   clac bought price
             result = mTableCoupons.InsertCoupon(deal.ID, client.ID, deal.Price, deal.Price);
             CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCoupon(deal.ID, client.ID);
@@ -107,7 +111,13 @@ namespace Coupons.DAL
                 client.addCoupon(coupon);
                 return id;
             }
-            return -1;
+            return -1;*/
+        }
+
+        public DataTable GetCouponBySerialKey(string serialKey)
+        {
+            DataTable table = mTableCoupons.SelectCouponBySerialKey(serialKey);
+            return table;
         }
 
         public List<Deal> GetDealById(int dealId)
