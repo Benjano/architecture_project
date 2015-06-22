@@ -73,7 +73,7 @@
     <Compile Include="BL\AdminController.cs" />
     <Compile Include="BL\DataParser.cs" />
     <Compile Include="BL\UserController.cs" />
-    <Compile Include="CouponsDataSet1.Designer.cs">
+    <Compile Include="CouponsDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>CouponsDataSet.xsd</DependentUpon>
@@ -214,7 +214,7 @@
     <None Include="CouponsDataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>CouponsDataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>CouponsDataSet.Designer.cs</LastGenOutput>
     </None>
     <None Include="CouponsDataSet.xss">
       <DependentUpon>CouponsDataSet.xsd</DependentUpon>
