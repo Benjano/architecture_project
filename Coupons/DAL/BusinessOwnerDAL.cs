@@ -101,7 +101,7 @@ namespace Coupons.DAL
                 int clientId = (int)row[CouponsColumns.CLIENT_ID];
 
 
-                Coupon coupon = new Coupon(clientId, deal.ID, originalPrice, boughtPrice, rate, isUsed, serialKey);
+                Coupon coupon = new Coupon(id, clientId, deal.ID, originalPrice, boughtPrice, rate, isUsed, serialKey);
                 deal.addCoupon(coupon);
             }
         }
@@ -284,12 +284,14 @@ namespace Coupons.DAL
             List<Coupon> result = new List<Coupon>();
             foreach (DataRow row in coupons.Rows)
             {
+                int rate = Convert.ToInt32(row[CouponsColumns.RATE]);
                 decimal originalPrice = (decimal)row[CouponsColumns.ORIGINAL_PRICE];
                 decimal boughtPrice = (decimal)row[CouponsColumns.BOUGHT_PRICE];
                 bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True"));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
                 int clientId = (int)row[CouponsColumns.CLIENT_ID];
-                Coupon coupon = new Coupon(clientId, dealId, originalPrice, boughtPrice, -1, isUsed, serialKey);
+                int id = (int)row[CouponsColumns.ID];
+                Coupon coupon = new Coupon(id, clientId, dealId, originalPrice, boughtPrice, rate, isUsed, serialKey);
                 result.Add(coupon);
             }
             return result;

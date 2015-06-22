@@ -57,8 +57,9 @@ namespace Coupons.Models
             get { return mSerialKey; }
         }
 
-        public Coupon(int clientId, int dealId, decimal originalPrice, decimal boughtPrice, int rate, bool isUsed, String serialKey)
+        public Coupon(int couponId, int clientId, int dealId, decimal originalPrice, decimal boughtPrice, int rate, bool isUsed, String serialKey)
         {
+            mId = couponId;
             mClientId = clientId;
             mDealId = dealId;
             mOriginalPrice = originalPrice;

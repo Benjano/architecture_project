@@ -6,7 +6,7 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <ComboBox Name="cbCategory" HorizontalAlignment="Left" Margin="192,116,0,0" VerticalAlignment="Top" Width="82" Text="Category" SelectionChanged="cbCategory_SelectionChanged"/>
+        <ComboBox Name="cbCategory" HorizontalAlignment="Left" Margin="192,116,0,0" VerticalAlignment="Top" Width="82" Text="Category"/>
         <Button Name="btnSearch" Content="Search" HorizontalAlignment="Left" Margin="283,115,0,0" VerticalAlignment="Top" Width="80" Click="btnSearch_Click" Height="24"/>
         <Button x:Name="btnFavorit" Content="My Favorite" HorizontalAlignment="Left" Margin="285,72,0,0" VerticalAlignment="Top" Width="78" Click="btnFavorit_Click" RenderTransformOrigin="0.4,0.6" Height="22"/>
         <TextBox HorizontalAlignment="Left" Height="316" Margin="787,188,0,0" TextWrapping="Wrap" Text="Map" VerticalAlignment="Top" Width="316"/>
@@ -17,7 +17,7 @@
         <Label Content="Welcome" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="423,10,0,0" VerticalAlignment="Top"/>
         <Label Name="lblUserName" Content="" FontSize="22" FontWeight="Bold" HorizontalAlignment="Left" Margin="561,10,0,0" VerticalAlignment="Top"/>
         <Label Content="Categories" RenderTransformOrigin="0.523,-0.429" Margin="167,57,676,504"/>
-        <ComboBox x:Name="cbCity" HorizontalAlignment="Left" Margin="35,116,0,0" VerticalAlignment="Top" Width="84" SelectionChanged="cbCity_SelectionChanged"/>
+        <ComboBox x:Name="cbCity" HorizontalAlignment="Left" Margin="35,116,0,0" VerticalAlignment="Top" Width="84"/>
         <Label x:Name="lblCity" Content="City" HorizontalAlignment="Left" Margin="5,115,0,0" VerticalAlignment="Top" RenderTransformOrigin="-2.433,1.654"/>
         <Button x:Name="btLocation" Content="Get Location" HorizontalAlignment="Left" Margin="904,148,0,0" VerticalAlignment="Top" Width="91" Click="btLocation_Click" Height="29"/>
         <Button Name="btBuy_coupon" Content="Buy Coupon" HorizontalAlignment="Left" Margin="146,520,0,0" VerticalAlignment="Top" Width="75" Click="btnBuy_coupon"/>
@@ -27,8 +27,9 @@
         </Border>
         <Label Content="Deals" HorizontalAlignment="Left" Margin="146,138,0,0" FontSize="22" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="0.579,-1.231"/>
         <Label Content="My Coupons" HorizontalAlignment="Left" Margin="489,139,0,0" FontSize="22" FontWeight="Bold"  VerticalAlignment="Top" RenderTransformOrigin="0.579,-1.231"/>
-        <ComboBox x:Name="cbCategoryFav" HorizontalAlignment="Left" Margin="193,72,0,0" VerticalAlignment="Top" Width="81" Text="Category" SelectionChanged="cbCategory_SelectionChanged"/>
+        <ComboBox x:Name="cbCategoryFav" HorizontalAlignment="Left" Margin="193,72,0,0" VerticalAlignment="Top" Width="81" Text="Category"/>
         <Label Content="My Favorite Category:" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-2.433,1.654" Width="175"/>
+        <Button x:Name="btRate_coupon" Content="Rate Coupon" HorizontalAlignment="Left" Margin="533,520,0,0" VerticalAlignment="Top" Width="75" Click="btRate_coupon_Click"/>
 
     </Grid>
 </Window>

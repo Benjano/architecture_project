@@ -162,7 +162,7 @@ namespace Coupons.Models
         public Coupon buyCoupon(Deal deal, int price)
         {
             String serialKey = ""; // TODO : add coupon to db and generate serial key
-            Coupon coupon = new Coupon(this.ID, deal.ID, deal.Price, price, -1, false, serialKey);
+            Coupon coupon = new Coupon(-1, this.ID, deal.ID, deal.Price, price, -1, false, serialKey);
             deal.addCoupon(coupon);
 
             return coupon;
