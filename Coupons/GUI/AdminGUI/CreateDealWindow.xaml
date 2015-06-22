@@ -21,9 +21,13 @@
         <Button Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="42,251,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click"/>
         <Label Content="Start Hour" HorizontalAlignment="Left" Margin="35,189,0,0" VerticalAlignment="Top"/>
         <Label Content="End Hour" HorizontalAlignment="Left" Margin="35,215,0,0" VerticalAlignment="Top"/>
-        <TextBox Name="tbStart_hour" HorizontalAlignment="Left" Height="23" Margin="135,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBox Name="tbEnd_Hour" HorizontalAlignment="Left" Height="23" Margin="135,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbStart_hour_h" HorizontalAlignment="Left" Height="23" Margin="135,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Grid.ColumnSpan="2"/>
+        <TextBox Name="tbEnd_Hour_h" HorizontalAlignment="Left" Height="23" Margin="135,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Grid.ColumnSpan="2"/>
         <Label Content="Create New Deal" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="54,10,0,0" VerticalAlignment="Top" Width="201" Grid.ColumnSpan="2" />
+        <Label Content=":" HorizontalAlignment="Left" Margin="20,187,0,0" VerticalAlignment="Top" Grid.Column="1" Width="17"/>
+        <Label Content=":" HorizontalAlignment="Left" Margin="20,213,0,0" VerticalAlignment="Top" Grid.Column="1" Width="17"/>
+        <TextBox x:Name="tbStart_hour_m" HorizontalAlignment="Left" Height="23" Margin="37,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Grid.Column="1" RenderTransformOrigin="1.876,0.71"/>
+        <TextBox x:Name="tbEnd_Hour_m" HorizontalAlignment="Left" Height="23" Margin="37,215,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" Grid.Column="1"/>
 
     </Grid>
 </Window>
