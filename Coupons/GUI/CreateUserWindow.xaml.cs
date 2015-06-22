@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Device.Location;
+using Coupons.Models;
 
 namespace Coupons
 {
@@ -25,8 +26,8 @@ namespace Coupons
     {
         ClientController mClientBL;
         AdminController mAdminBL;
-        GeoCoordinateWatcher mGeoWatcher;
         Window mSourceWindow;
+        private SensorController mSensorController;
         bool mIsClient;
 
         public CreateUserWindow(Window sourceWindow, bool isClient)
@@ -35,11 +36,11 @@ namespace Coupons
             mSourceWindow = sourceWindow;
             mClientBL = new ClientController();
             mAdminBL = new AdminController();
+            mSensorController = new SensorController();
+            mSensorController.AddSensor(new Location());
             cbGender.ItemsSource = Enum.GetValues(typeof(Gender));
             cbGender.SelectedIndex = 0;
             dpBirthDate.SelectedDate = DateTime.Today;
-            mGeoWatcher = new GeoCoordinateWatcher();
-            mGeoWatcher.Start();
             mIsClient = isClient;
 
             if (!mIsClient)
@@ -60,8 +61,8 @@ namespace Coupons
             String mail = tbMail.Text;
             String phone = tbPhone.Text;
             Gender gender = (Gender) cbGender.SelectedItem;
-            DateTime birthdate = (DateTime) dpBirthDate.SelectedDate;
-            String location = mGeoWatcher.Position.Location.ToString();
+            DateTime birthdate = (DateTime)dpBirthDate.SelectedDate;
+            Location loc = (Location)mSensorController.GetSensor("Location");
 
             if (username.Length > 2 && password.Length > 5 && mail.Length > 7 && phone.Length > 6)
             {
@@ -69,7 +70,7 @@ namespace Coupons
                 {
                     if (birthdate != null)
                     {
-                        mClientBL.InsertNewClient(username, password, mail, phone, birthdate, gender, location);
+                        mClientBL.InsertNewClient(username, password, mail, phone, birthdate, gender, loc.ToString());
                         FINISH();
                     }
                 } else {

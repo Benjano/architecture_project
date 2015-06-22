@@ -1,12 +1,14 @@
-﻿using System;
+﻿using Coupons.Models.Interface;
+using System;
 using System.Collections.Generic;
+using System.Device.Location;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Coupons.Models
 {
-    public class Location
+    public class Location : ISensor
     {
         private string mLongitude;
         public string Longitude {
@@ -34,11 +36,31 @@ namespace Coupons.Models
             }
 
         }
+        GeoCoordinateWatcher mGeoWatcher;
 
-        public Location(string longitude, string latitude)
+        public Location()
         {
-            mLongitude = longitude;
-            mLatitude = latitude;
+            mGeoWatcher = new GeoCoordinateWatcher();
+            mGeoWatcher.Start();
+            mLongitude = mGeoWatcher.Position.Location.Longitude.ToString();
+            mLatitude =  mGeoWatcher.Position.Location.Latitude.ToString();
+        }
+
+        public void CalcLocation(){
+            mLongitude = mGeoWatcher.Position.Location.Longitude.ToString();
+            mLatitude =  mGeoWatcher.Position.Location.Latitude.ToString();
+        }
+
+        public string ToString()
+        {
+            return mLongitude + "," + mLatitude;
+        }
+
+
+
+        public string GetType()
+        {
+            return "Location";
         }
     }
 }

@@ -15,6 +15,7 @@ namespace Coupons.BL
     {
         public ClientDAL mDal;
         private DataParser mParser;
+        
 
         public ClientController()
         {
@@ -24,6 +25,7 @@ namespace Coupons.BL
 
         public bool InsertNewClient(String username, String password, String mail, String phone, DateTime birthDate, Gender gender, String location)
         {
+
             bool isInsertedClient = mDal.InsertNewClient(username, password, mail, phone);
             if (isInsertedClient)
             {
