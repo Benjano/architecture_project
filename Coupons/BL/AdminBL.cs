@@ -18,7 +18,9 @@ namespace Coupons.BL
         
         public bool insertBusinessOwner(String username, String password, String mail, String phone)
         {
-            return mDal.insertBusinessOwner(username, password, mail, phone);
+            if (username.Length < 50 & username.Length > 0 & password.Length < 50 & password.Length > 0 & phone.Length < 20 & phone.Length > 0)
+                return mDal.insertBusinessOwner(username, password, mail, phone);
+            return false;
         }
 
         public List<Deal> getDealsNotApproval()
@@ -28,12 +30,13 @@ namespace Coupons.BL
 
         public bool deleteBusiness(int businessId)
         {
-            return mDal.deleteBusiness(businessId);
+            if (businessId < 1000 & businessId >= 0)
+                return mDal.deleteBusiness(businessId);
+            return false;
         }
 
         public bool deleteDeal(Deal mSelectedDeal)
         {
-
             return mDal.deleteDeal(mSelectedDeal.ID);
         }
 
@@ -45,12 +48,12 @@ namespace Coupons.BL
                 return false;
         }
 
-        public bool updateDeal(Deal selectedDeal, string name, string details, decimal originalPrice, DateTime experationDate, string startHour, string endHour)
+        public bool updateDeal(Deal selectedDeal, string name, string details, decimal originalPrice, DateTime experationDate, int startHour_h, int startHour_m, int endHour_h, int endHour_m)
         {
-            if (selectedDeal != null)
-                return mDal.updateDeal(selectedDeal, name, details, originalPrice, experationDate, startHour, endHour);
-            else
-                return false; 
+            if (startHour_h >= 0 & startHour_h < 24 & startHour_m >= 0 & startHour_m < 60 & endHour_h >= 0 & endHour_h < 24 & endHour_m >= 0 & endHour_m < 60)
+                if (selectedDeal != null & name.Length < 50 & name.Length > 0 & originalPrice > 0)
+                    return mDal.updateDeal(selectedDeal, name, details, originalPrice, experationDate, startHour_h + ":" + startHour_m, endHour_h + ":" + endHour_m);
+            return false;
         }
     }
 }

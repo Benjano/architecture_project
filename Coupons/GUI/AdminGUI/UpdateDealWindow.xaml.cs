@@ -34,7 +34,7 @@ namespace Coupons.GUI.AdminGUI
             tbDetails.Text = mDeal.Details;
             tbOriginalPrice.Text = Convert.ToString(mDeal.Price);
             dpExperationDate.SelectedDate= mDeal.ExperationDate;
-            tbStart_hour.Text= mDeal.StartHour;
+            tbStart_hour_h.Text = mDeal.StartHour;
             tbEnd_Hour.Text = mDeal.EndHour;
         }
 
@@ -47,9 +47,11 @@ namespace Coupons.GUI.AdminGUI
             String details = tbDetails.Text;
             decimal originalPrice = Convert.ToDecimal(tbOriginalPrice.Text);
             DateTime experationDate = (DateTime)dpExperationDate.SelectedDate;
-            String startHour = tbStart_hour.Text;
-            String endHour = tbEnd_Hour.Text;
-            mAdminBL.updateDeal(mDeal, name, details, originalPrice, experationDate, startHour, endHour);
+            int startHour_h = Convert.ToInt32(tbStart_hour_h.Text);
+            int startHour_m = Convert.ToInt32(tbStart_hour_m.Text);
+            int endHour_h = Convert.ToInt32(tbEnd_Hour_h.Text);
+            int endHour_m = Convert.ToInt32(tbEnd_Hour_m.Text);
+            mAdminBL.updateDeal(mDeal, name, details, originalPrice, experationDate, endHour_h, endHour_m, endHour_h, endHour_m);
             Close();
         }
 

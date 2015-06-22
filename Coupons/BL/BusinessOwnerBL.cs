@@ -30,14 +30,19 @@ namespace Coupons.BL
             return mDal.logBusinessOwner(username, password);
         }
 
-        public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate, String startHour, String endHour)
+        public bool insertNewDeal(String name, String details, Business business, decimal price, DateTime experationDate, int startHour_h, int startHour_m, int endHour_h, int endHour_m)
         {
-            return mDal.insertNewDeal(name, details, business, price, experationDate, startHour, endHour);
+            if (startHour_h >= 0 & startHour_h < 24 & startHour_m >= 0 & startHour_m < 60 & endHour_h >= 0 & endHour_h < 24 & endHour_m >= 0 & endHour_m < 60)
+                if (name.Length < 50 & name.Length > 0 & price > 0)
+                    return mDal.insertNewDeal(name, details, business, price, experationDate, startHour_h + ":" + startHour_m, endHour_h + ":" + endHour_m);
+            return false;
         }
 
         public bool insertNewBusiness(int ownerId, String name, String description, String city, String address)
         {
-            return mDal.insertNewBusiness(ownerId, name, description, city, address);
+            if (name.Length < 50 & name.Length > 0 & city.Length < 50 & city.Length > 0)
+                return mDal.insertNewBusiness(ownerId, name, description, city, address);
+            return false;
         }
 
         public List<Business> getBusinessesByOwnerId(int ownerId)
@@ -62,7 +67,9 @@ namespace Coupons.BL
 
         public bool UpdateBusiness(int businessId, String name, String description, int ownerId, String address, String city)
         {
-            return mDal.UpdateBusiness(businessId, name, description, ownerId, address, city);
+            if (name.Length < 50 & name.Length > 0 & city.Length < 50 & city.Length > 0)
+                return mDal.UpdateBusiness(businessId, name, description, ownerId, address, city);
+            return false;
         }
         public List<Business> getBusinessesByName(string name)
         {

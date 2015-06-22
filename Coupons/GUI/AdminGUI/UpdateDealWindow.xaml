@@ -16,9 +16,13 @@
         <Button x:Name="btnCancel_Copy" Content="Cancel" HorizontalAlignment="Left" Margin="92,221,0,0" VerticalAlignment="Top" Width="75" Click="btnCancel_Click"/>
         <Label Content="Start Hour" HorizontalAlignment="Left" Margin="41,152,0,0" VerticalAlignment="Top"/>
         <Label Content="End Hour" HorizontalAlignment="Left" Margin="41,178,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="tbStart_hour" HorizontalAlignment="Left" Height="23" Margin="141,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="tbEnd_Hour" HorizontalAlignment="Left" Height="23" Margin="141,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbStart_hour_h" HorizontalAlignment="Left" Height="23" Margin="141,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
+        <TextBox x:Name="tbEnd_Hour_h" HorizontalAlignment="Left" Height="23" Margin="141,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
         <Label Content="Update Deal" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="60,0,0,0" VerticalAlignment="Top" Width="201" />
+        <TextBox x:Name="tbStart_hour_m" HorizontalAlignment="Left" Height="23" Margin="207,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
+        <TextBox x:Name="tbEnd_Hour_m" HorizontalAlignment="Left" Height="23" Margin="207,180,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
+        <Label Content=":" HorizontalAlignment="Left" Margin="188,152,0,0" VerticalAlignment="Top" Width="14"/>
+        <Label Content=":" HorizontalAlignment="Left" Margin="188,178,0,0" VerticalAlignment="Top" Width="14"/>
 
     </Grid>
 </Window>
