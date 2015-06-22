@@ -147,6 +147,11 @@ namespace Coupons.BL
             List<Coupon> result = mParser.ParseCoupons(table);
             return result;
         }
+
+        public bool updateCouponUsed(Coupon mSelectedCoupon)
+        {
+            return mDal.updateCouponUsed(mSelectedCoupon.ID);
+        }
     }
 }
 

@@ -85,13 +85,16 @@ namespace Coupons.DAL
             }
         }
 
-        public bool InsertCoupon(Deal deal, Client client)
+        public bool InsertCoupon(int dealId, int clientId, decimal dealPrice, string serialKey)
         {
+           int result = 0;
+           result = mTableCoupons.InsertCoupon(dealId, clientId, dealPrice, serialKey);
+           return result > 0;
+            /*
+           / int result = 0;
             //TODO   clac bought price
-            int result = 0;
             result = mTableCoupons.InsertCoupon(deal.ID, client.ID, deal.Price, deal.Price);
-            return result > 0;
-            /*CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCoupon(deal.ID, client.ID);
+            CouponsDataset.CouponsDataTable coupons = mTableCoupons.SelectCoupon(deal.ID, client.ID);
             if (coupons.Rows.Count >= 1)
             {
                 DataRow row = coupons[0];
@@ -109,6 +112,12 @@ namespace Coupons.DAL
                 return id;
             }
             return -1;*/
+        }
+
+        public DataTable GetCouponBySerialKey(string serialKey)
+        {
+            DataTable table = mTableCoupons.SelectCouponBySerialKey(serialKey);
+            return table;
         }
 
         public List<Deal> GetDealById(int dealId)
@@ -146,13 +155,12 @@ namespace Coupons.DAL
 
                 int id = (int)row[CouponsColumns.ID];
                 int dealId = (int)row[CouponsColumns.DEAL_ID];
-                int originalPrice = Convert.ToInt32(row[CouponsColumns.ORIGINAL_PRICE]);
                 int boughtPrice = Convert.ToInt32(row[CouponsColumns.BOUGHT_PRICE]);
                 int rate = Convert.ToInt32(row[CouponsColumns.RATE]);
                 bool isUsed = (row[CouponsColumns.IS_USED].ToString().Equals("True      "));
                 String serialKey = row[CouponsColumns.SERIAL_KEY].ToString();
 
-                Coupon coupon = new Coupon(id, client.ID, dealId, originalPrice, boughtPrice, rate, isUsed, serialKey);
+                Coupon coupon = new Coupon(id, client.ID, dealId, boughtPrice, rate, isUsed, serialKey);
                 result.Add(coupon);
             }
             return result;

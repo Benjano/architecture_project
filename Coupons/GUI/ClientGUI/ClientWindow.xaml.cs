@@ -198,7 +198,7 @@ namespace Coupons.GUI.ClientGUI
         {
             if (mSelectedDeal != null)
             {
-                if (mClientBl.BuyCoupon(mSelectedDeal, mClient) != -1)
+                if (mClientBl.BuyCoupon(mSelectedDeal.ID, mClient.ID, (decimal) mSelectedDeal.Price, (decimal) 1) != null)
                 {
                     MessageBoxResult result = MessageBox.Show("Success",
                   "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -244,6 +244,11 @@ namespace Coupons.GUI.ClientGUI
         private void dgMy_Coupons_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             mSelectedCoupon = (Coupon)dgMy_Coupons.SelectedItem;
+        }
+
+        private void btnAdddDeal_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }

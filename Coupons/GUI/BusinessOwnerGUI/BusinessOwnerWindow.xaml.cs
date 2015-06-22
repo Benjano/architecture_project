@@ -90,8 +90,6 @@ namespace Coupons.GUI.BusinessOwnerGUI
 
         public void setBusinessDataGrid(List<Business> business)
         {
-
-
             dgBusinesses.Columns.Clear();
             DataGridTextColumn colId = new DataGridTextColumn();
             colId.Header = "ID";
@@ -272,6 +270,16 @@ namespace Coupons.GUI.BusinessOwnerGUI
 
         private void btnRefreshPurchases_Click(object sender, RoutedEventArgs e)
         {
+            loadAllOwnerDeals();
+            setPurchasDataGrid(mCoupons);
+        }
+
+        private void btnSetUsedPurchases_Click(object sender, RoutedEventArgs e)
+        {
+            mBusinessOwnerBl.updateCouponUsed(mSelectedCoupon);
+            loadAllOwnerDeals();
+            setDealsDataGrid(mDeals);
+            setBusinessDataGrid(mBusiness);
             setPurchasDataGrid(mCoupons);
         }
 

@@ -15,6 +15,7 @@
         <Label Content="username:" HorizontalAlignment="Left" Margin="58,59,0,0" VerticalAlignment="Top"/>
         <Label Content="password:" HorizontalAlignment="Left" Margin="58,91,0,0" VerticalAlignment="Top"/>
         <Label Content="Welcome" HorizontalAlignment="Left" FontSize="22" FontWeight="Bold" Margin="168,10,0,0" VerticalAlignment="Top" Width="113" />
+        <Button Content="want to be buisness owner?" HorizontalAlignment="Left" Margin="106,188,0,0" VerticalAlignment="Top" Width="175" Height="32" Click="btnAddOwner_Click"/>
 
 
 

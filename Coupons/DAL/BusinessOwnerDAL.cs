@@ -102,5 +102,10 @@ namespace Coupons.DAL
             return table;
         }
 
+
+        public bool updateCouponUsed(int couponId)
+        {
+            return (mTableCoupons.UpdateToUsed(couponId) == 1);
+        }
     }
 }

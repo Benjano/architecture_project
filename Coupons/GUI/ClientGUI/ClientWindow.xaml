@@ -30,6 +30,7 @@
         <ComboBox x:Name="cbCategoryFav" HorizontalAlignment="Left" Margin="193,72,0,0" VerticalAlignment="Top" Width="81" Text="Category"/>
         <Label Content="My Favorite Category:" HorizontalAlignment="Left" Margin="10,67,0,0" VerticalAlignment="Top" FontSize="16" RenderTransformOrigin="-2.433,1.654" Width="175"/>
         <Button x:Name="btRate_coupon" Content="Rate Coupon" HorizontalAlignment="Left" Margin="533,520,0,0" VerticalAlignment="Top" Width="75" Click="btRate_coupon_Click"/>
+        <Button x:Name="btnAdddDeal" Content="Add New Deal from social network" HorizontalAlignment="Left" Margin="403,119,0,0" VerticalAlignment="Top" Width="191"  Height="22" Click="btnAdddDeal_Click"/>
 
     </Grid>
 </Window>

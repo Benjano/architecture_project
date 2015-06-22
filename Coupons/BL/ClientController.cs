@@ -90,9 +90,23 @@ namespace Coupons.BL
             return mDal.SelectDeal(businessId);
         }
 
-        public int BuyCoupon(Deal deal, Client client)
+        public Coupon BuyCoupon(int dealId, int clientId,decimal price, decimal discount)
         {
-            return mDal.InsertCoupon(deal, client);
+            string serialKey = GenerateSerialKey();
+            bool isInserted = mDal.InsertCoupon(dealId, clientId, price*discount, serialKey);
+            
+            if (isInserted){
+                DataTable table = mDal.GetCouponBySerialKey(serialKey);
+                Coupon result = mParser.ParseCoupon(table.Rows[0]);
+                return result;
+            } else {
+                return null;
+            }
+        }
+        private string GenerateSerialKey(){
+            Random rand = new Random();
+            int randNumber = rand.Next(10000000, 99999999);
+            return randNumber + "";
         }
 
         public List<Deal> GetDealById(int dealId)
