@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using System.Device;
 using System.Device.Location;
 using Coupons.Enums;
+using Coupons.GUI.AdminGUI;
 
 
 namespace Coupons.GUI.ClientGUI
@@ -248,7 +249,8 @@ namespace Coupons.GUI.ClientGUI
 
         private void btnAdddDeal_Click(object sender, RoutedEventArgs e)
         {
-
+            //CreateDealWindow window = new CreateDealWindow(mSelectedBusiness);
+            //window.Show();
         }
 
     }
