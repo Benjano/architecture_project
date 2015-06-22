@@ -23,6 +23,7 @@ namespace Coupons.DAL
         private CouponsDatasetTableAdapters.CouponsTableAdapter mTableCoupons = new CouponsDatasetTableAdapters.CouponsTableAdapter();
         private CouponsDatasetTableAdapters.GroupsTableAdapter mTableGroups = new CouponsDatasetTableAdapters.GroupsTableAdapter();
 
+
         public bool insertBusinessOwner(String username, String password, String mail, String phone)
         {
             return (mTableUsers.InsertBusinessOwner(username, password, mail, phone) == 1);
@@ -65,7 +66,6 @@ namespace Coupons.DAL
 
         }
 
-
         public int findBusinessId(int ownerId)
         {
             CouponsDataset.BusinessesDataTable business = mTableBusiness.SelectBusinessByOwner(ownerId);
@@ -85,34 +85,6 @@ namespace Coupons.DAL
             return (mTableBusiness.DeleteBusiness(Businessid) == 1);
         }
 
-        public Business selectBusinessById(int businessId){
-
-
-            CouponsDataset.BusinessesDataTable businesses = mTableBusiness.SelectBusinessById(businessId);
-            DataRow row = businesses[0];
-
-            int idB = (int)row[BusinessesColumns.ID];
-            String name = row[BusinessesColumns.NAME].ToString();
-            String description = row[BusinessesColumns.DESCRIPTION].ToString();
-            String address = row[BusinessesColumns.ADDRESS].ToString();
-            String city = row[BusinessesColumns.CITY].ToString();
-            int ownerId = (int) row[BusinessesColumns.OWNER_ID];
-            // Find the business owner
-            CouponsDataset.UsersDataTable ownertb = mTableUsers.selectUserById(ownerId);
-            DataRow row2 = ownertb[0];
-
-            int id = (int)row2[UserColumns.ID];
-            String username = row2[UserColumns.USERNAME].ToString();
-            String mail = row2[UserColumns.MAIL].ToString();
-            String phone = row2[UserColumns.PHONE].ToString();
-            
-            BusinessOwner businessOwner = new BusinessOwner(id, username, mail, phone);
-
-
-            Business business = new Business(idB, name, description, businessOwner.ID, address, city);
-            return business;
-        }
-
         public bool deleteCoupon(int couponId)
         {
             return mTableCoupons.DeleteCoupon(couponId) == 1;
@@ -128,29 +100,10 @@ namespace Coupons.DAL
             return mTableGroups.DeleteGroup(groupId) == 1;
         }
 
-        public List<Deal> getDealsNotApproval()
+        public DataTable getDealsNotApproval()
         {
-            List<Deal> result = new List<Deal>();
-            CouponsDataset.DealsDataTable deals = mTableDeals.selectDealsNotApproval();
-            foreach (DataRow row in deals.Rows)
-            {
-                int id = (int)row[DealsColumns.ID];
-                String name = row[DealsColumns.NAME].ToString();
-                String details = row[DealsColumns.DETAILS].ToString(); ;
-                decimal originalPrice = (decimal)row[DealsColumns.ORIGINAL_PRICE];
-                float rate = (float)(double)row[DealsColumns.RATE];
-                DateTime experationDate;
-                DateTime.TryParse(row[DealsColumns.EXPERATION_DATE].ToString(), out experationDate);
-                bool isApproved = (row[DealsColumns.IS_APPROVED].ToString().Equals("True"));
-                int businessId = (int)row[DealsColumns.BUSINESS_ID];
-                String startHour = row[DealsColumns.START_HOUR].ToString();
-                String endHour = row[DealsColumns.END_HOUR].ToString();
-
-            
-                Deal deal = new Deal(id, name, details, businessId, originalPrice, rate, experationDate, isApproved, startHour, endHour);
-                result.Add(deal);
-            }
-            return result;
+            DataTable table = mTableDeals.selectDealsNotApproval();
+            return table;
         }
 
         public bool approveDeal(int dealId)

@@ -28,12 +28,12 @@ namespace CouponsApplication
     public partial class MainWindow : Window
     {
 
-        UserBL mUserBL;
+        UserController mUserBL;
 
         public MainWindow()
         {
             InitializeComponent();
-            mUserBL = new UserBL();
+            mUserBL = new UserController();
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)

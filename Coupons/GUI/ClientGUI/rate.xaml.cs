@@ -21,14 +21,14 @@ namespace Coupons.GUI.ClientGUI
     /// </summary>
     public partial class rate : Window
     {
-        private ClientBL mClientBL;
+        private ClientController mClientBL;
         private Coupon mCoupon;
 
         public rate(Coupon coupon)
         {
             InitializeComponent();
             mCoupon = coupon;
-            mClientBL = new ClientBL();
+            mClientBL = new ClientController();
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
@@ -44,7 +44,7 @@ namespace Coupons.GUI.ClientGUI
                 rate = 4;
             else if ((bool)RB5.IsChecked)
                 rate = 5;
-            mClientBL.rateCoupon(mCoupon, rate);
+            mClientBL.RateCoupon(mCoupon, rate);
             Close();
 
 

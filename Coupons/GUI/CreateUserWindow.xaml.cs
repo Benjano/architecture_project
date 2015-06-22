@@ -23,8 +23,8 @@ namespace Coupons
     /// </summary>
     public partial class CreateUserWindow : Window
     {
-        ClientBL mClientBL;
-        AdminBL mAdminBL;
+        ClientController mClientBL;
+        AdminController mAdminBL;
         GeoCoordinateWatcher mGeoWatcher;
         Window mSourceWindow;
         bool mIsClient;
@@ -33,8 +33,8 @@ namespace Coupons
         {
             InitializeComponent();
             mSourceWindow = sourceWindow;
-            mClientBL = new ClientBL();
-            mAdminBL = new AdminBL();
+            mClientBL = new ClientController();
+            mAdminBL = new AdminController();
             cbGender.ItemsSource = Enum.GetValues(typeof(Gender));
             cbGender.SelectedIndex = 0;
             dpBirthDate.SelectedDate = DateTime.Today;
@@ -69,7 +69,7 @@ namespace Coupons
                 {
                     if (birthdate != null)
                     {
-                        mClientBL.insertNewClient(username, password, mail, phone, birthdate, gender, location);
+                        mClientBL.InsertNewClient(username, password, mail, phone, birthdate, gender, location);
                         FINISH();
                     }
                 } else {

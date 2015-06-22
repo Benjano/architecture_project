@@ -23,7 +23,7 @@ namespace Coupons.GUI.BusinessOwnerGUI
     /// </summary>
     public partial class UpdateBusinessWindow : Window
     {
-        private BusinessOwnerBL mBusinessOwnerBL;
+        private BusinessOwnerController mBusinessOwnerBL;
         Business mSelectedBusiness;
 
 
@@ -31,7 +31,7 @@ namespace Coupons.GUI.BusinessOwnerGUI
         {
             InitializeComponent();
             mSelectedBusiness = buisness;
-            mBusinessOwnerBL = new BusinessOwnerBL();
+            mBusinessOwnerBL = new BusinessOwnerController();
             tbBusinessName.Text = mSelectedBusiness.Name;
             tbDescription.Text = mSelectedBusiness.Description;
             tbAddress.Text = mSelectedBusiness.Address;

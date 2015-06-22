@@ -21,12 +21,12 @@ namespace Coupons.GUI
     /// </summary>
     public partial class CreateBusinessWindow : Window
     {
-        BusinessOwnerBL mOwnerBL;
+        BusinessOwnerController mOwnerBL;
         BusinessOwner mOwner;
         public CreateBusinessWindow(BusinessOwner owner)
         {
             InitializeComponent();
-            mOwnerBL = new BusinessOwnerBL();
+            mOwnerBL = new BusinessOwnerController();
             mOwner = owner;
         }
 
@@ -36,7 +36,7 @@ namespace Coupons.GUI
             String description = tbDescription.Text;
             String address = tbAddress.Text;
             String city = tbCity.Text;
-            mOwnerBL.insertNewBusiness(mOwner.ID, name, description, city, address);
+            mOwnerBL.InsertNewBusiness(mOwner.ID, name, description, city, address);
             Close();
         }
 

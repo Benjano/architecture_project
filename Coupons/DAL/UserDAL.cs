@@ -92,6 +92,11 @@ namespace Coupons.DAL
             }
             return result;
         }
-   
+
+
+        public bool UpdateUser(int id, String username, String password, String mail, String phone, String originalPassword)
+        {
+            return mTableUsers.UpdateUser(password, mail, phone, id, originalPassword) == 1;
+        }
     }
 }

@@ -24,9 +24,9 @@ namespace Coupons.GUI.BusinessOwnerGUI
     /// </summary>
     public partial class BusinessOwnerWindow : Window
     {
-        private UserBL mUserBL;
+        private UserController mUserBL;
 
-        private BusinessOwnerBL mBusinessOwnerBl;
+        private BusinessOwnerController mBusinessOwnerBl;
 
         private List<Business> mBusiness;
         private List<Deal> mDeals;
@@ -43,8 +43,8 @@ namespace Coupons.GUI.BusinessOwnerGUI
             InitializeComponent();
 
             mBusinessOwner = BusinessOwner;
-            mUserBL = new UserBL();
-            mBusinessOwnerBl = new BusinessOwnerBL();
+            mUserBL = new UserController();
+            mBusinessOwnerBl = new BusinessOwnerController();
             mBusiness = new List<Business>();
             mDeals = new List<Deal>();
             mCoupons = new List<Coupon>();
@@ -67,11 +67,11 @@ namespace Coupons.GUI.BusinessOwnerGUI
             foreach (Business business in businesses)
             {
                 mBusiness.Add(business);
-                List<Deal> businessDeals = mBusinessOwnerBl.getAllDealsByBussinesId(business.ID);
+                List<Deal> businessDeals = mBusinessOwnerBl.GetAllDealsByBussinesId(business.ID);
                 foreach (Deal deal in businessDeals)
                 {
                     mDeals.Add(deal);
-                    List<Coupon> businessDealsCoupon = mBusinessOwnerBl.getAllCouponByDealId(deal.ID);
+                    List<Coupon> businessDealsCoupon = mBusinessOwnerBl.GetAllCouponByDealId(deal.ID);
                     foreach (Coupon coupon in businessDealsCoupon)
                     {
                         mCoupons.Add(coupon);
@@ -209,9 +209,9 @@ namespace Coupons.GUI.BusinessOwnerGUI
                 deals.Add(deal);
                 setDealsDataGrid(deals);
             }
-            else if (businessId.Length > 0 && isNumeric(businessId) && mBusinessOwnerBl.getAllDealsByBussinesId(Convert.ToInt32(businessId)) != null)
+            else if (businessId.Length > 0 && isNumeric(businessId) && mBusinessOwnerBl.GetAllDealsByBussinesId(Convert.ToInt32(businessId)) != null)
             {
-                deals = mBusinessOwnerBl.getAllDealsByBussinesId(Convert.ToInt32(businessId));  
+                deals = mBusinessOwnerBl.GetAllDealsByBussinesId(Convert.ToInt32(businessId));  
                 setDealsDataGrid(deals);
             }
             else

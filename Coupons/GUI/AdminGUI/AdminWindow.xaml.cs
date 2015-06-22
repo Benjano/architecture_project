@@ -24,10 +24,10 @@ namespace Coupons.GUI.AdminGUI
     public partial class AdminWindow : Window
     {
 
-        private UserBL mUserBL;
-        private ClientBL mClientBL;
-        private BusinessOwnerBL mBusinessOwnerBl;
-        private AdminBL mAdminBL;
+        private UserController mUserBL;
+        private ClientController mClientBL;
+        private BusinessOwnerController mBusinessOwnerBl;
+        private AdminController mAdminBL;
 
         private List<Client> mClients;
         private List<BusinessOwner> mBusniessOwners;
@@ -43,14 +43,14 @@ namespace Coupons.GUI.AdminGUI
         public AdminWindow(Admin admin)
         {
             InitializeComponent();
-            mUserBL = new UserBL();
-            mClientBL = new ClientBL();
-            mBusinessOwnerBl = new BusinessOwnerBL();
-            mAdminBL = new AdminBL();
+            mUserBL = new UserController();
+            mClientBL = new ClientController();
+            mBusinessOwnerBl = new BusinessOwnerController();
+            mAdminBL = new AdminController();
             mClients = mUserBL.getAllClients();
             mBusniessOwners = mUserBL.getAllBusinessOwner();
-            mBusiness = mClientBL.getAllBusiness();
-            mDeal = mClientBL.getAllDeal();
+            mBusiness = mClientBL.GetAllBusiness();
+            mDeal = mClientBL.GetAllDeal();
             mAdmin = admin;
 
             setClientDataGrid(mClients);
@@ -133,7 +133,7 @@ namespace Coupons.GUI.AdminGUI
             {
                 if (tbUserId.Text.Length > 0 && isNumeric(tbUserId.Text))
                 { 
-                    Client client = mClientBL.getClientById(Convert.ToInt32(tbUserId.Text));
+                    Client client = mClientBL.GetClientById(Convert.ToInt32(tbUserId.Text));
                     if (client != null){
                         List<Client> toShow = new List<Client>();
                         toShow.Add(client);
@@ -147,7 +147,7 @@ namespace Coupons.GUI.AdminGUI
 
                 if (tbName.Text.Length > 0)
                 {
-                    Client client = mClientBL.getClientByUsername(tbName.Text);
+                    Client client = mClientBL.GetClientByUsername(tbName.Text);
                     if (client != null)
                     {
                         List<Client> toShow = new List<Client>();
@@ -164,7 +164,7 @@ namespace Coupons.GUI.AdminGUI
             {
                 if (tbUserId.Text.Length > 0 && isNumeric(tbUserId.Text))
                 {
-                    BusinessOwner businessOwner = mBusinessOwnerBl.getBusinessOwnerById(Convert.ToInt32(tbUserId.Text));
+                    BusinessOwner businessOwner = mBusinessOwnerBl.GetBusinessOwnerById(Convert.ToInt32(tbUserId.Text));
                     if (businessOwner != null)
                     {
                         List<BusinessOwner> toShow = new List<BusinessOwner>();
@@ -180,11 +180,11 @@ namespace Coupons.GUI.AdminGUI
 
                     if (tbName.Text.Length > 0)
                     {
-                        BusinessOwner businessOwner = mBusinessOwnerBl.getBusinessOwnerByUserName(tbName.Text);
-                        if (businessOwner != null)
+                        List<BusinessOwner> businessOwner = mBusinessOwnerBl.getBusinessOwnerByUserName(tbName.Text);
+                        if (businessOwner != null && businessOwner.Count == 1)
                         {
                             List<BusinessOwner> toShow = new List<BusinessOwner>();
-                            toShow.Add(businessOwner);
+                            toShow.Add(businessOwner[0]);
                             setBusniessOwnerDataGrid(toShow);
                         }
                         else
@@ -258,7 +258,7 @@ namespace Coupons.GUI.AdminGUI
 
         private void btnRefreshBusiness_Click(object sender, RoutedEventArgs e)
         {
-            setBusinessDataGrid(mClientBL.getAllBusiness());
+            setBusinessDataGrid(mClientBL.GetAllBusiness());
         }
 
         private void btnSearchBusiness_Click(object sender, RoutedEventArgs e)
@@ -269,7 +269,7 @@ namespace Coupons.GUI.AdminGUI
 
             if (name.Length > 0)
             {
-                setBusinessDataGrid(mBusinessOwnerBl.getBusinessesByName(name));
+                setBusinessDataGrid(mBusinessOwnerBl.GetBusinessesByName(name));
             }
             else if (ownerId.Length > 0 && isNumeric(ownerId))
             {
@@ -277,7 +277,7 @@ namespace Coupons.GUI.AdminGUI
             }
             else if (businessId.Length > 0 && isNumeric(businessId))
             {
-                setBusinessDataGrid(mBusinessOwnerBl.getBusinessById(Convert.ToInt32(businessId)));
+                setBusinessDataGrid(mBusinessOwnerBl.GetBusinessById(Convert.ToInt32(businessId)));
             }
         }
         private void btnDeleteBusiness_Click(object sender, RoutedEventArgs e)
@@ -329,7 +329,7 @@ namespace Coupons.GUI.AdminGUI
 
         private void btnAllDeal_Click(object sender, RoutedEventArgs e)
         {
-            setDealsDataGrid(mClientBL.getAllDeal());
+            setDealsDataGrid(mClientBL.GetAllDeal());
         }
 
         private void btnAddDeal_Click(object sender, RoutedEventArgs e)
@@ -398,7 +398,7 @@ namespace Coupons.GUI.AdminGUI
 
             if (dealId.Length > 0 && isNumeric(dealId))
             {
-                setDealsDataGrid(mClientBL.getDealById(Convert.ToInt32(dealId)));
+                setDealsDataGrid(mClientBL.GetDealById(Convert.ToInt32(dealId)));
 
             }
         }

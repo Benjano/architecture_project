@@ -2,18 +2,22 @@
 using Coupons.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Coupons.BL
 {
-    class AdminBL
+    class AdminController
     {
         AdminDAL mDal;
-        public AdminBL()
+        DataParser mParser;
+
+        public AdminController()
         {
             mDal = new AdminDAL();
+            mParser = new DataParser();
         }
         
         public bool insertBusinessOwner(String username, String password, String mail, String phone)
@@ -25,7 +29,9 @@ namespace Coupons.BL
 
         public List<Deal> getDealsNotApproval()
         {
-            return mDal.getDealsNotApproval();
+            DataTable notApprovedDeals = mDal.getDealsNotApproval();
+            List<Deal> result = mParser.ParseDeals(notApprovedDeals);
+            return result;
         }
 
         public bool deleteBusiness(int businessId)

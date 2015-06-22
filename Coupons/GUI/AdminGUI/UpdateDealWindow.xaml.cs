@@ -23,13 +23,13 @@ namespace Coupons.GUI.AdminGUI
     {
 
         Deal mDeal;
-        AdminBL mAdminBL;
+        AdminController mAdminBL;
 
         public UpdateDealWindow(Deal deal)
         {
             InitializeComponent();
             mDeal = deal;
-            mAdminBL = new AdminBL();
+            mAdminBL = new AdminController();
             tbName.Text = mDeal.Name;
             tbDetails.Text = mDeal.Details;
             tbOriginalPrice.Text = Convert.ToString(mDeal.Price);

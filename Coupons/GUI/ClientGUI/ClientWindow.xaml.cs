@@ -26,7 +26,7 @@ namespace Coupons.GUI.ClientGUI
     public partial class ClientWindow : Window
     {
 
-        ClientBL mClientBl = new ClientBL();
+        ClientController mClientBl = new ClientController();
         List<Deal> mDeals;
         List<Business> mBusinesses;
         List<Category> mCategories;
@@ -46,11 +46,11 @@ namespace Coupons.GUI.ClientGUI
 
 
 
-            mDeals = mClientBl.getAllDeal();
-            mCoupon = mClientBl.getClientCouponsByClient(mClient);
-            mBusinesses = mClientBl.getAllBusiness();
+            mDeals = mClientBl.GetAllDeal();
+            mCoupon = mClientBl.GetClientCouponsByClient(mClient);
+            mBusinesses = mClientBl.GetAllBusiness();
             mCategories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList<Category>();
-            mPossibleCities = mClientBl.getPossibleCities();
+            mPossibleCities = mClientBl.GetPossibleCities();
 
             setDealsDataGrid(mDeals);
             setCouponDataGrid(mCoupon);
@@ -67,10 +67,10 @@ namespace Coupons.GUI.ClientGUI
 
         private void reloadData()
         {
-            mDeals = mClientBl.getAllDeal();
-            mBusinesses = mClientBl.getAllBusiness();
+            mDeals = mClientBl.GetAllDeal();
+            mBusinesses = mClientBl.GetAllBusiness();
             mCategories = Enum.GetValues(typeof(Category)).Cast<Category>().ToList<Category>();
-            mPossibleCities = mClientBl.getPossibleCities();
+            mPossibleCities = mClientBl.GetPossibleCities();
         }
 
         /***************** SETCTION DEALS *****************/
@@ -198,12 +198,12 @@ namespace Coupons.GUI.ClientGUI
         {
             if (mSelectedDeal != null)
             {
-                if (mClientBl.buyCoupon(mSelectedDeal, mClient) != -1)
+                if (mClientBl.BuyCoupon(mSelectedDeal, mClient) != -1)
                 {
                     MessageBoxResult result = MessageBox.Show("Success",
                   "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
-                setCouponDataGrid(mClientBl.getClientCouponsByClient(mClient));
+                setCouponDataGrid(mClientBl.GetClientCouponsByClient(mClient));
             }
             else
             {

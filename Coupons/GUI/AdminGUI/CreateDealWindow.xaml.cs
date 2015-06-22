@@ -21,12 +21,12 @@ namespace Coupons.GUI.AdminGUI
     /// </summary>
     public partial class CreateDealWindow : Window
     {
-        BusinessOwnerBL mOwnerBL;
+        BusinessOwnerController mOwnerBL;
         Business mBusiness;
         public CreateDealWindow(Business business)
         {
             InitializeComponent();
-            mOwnerBL = new BusinessOwnerBL();
+            mOwnerBL = new BusinessOwnerController();
             mBusiness = business;
 
         }
@@ -43,7 +43,7 @@ namespace Coupons.GUI.AdminGUI
             int endHour_h = Convert.ToInt32(tbEnd_Hour_h.Text);
             int endHour_m = Convert.ToInt32(tbEnd_Hour_m.Text);
 
-            mOwnerBL.insertNewDeal(name, details, mBusiness, originalPrice, experationDate, startHour_h, startHour_m, endHour_h, endHour_m);
+            mOwnerBL.InsertNewDeal(name, details, mBusiness, originalPrice, experationDate, startHour_h, startHour_m, endHour_h, endHour_m);
             Close();
         }
 

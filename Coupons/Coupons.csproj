@@ -70,8 +70,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="BL\AdminBL.cs" />
-    <Compile Include="BL\UserBL.cs" />
+    <Compile Include="BL\AdminController.cs" />
+    <Compile Include="BL\DataParser.cs" />
+    <Compile Include="BL\UserController.cs" />
     <Compile Include="CouponsDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -162,8 +163,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BL\BusinessOwnerBL.cs" />
-    <Compile Include="BL\ClientBL.cs" />
+    <Compile Include="BL\BusinessOwnerController.cs" />
+    <Compile Include="BL\ClientController.cs" />
     <Compile Include="Constants\BusinessesColumns.cs" />
     <Compile Include="Constants\CouponsColumns.cs" />
     <Compile Include="Constants\DealsColumns.cs" />

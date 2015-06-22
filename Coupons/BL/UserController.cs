@@ -8,11 +8,11 @@ using Coupons.Models;
 
 namespace Coupons.BL
 {
-    class UserBL
+    class UserController
     {
         UserDAL mUserDal;
 
-        public UserBL()
+        public UserController()
         {
             mUserDal = new UserDAL();
         }
@@ -31,5 +31,11 @@ namespace Coupons.BL
         {
             return mUserDal.getAllBusinessOwner();
         }
+
+        public bool UpdateUser(int clientId, String username, String password, String mail, String phone, String originalPassword)
+        {
+            return mUserDal.UpdateUser(clientId, username, password, mail, phone, originalPassword);
+        }
+
     }
 }
