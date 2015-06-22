@@ -22,6 +22,7 @@
         <Button x:Name="btnRefreshBusiness" Content="Refresh" HorizontalAlignment="Left" Margin="38,361,0,0" VerticalAlignment="Top" Width="75"  Height="18" Click="btnRefreshBusiness_Click"/>
         <Button x:Name="btnRefreshDeals" Content="Refresh" HorizontalAlignment="Left" Margin="363,418,0,0" VerticalAlignment="Top" Width="75" Height="18" Click="btnRefreshDeals_Click"/>
         <Button x:Name="btnRefreshPurchases" Content="Refresh" HorizontalAlignment="Left" Margin="766,364,0,0" VerticalAlignment="Top" Width="75" Height="18" Click="btnRefreshPurchases_Click"/>
+        <Button x:Name="btnSetUsedPurchases" Content="USED" HorizontalAlignment="Left" Margin="672,364,0,0" VerticalAlignment="Top" Width="75" Height="18" Click="btnSetUsedPurchases_Click"/>
 
 
     </Grid>

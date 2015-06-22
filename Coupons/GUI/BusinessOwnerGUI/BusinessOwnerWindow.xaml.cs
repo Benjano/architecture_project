@@ -272,6 +272,14 @@ namespace Coupons.GUI.BusinessOwnerGUI
 
         private void btnRefreshPurchases_Click(object sender, RoutedEventArgs e)
         {
+            loadAllOwnerDeals();
+            setPurchasDataGrid(mCoupons);
+        }
+
+        private void btnSetUsedPurchases_Click(object sender, RoutedEventArgs e)
+        {
+            mBusinessOwnerBl.updateCouponUsed(mSelectedCoupon);
+            loadAllOwnerDeals();
             setPurchasDataGrid(mCoupons);
         }
 
