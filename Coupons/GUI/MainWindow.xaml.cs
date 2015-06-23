@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using System.Web;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -89,16 +88,13 @@ namespace CouponsApplication
             MessageBoxResult result;
             String username = txtUsername.Text;
             if (username != "") {
-                string Email = mUserBL.getUserEmailByUsername(username);
+                if(mUserBL.resetPassword(username))
+                    result = MessageBox.Show("your password was reset check your e-mail",
+                                            "sorry", MessageBoxButton.OK, MessageBoxImage.Information);
+                else
+                    result = MessageBox.Show("wrong user name",
+                                            "sorry", MessageBoxButton.OK, MessageBoxImage.Information);
 
-                MailMessage message = new MailMessage("couponServes@gmail.com", Email, "Coupon password reset", "your new password is ABC123DSA");
-                SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
-                smtp.Credentials = new System.Net.NetworkCredential("couponServes", "Cou@pon432Se");
-                smtp.EnableSsl = true;
-                smtp.Send(message);
-
-                result = MessageBox.Show("your password was reset check your e-mail",
-                                  "sorry", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
