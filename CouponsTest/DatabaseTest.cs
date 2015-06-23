@@ -4,16 +4,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Coupons.BL;
 using Coupons.DAL;
 using Coupons;
 using Coupons.Enums;
 using Coupons.Models;
+using Coupons.Util;
 
 namespace CouponsTest
 {
     [TestClass]
     public class DatabaseTest
     {
+        ClientController mClientBL = new ClientController();
+        BusinessOwnerController mBusinessOwnerBl = new BusinessOwnerController();
 
         public AdminDAL mAdminDAL = new AdminDAL();
         public ClientDAL mClientDAL = new ClientDAL();
@@ -36,8 +40,8 @@ namespace CouponsTest
         [TestMethod]
         public void TestAddClient()
         {
-            Assert.IsTrue(mClientDAL.InsertNewClient("Aviv2", "password1", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
-            int createdClient = mClientDAL.GetClientId("Aviv2", "password1");
+            Assert.IsTrue(mClientBL.InsertNewClient("Aviv2", "password1", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
+            int createdClient = mClientBL.GetClientId("Aviv2", "password1");
             mAdminDAL.deleteUser(createdClient);
         }
 
@@ -46,7 +50,7 @@ namespace CouponsTest
         {
             Assert.IsTrue(mAdminDAL.insertNewAdmin("Aviv23", "password20", "avivasi@post.bgu.ac.il", "05433"), "Admin was not created");
             Assert.IsTrue(mAdminDAL.insertBusinessOwner("Aviv24", "password20", "avivasi@post.bgu.ac.il", "05433"), "BusinessOwner was not created");
-            BusinessOwner businessOwner = mBusinessDAL.GetBusinessOwnerById("Aviv24", "password20");
+            BusinessOwner businessOwner = mBusinessOwnerBl.getBusinessOwnerByUserName("Aviv24").ElementAt(1);
             Assert.IsTrue(mAdminDAL.insertNewBusiness("Aroma", "coffee shop", businessOwner.ID, "bs 11", "bs"), "Business was not created");
             int createdBusiness = mAdminDAL.findBusinessId(businessOwner.ID);
             int createdAdmin = mAdminDAL.findAdnimId("Aviv23", "password20");
@@ -59,11 +63,11 @@ namespace CouponsTest
         public void TestAddBusinessAndDeal()
         {
             Assert.IsTrue(mAdminDAL.insertBusinessOwner("Aviv24", "password20", "avivasi@post.bgu.ac.il", "05433"), "BusinessOwner was not created");
-            BusinessOwner businessOwner = mBusinessDAL.GetBusinessOwnerById("Aviv24", "password20");
+            BusinessOwner businessOwner = mBusinessOwnerBl.getBusinessOwnerByUserName("Aviv24").ElementAt(1);
             Assert.IsTrue(mAdminDAL.insertNewBusiness("Aroma", "coffee shop", businessOwner.ID, "bs 11", "bs"), "Business was not created");
             int crrdBusinessid = mAdminDAL.findBusinessId(businessOwner.ID);
-            Business crrdBusiness = mAdminDAL.selectBusinessById(crrdBusinessid);
-            Assert.IsTrue(mBusinessDAL.InsertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3), DateTime.Now, DateTime.Now), "Deal was not created");
+            Business crrdBusiness = mBusinessOwnerBl.GetBusinessById(crrdBusinessid).ElementAt(1);
+            Assert.IsTrue(mBusinessOwnerBl.InsertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3), 12, 18, 14, 13), "Deal was not created");
             mAdminDAL.deleteDeal(crrdBusiness.Deals[0].ID);
             mAdminDAL.deleteBusiness(crrdBusinessid);
             mAdminDAL.deleteUser(businessOwner.ID);
@@ -72,9 +76,9 @@ namespace CouponsTest
         [TestMethod]
         public void TestAddAndUpdateClient()
         {
-            Assert.IsTrue(mClientDAL.InsertNewClient("Aviv3", "password1", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
-            int clinetId = mClientDAL.UpdateUser("Aviv3", "password2", "blabla@", "05466666", "password1");
-            int updateClient = mClientDAL.GetClientId("Aviv3", "password2");
+            Assert.IsTrue(mClientBL.InsertNewClient("Aviv3", "password1", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
+            int clinetId = mClientBL.UpdateUser("Aviv3", "password2", "blabla@", "05466666", "password1");
+            int updateClient = mClientBL.GetClientId("Aviv3", "password2");
             Assert.IsTrue(clinetId == updateClient, "Client was not update");
             mAdminDAL.deleteUser(updateClient);
         }
@@ -83,18 +87,18 @@ namespace CouponsTest
         public void TestBuyCoupon()
         {
             Assert.IsTrue(mAdminDAL.insertBusinessOwner("Aviv24", "password20", "avivasi@post.bgu.ac.il", "05433"), "BusinessOwner was not created");
-            BusinessOwner businessOwner = mBusinessDAL.GetBusinessOwnerById("Aviv24", "password20");
+            BusinessOwner businessOwner = mBusinessOwnerBl.getBusinessOwnerByUserName("Aviv24").ElementAt(1);
             Assert.IsTrue(mAdminDAL.insertNewBusiness("Aroma", "coffee shop", businessOwner.ID, "bs 11", "bs"), "Business was not created");
             int crrdBusinessId = mAdminDAL.findBusinessId(businessOwner.ID);
-            Business crrdBusiness = mAdminDAL.selectBusinessById(crrdBusinessId);
-            Assert.IsTrue(mBusinessDAL.InsertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3), DateTime.Now, DateTime.Now), "Deal was not created");
-            Assert.IsTrue(mClientDAL.InsertNewClient("Aviv89", "password4", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
-            int createdClientId = mClientDAL.GetClientId("Aviv89", "password4");
+            Business crrdBusiness = mBusinessOwnerBl.GetBusinessById(crrdBusinessId).ElementAt(1);
+            Assert.IsTrue(mBusinessOwnerBl.InsertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3), 12, 18, 14, 13), "Deal was not created");
+            Assert.IsTrue(mClientBL.InsertNewClient("Aviv89", "password4", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
+            int createdClientId = mClientBL.GetClientId("Aviv89", "password4");
             int dealId = mClientDAL.SelectDeal(crrdBusinessId);
             Client crrClient = mClientDAL.GetClientById(createdClientId);
-            Deal crrDeal = mClientDAL.GetDealById(dealId);
+            Deal crrDeal = mClientBL.GetDealById(dealId).ElementAt(1);
 
-            int couponId = mClientDAL.InsertCoupon(crrDeal, crrClient);
+            int couponId = mClientBL.BuyCoupon(crrDeal.ID, crrClient.ID, 200, 10).ID;
             Assert.IsTrue(couponId != -1, "Coupon was not buying");
 
             mAdminDAL.deleteCoupon(couponId);
@@ -109,12 +113,12 @@ namespace CouponsTest
         [TestMethod]
         public void TestAddGroup()
         {
-            Assert.IsTrue(mClientDAL.InsertNewClient("hen2", "password4", "avi@bgu.ac.il", "054631", new DateTime(1990, 12, 12), Gender.Male, null), "Client was not created");
-            int createdClient1Id = mClientDAL.GetClientId("hen2", "password4");
-            Assert.IsTrue(mClientDAL.InsertNewClient("Nir2", "password3", "nir@bgu.ac.il", "05455531", new DateTime(1991, 12, 4), Gender.Male, null), "Client was not created");
-            int createdClient2Id = mClientDAL.GetClientId("Nir2", "password3");
+            Assert.IsTrue(mClientBL.InsertNewClient("hen2", "password4", "avi@bgu.ac.il", "054631", new DateTime(1990, 12, 12), Gender.Male, null), "Client was not created");
+            int createdClient1Id = mClientBL.GetClientId("hen2", "password4");
+            Assert.IsTrue(mClientBL.InsertNewClient("Nir2", "password3", "nir@bgu.ac.il", "05455531", new DateTime(1991, 12, 4), Gender.Male, null), "Client was not created");
+            int createdClient2Id = mClientBL.GetClientId("Nir2", "password3");
             Assert.IsTrue(mClientDAL.CreateNewGroup(createdClient1Id, "bla"), "group was not created");
-            int groupId = mClientDAL.GetGroupByName("bla");
+            int groupId = mClientBL.GetGroupByName("bla").ID;
             Assert.IsTrue(mClientDAL.AddClientToGroup(createdClient1Id, groupId), "Client dose not added to the group");
             Assert.IsTrue(mClientDAL.AddClientToGroup(createdClient2Id, groupId), "Client dose not added to the group");
 
@@ -128,8 +132,8 @@ namespace CouponsTest
         [TestMethod]
         public void TestAddSocialNetwork()
         {
-            mClientDAL.InsertNewClient(clientName, clientPassword, clientMail, clientPhone, clientBornDate, clientGender, null);
-            int clientId = mClientDAL.GetClientId(clientName,clientPassword);
+            mClientBL.InsertNewClient(clientName, clientPassword, clientMail, clientPhone, clientBornDate, clientGender, null);
+            int clientId = mClientBL.GetClientId(clientName, clientPassword);
             mClientDAL.AddSocialNetwork(clientId,SocialNetwork.Facebook, "Aviv Asido", "ASDASDJ!@#ASD!@#ASD");
             List<ClientNetwork> networks = mClientDAL.GetClientSocialNetworks(clientId);
             Assert.AreEqual(networks[0].Name, SocialNetwork.Facebook);
@@ -139,10 +143,10 @@ namespace CouponsTest
         [TestMethod]
         public void TestAddSocialFriends()
         {
-            mClientDAL.InsertNewClient(clientName, clientPassword, clientMail, clientPhone, clientBornDate, clientGender, null);
-            mClientDAL.InsertNewClient(client2Name, client2Password, client2Mail, client2Phone, client2BornDate, client2Gender, null);
-            int clientId = mClientDAL.GetClientId(clientName, clientPassword);
-            int client2Id = mClientDAL.GetClientId(client2Name, client2Password);
+            mClientBL.InsertNewClient(clientName, clientPassword, clientMail, clientPhone, clientBornDate, clientGender, null);
+            mClientBL.InsertNewClient(client2Name, client2Password, client2Mail, client2Phone, client2BornDate, client2Gender, null);
+            int clientId = mClientBL.GetClientId(clientName, clientPassword);
+            int client2Id = mClientBL.GetClientId(client2Name, client2Password);
             mClientDAL.AddSocialNetwork(clientId, SocialNetwork.Facebook, "Aviv Asido", "ASDASDJ!@#ASD!@#ASD");
             mClientDAL.AddSocialNetwork(client2Id, SocialNetwork.Facebook, "Yarden Chen", "ASDASDJ!@#ASD!@#ASD");
 
@@ -162,10 +166,10 @@ namespace CouponsTest
         [TestMethod]
         public void TestAddContacts()
         {
-            mClientDAL.InsertNewClient(clientName, clientPassword, clientMail, clientPhone, clientBornDate, clientGender, null);
-            mClientDAL.InsertNewClient(client2Name, client2Password, client2Mail, client2Phone, client2BornDate, client2Gender, null);
-            int clientId = mClientDAL.GetClientId(clientName, clientPassword);
-            int client2Id = mClientDAL.GetClientId(client2Name, client2Password);
+            mClientBL.InsertNewClient(clientName, clientPassword, clientMail, clientPhone, clientBornDate, clientGender, null);
+            mClientBL.InsertNewClient(client2Name, client2Password, client2Mail, client2Phone, client2BornDate, client2Gender, null);
+            int clientId = mClientBL.GetClientId(clientName, clientPassword);
+            int client2Id = mClientBL.GetClientId(client2Name, client2Password);
 
             mClientDAL.AddContact(clientId, client2Id);
 
@@ -181,13 +185,73 @@ namespace CouponsTest
         public void TestUpdatBusiness()
         {
             Assert.IsTrue(mAdminDAL.insertBusinessOwner("Aviv24", "password20", "avivasi@post.bgu.ac.il", "05433"), "BusinessOwner was not created");
-            BusinessOwner businessOwner = mBusinessDAL.GetBusinessOwnerById("Aviv24", "password20");
+            BusinessOwner businessOwner = mBusinessOwnerBl.getBusinessOwnerByUserName("Aviv24").ElementAt(1);
             Assert.IsTrue(mAdminDAL.insertNewBusiness("Aroma", "coffee shop", businessOwner.ID, "bs 11", "bs"), "Business was not created");
             int crrdBusinessId = mAdminDAL.findBusinessId(businessOwner.ID);
             Assert.IsTrue(mBusinessDAL.UpdateBusiness(crrdBusinessId, "Grag", "coffee shop", businessOwner.ID, "bs 13", "bs"), "Business was not update");
             mAdminDAL.deleteBusiness(crrdBusinessId);
             mAdminDAL.deleteUser(businessOwner.ID);
         }
-        
+
+        [TestMethod]
+        public void TestCouponSetUsed()
+        {
+            Assert.IsTrue(mAdminDAL.insertBusinessOwner("Aviv24", "password20", "avivasi@post.bgu.ac.il", "05433"), "BusinessOwner was not created");
+            BusinessOwner businessOwner = mBusinessOwnerBl.getBusinessOwnerByUserName("Aviv24").ElementAt(1);
+            Assert.IsTrue(mAdminDAL.insertNewBusiness("Aroma", "coffee shop", businessOwner.ID, "bs 11", "bs"), "Business was not created");
+            int crrdBusinessId = mAdminDAL.findBusinessId(businessOwner.ID);
+            Business crrdBusiness = mBusinessOwnerBl.GetBusinessById(crrdBusinessId).ElementAt(1);
+            Assert.IsTrue(mBusinessOwnerBl.InsertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3), 12, 18, 14, 13), "Deal was not created");
+            Assert.IsTrue(mClientBL.InsertNewClient("Aviv89", "password4", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
+            int createdClientId = mClientBL.GetClientId("Aviv89", "password4");
+            int dealId = mClientDAL.SelectDeal(crrdBusinessId);
+            Client crrClient = mClientDAL.GetClientById(createdClientId);
+            Deal crrDeal = mClientBL.GetDealById(dealId).ElementAt(1);
+            Coupon coupon = mClientBL.BuyCoupon(crrDeal.ID, crrClient.ID, 200, 10);
+            Assert.IsTrue(coupon.ID != -1, "Coupon was not buying");
+
+            mBusinessOwnerBl.updateCouponUsed(coupon);
+            bool isUsed = mClientBL.BuyCoupon(crrDeal.ID, crrClient.ID, 200, 10).IsUsed;
+            Assert.IsTrue(isUsed, "Coupon was not set to used");
+
+            mAdminDAL.deleteCoupon(coupon.ID);
+            mAdminDAL.deleteDeal(crrDeal.ID);
+            mAdminDAL.deleteBusiness(crrdBusinessId);
+            mAdminDAL.deleteUser(createdClientId);
+            mAdminDAL.deleteUser(businessOwner.ID);
+        }
+
+        [TestMethod]
+        public void TestRateCoupon()
+        {
+            Assert.IsTrue(mAdminDAL.insertBusinessOwner("Aviv24", "password20", "avivasi@post.bgu.ac.il", "05433"), "BusinessOwner was not created");
+            BusinessOwner businessOwner = mBusinessOwnerBl.getBusinessOwnerByUserName("Aviv24").ElementAt(1);
+            Assert.IsTrue(mAdminDAL.insertNewBusiness("Aroma", "coffee shop", businessOwner.ID, "bs 11", "bs"), "Business was not created");
+            int crrdBusinessId = mAdminDAL.findBusinessId(businessOwner.ID);
+            Business crrdBusiness = mBusinessOwnerBl.GetBusinessById(crrdBusinessId).ElementAt(1);
+            Assert.IsTrue(mBusinessOwnerBl.InsertNewDeal("1+1", "one plus one", crrdBusiness, 100, new DateTime(1990, 3, 3), 12, 18, 14, 13), "Deal was not created");
+            Assert.IsTrue(mClientBL.InsertNewClient("Aviv89", "password4", "avivasi@post.bgu.ac.il", "0546310736", new DateTime(1990, 4, 4), Gender.Female, null), "Client was not created");
+            int createdClientId = mClientBL.GetClientId("Aviv89", "password4");
+            int dealId = mClientDAL.SelectDeal(crrdBusinessId);
+            Client crrClient = mClientDAL.GetClientById(createdClientId);
+            Deal crrDeal = mClientBL.GetDealById(dealId).ElementAt(1);
+            Coupon coupon = mClientBL.BuyCoupon(crrDeal.ID, crrClient.ID, 200, 10);
+            Assert.IsTrue(coupon.ID != -1, "Coupon was not buying");
+            mBusinessOwnerBl.updateCouponUsed(coupon);
+            coupon = mClientBL.GetClientCouponsByClient(crrClient).ElementAt(1);
+            Assert.IsTrue(coupon.IsUsed, "Coupon was not set to used");
+
+            coupon = mClientBL.GetClientCouponsByClient(crrClient).ElementAt(1);
+            mClientBL.RateCoupon(coupon, 4);
+            coupon = mClientBL.GetClientCouponsByClient(crrClient).ElementAt(1);
+            Assert.IsTrue(coupon.Rate == 4, "Coupon was not rated");
+
+            mAdminDAL.deleteCoupon(coupon.ID);
+            mAdminDAL.deleteDeal(crrDeal.ID);
+            mAdminDAL.deleteBusiness(crrdBusinessId);
+            mAdminDAL.deleteUser(createdClientId);
+            mAdminDAL.deleteUser(businessOwner.ID);
+        }
+
     }
 }

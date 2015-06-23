@@ -25,13 +25,10 @@ namespace Coupons.BL
 
         public bool InsertNewClient(String username, String password, String mail, String phone, DateTime birthDate, Gender gender, String location)
         {
-
-            bool isInsertedClient = mDal.InsertNewClient(username, password, mail, phone);
-            if (isInsertedClient)
+            if (mDal.InsertNewClient(username, password, mail, phone))
             {
                 int clientId = GetClientId(username, password);
-                bool isInsertedInformation = mDal.InsertClientInformation(clientId, birthDate, gender, location);
-                if (isInsertedInformation)
+                if (mDal.InsertClientInformation(clientId, birthDate, gender, location))
                 {
                     mDal.DeleteClientById(clientId);
                     return false;
@@ -186,6 +183,11 @@ namespace Coupons.BL
         public void RateCoupon(Coupon coupon, int rate)
         {
             mDal.RateCoupon(coupon, rate);
+        }
+
+        public int UpdateUser(string newUserName, string newPassword, string newEmail, string newPhoneNum, string oldPassword)
+        {
+            return mDal.UpdateUser(newUserName, newPassword, newEmail, newPhoneNum, oldPassword);
         }
     }
 }

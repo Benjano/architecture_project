@@ -374,5 +374,11 @@ namespace Coupons.DAL
         {
              mTableCoupons.rate(rate, coupon.ID);
         }
+
+        public int UpdateUser(string newUserName, string newPassword, string newEmail, string newPhoneNum, string oldPassword)
+        {
+            int id = (int)GetClientId("Aviv3", "password2").Rows[1][UserColumns.ID];
+            return mTableUsers.UpdateUser(newPassword, newEmail, newPhoneNum, id, oldPassword);
+        }
     }
 }
