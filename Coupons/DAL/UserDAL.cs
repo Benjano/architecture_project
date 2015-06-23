@@ -25,7 +25,7 @@ namespace Coupons.DAL
             if (user.Rows.Count == 1)
             {
                 int id = (int) user.Rows[0][UserColumns.ID];
-                String mail = (String)user.Rows[0][UserColumns.MAIL]; ;
+                String mail = (String)user.Rows[0][UserColumns.MAIL];
                 String phone = (String)user.Rows[0][UserColumns.PHONE];
                 String type = (String) user.Rows[0][UserColumns.TYPE];
 
@@ -97,6 +97,14 @@ namespace Coupons.DAL
         public bool UpdateUser(int id, String username, String password, String mail, String phone, String originalPassword)
         {
             return mTableUsers.UpdateUser(password, mail, phone, id, originalPassword) == 1;
+        }
+
+
+
+        public string getUserEmailByUsername(string username)
+        {
+            CouponsDataset.UsersDataTable user = mTableUsers.SelectEmailByUserName(username);
+            return (String)user.Rows[0][UserColumns.MAIL];
         }
     }
 }

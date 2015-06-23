@@ -50,6 +50,9 @@ namespace Coupons
 
                 cbGender.Visibility = Visibility.Hidden;
                 dpBirthDate.Visibility = Visibility.Hidden;
+
+                lblPayPal.Visibility = Visibility.Hidden;
+                tbPayPal_info.Visibility = Visibility.Hidden;
             }
         }
 
@@ -107,6 +110,31 @@ namespace Coupons
                 mSourceWindow.Show();
             }
             this.Close();
+        }
+
+        private void btnPayPal_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                System.Diagnostics.Process.Start("www.PayPal.com");
+            }
+            catch (Exception exc1)
+            {
+                if (exc1.GetType().ToString() != "System.ComponentModel.Win32Exception")
+                {
+                    try
+                    {
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo("IExplore.exe", "www.google.com");
+                        System.Diagnostics.Process.Start(startInfo);
+                        startInfo = null;
+                    }
+                    catch (Exception exc2)
+                    {
+                        MessageBoxResult result = MessageBox.Show("whay you don't have browser",
+                                  "loser", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+            }
         }
     }
 }

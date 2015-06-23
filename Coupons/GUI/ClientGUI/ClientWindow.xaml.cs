@@ -202,8 +202,29 @@ namespace Coupons.GUI.ClientGUI
             {
                 if (mClientBl.BuyCoupon(mSelectedDeal.ID, mClient.ID, (decimal) mSelectedDeal.Price, (decimal) 1) != null)
                 {
-                    MessageBoxResult result = MessageBox.Show("Success",
-                  "Wrong information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    try
+                    {
+                        System.Diagnostics.Process.Start("www.paypal.com");
+                    }
+                    catch (Exception exc1)
+                    {
+                        if (exc1.GetType().ToString() != "System.ComponentModel.Win32Exception")
+                        {
+                            try
+                            {
+                                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo("IExplore.exe", "www.google.com");
+                                System.Diagnostics.Process.Start(startInfo);
+                                startInfo = null;
+                            }
+                            catch (Exception exc2)
+                            {
+                                MessageBoxResult result = MessageBox.Show("whay you don't have browser",
+                                          "loser", MessageBoxButton.OK, MessageBoxImage.Information);
+                            }
+                        }
+                    }
+                    MessageBoxResult result2 = MessageBox.Show("Success",
+                  "you have bought coupon", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
                 setCouponDataGrid(mClientBl.GetClientCouponsByClient(mClient));
             }

@@ -22,6 +22,11 @@ namespace Coupons.BL
             return mUserDal.login(username, password);
         }
 
+        public string getUserEmailByUsername(String username)
+        {
+            return mUserDal.getUserEmailByUsername(username);
+        }
+
         public List<Client> getAllClients()
         {
             return mUserDal.getAllClients();
