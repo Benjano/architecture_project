@@ -9174,13 +9174,14 @@ namespace Coupons.CouponsDatasetTableAdapters {
             this._commandCollection[3].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[4].Connection = this.Connection;
-            this._commandCollection[4].CommandText = "INSERT INTO Users\r\n                  (Username, Password, Mail, Phone, Type)\r\nVAL" +
-                "UES (@Username,@Password,@Mail,@Phone, \'Client\');   ";
+            this._commandCollection[4].CommandText = "INSERT INTO Users\r\n                         (Username, Password, Mail, Phone, Typ" +
+                "e)\r\nVALUES        (@Username,@Password,@Mail,@Phone,@Type);    ";
             this._commandCollection[4].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Password", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Password", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Mail", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Mail", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Phone", global::System.Data.SqlDbType.NVarChar, 20, global::System.Data.ParameterDirection.Input, 0, 0, "Phone", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[4].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Type", global::System.Data.SqlDbType.NVarChar, 13, global::System.Data.ParameterDirection.Input, 0, 0, "Type", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[5] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[5].Connection = this.Connection;
             this._commandCollection[5].CommandText = "SELECT Id, Mail, Password, Phone, Type, Username FROM Users WHERE (Type = \'Busine" +
@@ -9202,7 +9203,7 @@ namespace Coupons.CouponsDatasetTableAdapters {
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
             this._commandCollection[8].CommandText = "SELECT        Id, Username, Password, Mail, Phone, Type\r\nFROM            Users\r\nW" +
-                "HERE        (Username = @username) AND (Type = \'businessOwner\')";
+                "HERE        (Username = @username) AND (Type = \'BusinessOwner\')";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@username", global::System.Data.SqlDbType.NVarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "Username", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[9] = new global::System.Data.SqlClient.SqlCommand();
@@ -9557,7 +9558,7 @@ WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertClient(string Username, string Password, string Mail, string Phone) {
+        public virtual int InsertClient(string Username, string Password, string Mail, string Phone, string Type) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[4];
             if ((Username == null)) {
                 throw new global::System.ArgumentNullException("Username");
@@ -9582,6 +9583,12 @@ WHERE  (Users.Username = @Username) AND (Users.Password = @Password)";
             }
             else {
                 command.Parameters[3].Value = ((string)(Phone));
+            }
+            if ((Type == null)) {
+                throw new global::System.ArgumentNullException("Type");
+            }
+            else {
+                command.Parameters[4].Value = ((string)(Type));
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -13476,11 +13483,10 @@ SELECT Id, DealId, ClientId, Bought_Price, Rate, Is_Used, Serial_Key FROM Coupon
             this._commandCollection[7].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Serial_key", global::System.Data.SqlDbType.NVarChar, 2147483647, global::System.Data.ParameterDirection.Input, 0, 0, "Serial_Key", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[8] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[8].Connection = this.Connection;
-            this._commandCollection[8].CommandText = "UPDATE       Coupons\r\nSET                Is_Used = \'True\'\r\nWHERE        (Id = @Or" +
-                "iginal_Id);   \r\nSELECT Id, DealId, ClientId, Original_Price, Bought_Price, Rate," +
-                " Is_Used, Serial_Key FROM Coupons WHERE (Id = @Original_Id)";
+            this._commandCollection[8].CommandText = "UPDATE       Coupons\r\nSET                Is_Used = \'True\'\r\nWHERE        (Id = @co" +
+                "uponId);    \r\n";
             this._commandCollection[8].CommandType = global::System.Data.CommandType.Text;
-            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Id", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._commandCollection[8].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@couponId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "Id", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -13937,9 +13943,9 @@ SELECT Id, DealId, ClientId, Bought_Price, Rate, Is_Used, Serial_Key FROM Coupon
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, false)]
-        public virtual int UpdateToUsed(int Original_Id) {
+        public virtual int UpdateToUsed(int couponId) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[8];
-            command.Parameters[0].Value = ((int)(Original_Id));
+            command.Parameters[0].Value = ((int)(couponId));
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {

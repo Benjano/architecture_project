@@ -29,43 +29,37 @@ namespace Coupons.DAL
 
         public bool InsertNewClient(String username, String password, String mail, String phone)
         {
-            bool isOk = (mTableUsers.InsertClient(username, password, mail, phone) == 1);
-            return isOk;
+            return (mTableUsers.InsertClient(username, password, mail, phone, "Client") == 1);
         }
 
         public bool InsertClientInformation(int clientId, DateTime birthDate, Gender gender, String location)
         {
-            bool isOk = (mTableClients.InsertClient(clientId, birthDate.ToShortDateString(), gender.ToString(), location) == 1);
-            return isOk;
+            return (mTableClients.InsertClient(clientId, birthDate.ToShortDateString(), gender.ToString(), location) == 1);
         }
 
         public bool DeleteClientById(int clientId)
         {
-            return mTableUsers.DeleteUser(clientId) == 0;
+            return (mTableUsers.DeleteUser(clientId) == 0);
         }
 
         public bool CreateNewGroup(int managerId, String name)
         {
-            bool isOk = (mTableGroups.CreateNewGroup(name, managerId) == 1);
-            return isOk;
+            return (mTableGroups.CreateNewGroup(name, managerId) == 1);
         }
 
         public DataTable GetGroupByName(String groupName)
         {
-            DataTable table = mTableGroups.SelectGroupIdByName(groupName);
-            return table;
+            return mTableGroups.SelectGroupIdByName(groupName);
         }
 
         public bool AddClientToGroup(int clientId, int groupId)
         {
-            bool isOk = (mTableClientsInGroups.AddClientToGroup(clientId, groupId) == 1);
-            return isOk;
+            return (mTableClientsInGroups.AddClientToGroup(clientId, groupId) == 1);
         }
 
         public DataTable GetClientId(String username, String password)
         {
-            DataTable table = mTableUsers.SelectUser(username, password);
-            return table;
+            return mTableUsers.SelectUser(username, password);
         }
 
      
@@ -116,8 +110,7 @@ namespace Coupons.DAL
 
         public DataTable GetCouponBySerialKey(string serialKey)
         {
-            DataTable table = mTableCoupons.SelectCouponBySerialKey(serialKey);
-            return table;
+            return mTableCoupons.SelectCouponBySerialKey(serialKey);
         }
 
         public List<Deal> GetDealById(int dealId)
@@ -311,11 +304,8 @@ namespace Coupons.DAL
                 DataTable categories = mTableBusinessCategory.SelectBusinessCategory(id);
 
                 foreach (DataRow catRow in categories.Rows)
-                {
                     business.addCategory((Category) Enum.Parse(typeof(Category), catRow["Name"].ToString()));
-                }
-
-
+                
                 result.Add(business);
             }
             return result;
@@ -361,10 +351,7 @@ namespace Coupons.DAL
                 string cityLower = city.ToLower();
 
                 if (result.IndexOf(cityLower) == -1)
-                {
                     result.Add(cityLower);
-                }
-
             }
 
             return result;
@@ -375,9 +362,9 @@ namespace Coupons.DAL
              mTableCoupons.rate(rate, coupon.ID);
         }
 
-        public int UpdateUser(string newUserName, string newPassword, string newEmail, string newPhoneNum, string oldPassword)
+        public int UpdateUser(string userName, string newPassword, string newEmail, string newPhoneNum, string oldPassword)
         {
-            int id = (int)GetClientId("Aviv3", "password2").Rows[1][UserColumns.ID];
+            int id = (int)GetClientId(userName, oldPassword).Rows[0][UserColumns.ID];
             return mTableUsers.UpdateUser(newPassword, newEmail, newPhoneNum, id, oldPassword);
         }
     }

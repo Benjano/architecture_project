@@ -55,7 +55,8 @@ namespace Coupons.BL
         {
             DataTable businessTable = mDal.GetBusinessesByOwnerId(ownerId);
             List<Business> businesses = mParser.ParseBusinesses(businessTable);
-
+            foreach (Business buisness in businesses)
+                LoadDealsToBusiness(buisness);
             return businesses;
         }
 
@@ -89,6 +90,8 @@ namespace Coupons.BL
         {
             DataTable table = mDal.GetBusinessesByName(name);
             List<Business> result = mParser.ParseBusinesses(table);
+            foreach (Business buisness in result)
+                LoadDealsToBusiness(buisness);
             return result;
         }
 
@@ -96,6 +99,8 @@ namespace Coupons.BL
         {
             DataTable table = mDal.GetBusinessById(businessId);
             List<Business> result = mParser.ParseBusinesses(table);
+            foreach (Business buisness in result)
+                LoadDealsToBusiness(buisness);
             return result;
         }
 

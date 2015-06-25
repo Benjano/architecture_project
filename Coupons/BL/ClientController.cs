@@ -28,7 +28,7 @@ namespace Coupons.BL
             if (mDal.InsertNewClient(username, password, mail, phone))
             {
                 int clientId = GetClientId(username, password);
-                if (mDal.InsertClientInformation(clientId, birthDate, gender, location))
+                if (!mDal.InsertClientInformation(clientId, birthDate, gender, location))
                 {
                     mDal.DeleteClientById(clientId);
                     return false;
@@ -185,9 +185,16 @@ namespace Coupons.BL
             mDal.RateCoupon(coupon, rate);
         }
 
-        public int UpdateUser(string newUserName, string newPassword, string newEmail, string newPhoneNum, string oldPassword)
+        public int UpdateUser(string UserName, string newPassword, string newEmail, string newPhoneNum, string oldPassword)
         {
-            return mDal.UpdateUser(newUserName, newPassword, newEmail, newPhoneNum, oldPassword);
+            return mDal.UpdateUser(UserName, newPassword, newEmail, newPhoneNum, oldPassword);
+        }
+
+        public Coupon GetClientCouponBySerialKey(string serialKey)
+        {
+            DataTable table = mDal.GetCouponBySerialKey(serialKey);
+            Coupon result = mParser.ParseCoupon(table.Rows[0]);
+            return result;
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Coupons.DAL
 
         public bool insertBusinessOwner(String username, String password, String mail, String phone)
         {
-            return (mTableUsers.InsertBusinessOwner(username, password, mail, phone) == 1);
+            return (mTableUsers.InsertClient(username, password, mail, phone, "BusinessOwner") == 1);
         }
 
         public bool deleteUser(int userId)
@@ -36,7 +36,7 @@ namespace Coupons.DAL
 
         public bool insertNewAdmin(String username, String password, String mail, String phone)
         {
-            return (mTableUsers.InsertAdmin(username, password, mail, phone) == 1);
+            return (mTableUsers.InsertClient(username, password, mail, phone, "Admin") == 1);
         }
 
         public bool insertNewBusiness(String name, String description, int ownerId, String address, String city)
